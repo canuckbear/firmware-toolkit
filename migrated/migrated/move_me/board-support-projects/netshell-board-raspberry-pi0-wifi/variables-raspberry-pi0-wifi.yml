@@ -1,2 +1,2 @@
 # Set the hostname according to the project name
-dft_hostname: "raspberry-pi-0"
+dft_hostname: "raspberry-pi0w"

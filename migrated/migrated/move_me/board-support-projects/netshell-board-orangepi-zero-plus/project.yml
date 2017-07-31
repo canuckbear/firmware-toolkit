@@ -92,7 +92,7 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
-  project_name: "netshell-board-raspberry-pi-1"
+  project_name: "netshell-board-orangepi-zero-plus"
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
@@ -129,7 +129,7 @@ project_definition:
   # Definition of the variables to be passed to rootfs creation
   variables:
     - variables.yml
-    - variables-raspberry-pi-1.yml
+    - variables-orangepi-zero-plus.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -141,4 +141,4 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: stretch , board: raspberry-pi-1 }
+    - { version: stretch , board: orangepi-zero-plus }
