@@ -648,4 +648,4 @@ class CliCommand(object):
         logging.debug("Installing package " + pkg)
         self.install_package(pkg)
     else:
->>>>>>> c68d5fb36 (Add uboot package installation during build image)
+      logging.debug("No packages entry found. Nothing to do...")
