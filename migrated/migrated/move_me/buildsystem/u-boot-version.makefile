@@ -42,9 +42,9 @@ include ../board.mk
 
 # If you use the patch feature, please make a copy of this file to store
 # the definition of the PATCHFILES variable. The previous line in comment is
-# provided as an example of how to do it. Please duplicate, modify and 
+# provided as an example of how to do it. Please duplicate, modify and
 # uncomment the line. Files will be searched for in the files/ directory at
-# the same level as this Makefile.  
+# the same level as this Makefile.
 
 # Do not recurse the following subdirs
 MAKE_FILTERS  = debian files patches
@@ -60,7 +60,7 @@ help:
 	@echo 'sanity-check : Verify the availability of required items (files, symlinks, directories) and report missing.'
 
 check:
-	@echo "Checking definition of u-boot version $(SW_VERSION) package for $(BOARD_NAME)" 
+	@echo "Checking u-boot $(SW_VERSION) package definition for $(BOARD_NAME)"
 	@if [ ! -f "../board.mk" ] ; then \
 		echo "file board.mk is missing in directory $(shell pwd)/.." ; \
 		echo "error 191115-12" ; \
@@ -68,7 +68,7 @@ check:
 	fi ;
 	@if [ ! -d "$(shell pwd)/files" ] ; then \
 		echo "files directory is missing in $(shell pwd). It should contains the markdown file install.$(SW_NAME).$(BOARD_NAME).md needed by target package." ; \
-		echo "You can fix with the following commands : " ; \
+		echo "You can fix this with the following commands : " ; \
 		echo "mkdir -p $(shell pwd)/files" ; \
 		echo "touch $(shell pwd)/files/.gitkeep" ; \
 		echo "ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/" ; \
@@ -76,8 +76,26 @@ check:
 		echo "error 191115-11" ; \
 		exit 1 ; \
 	fi ;
+	@if [ ! -d "$(shell pwd)/patches" ] ; then \
+		echo "patches directory is missing in $(shell pwd). It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
+		echo "You can fix this with the following commands : " ; \
+		echo "mkdir -p $(shell pwd)/patchess" ; \
+		echo "touch $(shell pwd)/patches/.gitkeep" ; \
+		echo "git add $(shell pwd)/patches" ; \
+		echo "error 191119-01" ; \
+		exit 1 ; \
 	@if [ ! -d "$(shell pwd)/debian" ] ; then \
 		echo "debian directory is missing in $(shell pwd). It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ; \
 		echo "error 191115-10" ; \
 		exit 1 ; \
 	fi ;
+	s=`readlink Makefile` ; \
+	if [ !  "$$s" = "$(buildsystem)/u-boot-version.makefile" ] ; then \
+		echo "Makefile symlink must link to $(buildsystem)/u-boot-version.makefile" ; \
+		echo "You can fix this with the following shell commands :" ; \
+		echo "git rm -f Makefile || rm -f Makefile" ; \
+		echo "ln -s $(buildsystem)/u-boot-version.makefile Makefile" ; \
+		echo "git add Makefile" ; \
+		echo "exit 191119-02" ; \
+		exit 1 ; \
+	fi ; \

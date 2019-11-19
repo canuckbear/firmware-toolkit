@@ -32,12 +32,22 @@ include $(buildsystem)/dft.mk
 # Do not recurse the following subdirs
 MAKE_FILTERS  = files defconfig Makefile README.md .
 
-# 
+#
 # Board level birectory generic Linux kernel makefile
 #
 
 sanity-check :
-	@echo "Checking Linux kernel folder sanity for board $(BOARD_NAME)" 
+	@echo "Checking Linux kernel folder sanity for board $(BOARD_NAME)"
+check :
+	@echo "Checking Linux kernel $(SW_VERSION) folder for board $(BOARD_NAME)"
+	@if [ ! -d "$(shell pwd)/defconfig" ] ; then \
+		echo "defconfig directory is missing in $(shell pwd). It contains the configuration files of the different Linux kernel versions." ; \
+		echo "You can fix with the following commands : " ; \
+		echo "mkdir -p $(shell pwd)/defconfig" ; \
+		echo "touch $(shell pwd)/defconfig/.gitkeep" ; \
+		echo "git add $(shell pwd)/defconfig/.gitkeep" ; \
+		false ; \
+	fi ;
 	@if [ ! -L "Makefile"  ] ; then \
 		echo "Makefile symlink $(buildsystem)/$(SW_NAME)-kernel.makefile is missing in directory $(shell pwd)" ; \
 		echo "You can fix with the following commands : " ; \
@@ -106,7 +116,7 @@ sanity-check :
 			echo "exit 191115-09" ; \
 			exit 1 ; \
 		fi ; \
-	done ; 
+	done ;
 	@for folder in $(shell find . -mindepth 1 -maxdepth 1 -type d -name '*\.*') ; do \
 		$(MAKE) -C $$folder sanity-check || exit 1 ; \
 		echo "make sanity-check in u-boot version $$folder" ; \
