@@ -56,7 +56,6 @@ MAKE_FILTERS  = debian files patches
 .PHONY:
 
 sanity-check:
-	@echo "Checking u-boot $(SW_VERSION) package sanity for $(BOARD_NAME)"
 	@if [ ! -f "../board.mk" ] ; then \
 		echo "file board.mk is missing in directory $(shell pwd)/.." ; \
 		echo "error 191115-12" ; \
@@ -65,12 +64,19 @@ sanity-check:
 	@if [ ! -d "$(shell pwd)/files" ] ; then \
 		echo "files directory is missing in $(shell pwd). It should contains a link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md needed by target package." ; \
 		echo "You can fix this with the following commands : " ; \
+<<<<<<< HEAD
 		echo "mkdir -p $(shell pwd)/files" ; \
 		echo "touch $(shell pwd)/files/.gitkeep" ; \
 		echo "ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/" ; \
 		echo "git add $(shell pwd)/files" ; \
 		echo "error 191115-11" ; \
 		exit 1 ; \
+=======
+		mkdir -p $(shell pwd)/files ; \
+		touch $(shell pwd)/files/.gitkeep ; \
+		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/ ; \
+		git add $(shell pwd)/files ; \
+>>>>>>> 677c67875 (applying some more sanity check results)
 	fi ;
 	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
 		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the $(shell pwd)/files directory." ; \
@@ -79,26 +85,30 @@ sanity-check:
 		touch $(shell pwd)/files/.gitkeep ; \
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/ ; \
 		echo git add $(shell pwd)/files ; \
-		echo "exit 191120-01" ; \
 	fi ; \
 	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ; \
 	if [ !  "$$s" = "../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
 		echo "The link to the markdown file in $(shell pwd)/files must target to ../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
 		echo "You can fix this with the following shell commands :" ; \
+<<<<<<< HEAD
 		echo "git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
 		echo "ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/" ; \
 		echo "git add $(shell pwd)/files" ; \
 		echo "exit 191120-02" ; \
 		exit 1 ; \
 	fi ;
+=======
+		git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md ; \
+		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/ ; \
+		git add $(shell pwd)/files ; \
+	fi ;
+>>>>>>> 677c67875 (applying some more sanity check results)
 	@if [ ! -d "$(shell pwd)/patches" ] ; then \
 		echo "patches directory is missing in $(shell pwd). It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
 		echo "You can fix this with the following commands : " ; \
-		echo "mkdir -p $(shell pwd)/patches" ; \
-		echo "touch $(shell pwd)/patches/.gitkeep" ; \
-		echo "git add $(shell pwd)/patches" ; \
-		echo "error 191119-01" ; \
-		exit 1 ; \
+		mkdir -p $(shell pwd)/patches ; \
+		touch $(shell pwd)/patches/.gitkeep ; \
+		git add $(shell pwd)/patches ; \
 	fi ;
 	@if [ ! -d "$(shell pwd)/debian" ] ; then \
 		echo "debian directory is missing in $(shell pwd). It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ; \
@@ -109,11 +119,9 @@ sanity-check:
 	if [ !  "$$s" = "$(buildsystem)/u-boot-version.makefile" ] ; then \
 		echo "Makefile symlink must link to $(buildsystem)/u-boot-version.makefile" ; \
 		echo "You can fix this with the following shell commands :" ; \
-		echo "git rm -f Makefile || rm -f Makefile" ; \
-		echo "ln -s $(buildsystem)/u-boot-version.makefile Makefile" ; \
-		echo "git add Makefile" ; \
-		echo "exit 191119-02" ; \
-		exit 1 ; \
+		git rm -f Makefile || rm -f Makefile ; \
+		ln -s $(buildsystem)/u-boot-version.makefile Makefile ; \
+		git add Makefile ; \
 	fi ; \
 
 help:
