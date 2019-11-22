@@ -55,8 +55,8 @@ MAKE_FILTERS  = debian files patches
 #
 .PHONY:
 
-check:
-	@echo "Checking u-boot $(SW_VERSION) package definition for $(BOARD_NAME)"
+sanity-check:
+	@echo "Checking u-boot $(SW_VERSION) package definition sanity for $(BOARD_NAME)"
 	@if [ ! -f "../board.mk" ] ; then \
 		echo "file board.mk is missing in directory $(shell pwd)/.." ; \
 		echo "error 191115-12" ; \
