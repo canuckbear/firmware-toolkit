@@ -120,4 +120,3 @@ check:
 help:
 	@echo "Supported targets are"
 	@echo 'check : Verify the availability of required items (files, symlinks, directories) and report missing.'
-
