@@ -32,12 +32,10 @@ SW_VERSION       := $(shell echo $(PATH_WORDS) |  cut -d ' ' -f$(SW_VERSIONFIELD
 # is not comptible with user need ans or workspace relocation nor packagng needs.
 # better solutions wille be really welcomeds contributions.
 # Include DFT build system shared Makfile includes
-include ../board.mk
 buildsystem := buildsystem
+include ../board.mk
+include $(buildsystem)/inc/u-boot.mk
 include $(buildsystem)/dft.mk
-
-$(warning SW_NAME $(SW_NAME))
-$(warning SW_VERSION $(SW_VERSION))
 
 # ------------------------------------------------------------------------------
 #
@@ -75,7 +73,6 @@ MAKE_FILTERS  = debian files patches
 #
 # Targets not associated with a file (aka PHONY)
 #
-.PHONY:
 
 sanity-check:
 	@echo "sanity-check from u-boot-version.makefile"
@@ -95,17 +92,17 @@ sanity-check:
 		echo "error 191115-11" ; \
 		exit 1 ; \
 	fi ;
-	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
-		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the ${CURDIR}/files directory." ; \
-		echo "You can fix this with the following commands : " ; \
-		mkdir -p ${CURDIR}/files ; \
-		touch ${CURDIR}/files/.gitkeep ; \
-		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
-		echo git add ${CURDIR}/files ; \
-	fi ; 
-	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ; \
-	if [ !  "$$s" = "../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
-		echo "The link to the markdown file in ${CURDIR}/files must target to ../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
+	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] then
+		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the ${CURDIR}/files directory." ;
+		echo "You can fix this with the following commands : " ;
+		mkdir -p ${CURDIR}/files ;
+		touch ${CURDIR}/files/.gitkeep ;
+		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ;
+		echo git add ${CURDIR}/files ;
+	fi ;
+	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ;
+	if [ ! "$$s" == "../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ] then
+		echo "The link to the markdown file in ${CURDIR}/files must target to ../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ;
 		echo "You can fix this with the following shell commands :" ; \
 		echo "git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
 		echo "ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md $(shell pwd)/files/" ; \
@@ -120,19 +117,19 @@ sanity-check:
 		touch ${CURDIR}/patches/.gitkeep ; \
 		git add ${CURDIR}/patches ; \
 	fi ;
-	@if [ ! -d "${CURDIR}/debian" ] ; then \
-		echo "debian directory is missing in ${CURDIR}. It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ; \
-		echo "error 191115-10" ; \
-		exit 1 ; \
+	@if [ ! -d "${CURDIR}/debian" ]  then
+		echo "debian directory is missing in ${CURDIR}. It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ;
+		echo "error 191115-10" ;
+		exit 1 ;
 	fi ;
-	@s=`readlink Makefile`; \
-	if [ !  "$$s" = "$(buildsystem)/u-boot-version.makefile" ] ; then \
-		echo "Makefile symlink must link to $(buildsystem)/u-boot-version.makefile" ; \
-		echo "You can fix this with the following shell commands :" ; \
-		git rm -f Makefile || rm -f Makefile ; \
-		ln -s $(buildsystem)/u-boot-version.makefile Makefile ; \
-		git add Makefile ; \
-	fi ; 
+	@s=`readlink Makefile`;
+	if [ !  "$$s" == "$(buildsystem)/u-boot-version.makefile" ]  then
+		echo "Makefile symlink must link to $(buildsystem)/u-boot-version.makefile" ;
+		echo "You can fix this with the following shell commands :" ;
+		git rm -f Makefile || rm -f Makefile ;
+		ln -s $(buildsystem)/u-boot-version.makefile Makefile ;
+		git add Makefile ;
+	fi ;
 
 # Since u-boot tarball contains sudir sources have to be moves to the right location
 # and hidden files and hidden empty dirs must be removed
