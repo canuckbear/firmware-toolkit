@@ -112,10 +112,30 @@ sanity-check:
 	fi ;
 	@if [ ! -d "$(shell pwd)/patches" ] ; then \
 		echo "patches directory is missing in $(shell pwd). It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
+=======
+		mkdir -p ${CURDIR}/files ; \
+		touch ${CURDIR}/files/.gitkeep ; \
+		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
+		git add ${CURDIR}/files ; \
+	fi ;
+	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
+		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the ${CURDIR}/files directory." ; \
 		echo "You can fix this with the following commands : " ; \
-		mkdir -p ${CURDIR}/patches ; \
-		touch ${CURDIR}/patches/.gitkeep ; \
-		git add ${CURDIR}/patches ; \
+		mkdir -p ${CURDIR}/files ; \
+		touch ${CURDIR}/files/.gitkeep ; \
+		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
+		echo git add ${CURDIR}/files ; \
+	fi ;
+	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ;
+	if [ ! "$$s" == "../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
+		echo "The link to the markdown file in ${CURDIR}/files must target to ../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
+		echo "You can fix this with the following shell commands :" ; \
+		git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md ; \
+		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
+		git add ${CURDIR}/files ; \
+	fi ;
+	@if [ ! -d "${CURDIR}/patches" ] ; then \
+		echo "patches directory is missing in ${CURDIR}. It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
 	fi ;
 	@if [ ! -d "${CURDIR}/debian" ]  then
 		echo "debian directory is missing in ${CURDIR}. It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ;
