@@ -112,7 +112,6 @@ sanity-check:
 	fi ;
 	@if [ ! -d "$(shell pwd)/patches" ] ; then \
 		echo "patches directory is missing in $(shell pwd). It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
-=======
 		mkdir -p ${CURDIR}/files ; \
 		touch ${CURDIR}/files/.gitkeep ; \
 		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
