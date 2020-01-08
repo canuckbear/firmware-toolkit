@@ -80,8 +80,7 @@ sanity-check:
 	@echo "Checking u-boot $(SW_VERSION) package sanity for $(BOARD_NAME)" ;
 	@if [ ! -f "../board.mk" ] ; then \
 		echo "file board.mk is missing in directory ${CURDIR}/.." ; \
-		echo "error 191115-12" ; \
-		exit 1 ; \
+		$(call dft_error ,1911-1512) ; \
 	fi ;
 	@if [ ! -d "${CURDIR}/files" ] ; then \
 		echo "files directory is missing in ${CURDIR}. It should contains a link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md needed by target package." ; \
