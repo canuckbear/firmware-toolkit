@@ -184,9 +184,9 @@ configure:
 	done
 
 # Catch all target. Call the same targets in each subfolder
-%:
-	echo "DEBUG target catch_all_$* in linux-kernel.makefile" ;
-	for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" )) ; do \
-		$(MAKE) -C $$v  $* ; \
-	done
+#%:
+#	echo "DEBUG target catch_all_$* in linux-kernel.makefile" ;
+#	for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" )) ; do \
+#		$(MAKE) -C $$v  $* ; \
+#	done
 
