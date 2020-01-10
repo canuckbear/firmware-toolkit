@@ -74,6 +74,11 @@ MAKE_FILTERS  = debian files patches
 # Targets not associated with a file (aka PHONY)
 #
 
+
+# ------------------------------------------------------------------------------
+#
+# Check folder content sanity (are all mandatory files and symlink available)
+#
 sanity-check:
 	@echo "sanity-check from u-boot-version.makefile"
 	@echo "Checking u-boot $(SW_VERSION) package sanity for $(BOARD_NAME)" ;
@@ -158,3 +163,21 @@ post-extract:
 #	@mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/.gitignore $(BUILD_DIR)/
 #	@mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/.mailmap $(BUILD_DIR)/
 #	@mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/.travis.yml $(BUILD_DIR)/
+
+# ------------------------------------------------------------------------------
+#
+# Check defconfig target availability from upstream sources. It has to be done
+# to detect target not supported by a given u-boot version. If defconfig is not
+# available compilation nor package building will be successful. Version should
+# be removed from git tree since upstream software doe not support this board.
+#
+check-u-boot-defconfig: extract
+	@if [ "$(UBOOT_DEFCONFIG)" == "" ] ; then \
+		echo "ERROR : Variable UBOOT_DEFCONFIG defining u-boot defconfig filename is not set or empty for board $(BOARD_NAME). Please set it in board.mk" ; \
+		$(call dft_error ,2001-1002) ; \
+	fi ;
+	@echo "Checking $(UBOOT_DEFCONFIG) u-boot definition availability for version $(SW_VERSION)" ;
+	@if [ ! -f "$(BUILD_DIR)/configs/$(UBOOT_DEFCONFIG)" ] ; then \
+		echo "ERROR : u-boot $(UBOOT_DEFCONFIG) defconfig is not available in version $(SW_VERSION). Make was working on board $(BOARD_NAME)" ; \
+		$(call dft_error ,2001-1003) ; \
+	fi ;
