@@ -76,6 +76,7 @@ sanity-check:
 		echo "mkdir -p ${CURDIR}//config" ; \
 		echo "touch ${CURDIR}//config/.gitkeep" ; \
 		echo "git add ${CURDIR}//config/.gitkeep" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,2001-0809) ; \
 	fi ;
 	@if [ ! -L "Makefile"  ] ; then \
@@ -84,6 +85,7 @@ sanity-check:
 		echo "git rm -f ${CURDIR}//Makefile" ; \
 		echo "ln -s $(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel.makefile ${CURDIR}//Makefile" ; \
 		echo "git add ${CURDIR}//Makefile" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,1911-2110) ; \
 	fi ;
 	@if [ ! "$(shell readlink ./Makefile)" = "$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel.makefile" ] ; then \
@@ -92,6 +94,7 @@ sanity-check:
 		echo "git rm -f ${CURDIR}//Makefile" ; \
 		echo "ln -s $(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel.makefile ${CURDIR}/Makefile" ; \
 		echo "git add ${CURDIR}/Makefile" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,1911-2011) ; \
 	fi ;
 	@if [ ! -d "${CURDIR}//config" ] ; then \
@@ -100,6 +103,7 @@ sanity-check:
 		echo "mkdir -p ${CURDIR}//config" ; \
 		echo "touch ${CURDIR}//config/.gitkeep" ; \
 		echo "git add ${CURDIR}//config/.gitkeep" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,1911-2013) ; \
 	fi ;
 	@if [ ! -L "board.mk" ] ; then \
@@ -107,6 +111,7 @@ sanity-check:
 		echo "You can fix with the following commands : " ; \
 		echo "ln -s ../board.mk ${CURDIR}//board.mk" ; \
 		echo "git add ${CURDIR}//board.mk" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,1911-1604) ; \
 	fi ;
 	@if [ ! "$(shell readlink board.mk)" = "../board.mk" ] ; then \
@@ -115,29 +120,34 @@ sanity-check:
 		echo "git rm -f ${CURDIR}/board.mk" ; \
 		echo "ln -s ../board.mk ${CURDIR}/board.mk" ; \
 		echo "git add ${CURDIR}/board.mk" ; \
+		echo "make sanity-check" ; \
 		$(call dft_error ,1911-1605) ; \
 	fi ;
-	@for version in $(shell find . -mindepth 1 -maxdepth 1 -type d  -name '*\.*' ) ; do \
+	for version in $(shell find . -mindepth 1 -maxdepth 1 -type d  -name '*\.*' ) ; do \
 		echo "Checking $(BOARD_NAME) kernel $$version package definition" ; \
 		if [ ! -L "$$version/Makefile" ] ; then \
 			echo "version folder $$version" ; \
 			echo "Makefile symlink in ${CURDIR}/$$version is missing. It should be a symlink to $(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile" ; \
 			echo "You can fix with the following shell commands :" ; \
 			if [ -f "$$version/Makefile" ] ; then \
-				git rm ${CURDIR}//$$version/Makefile ; \
+				echo "git rm ${CURDIR}//$$version/Makefile" ; \
 			fi ; \
-			ln -s ../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile ${CURDIR}//$$version/Makefile ; \
-			git add ${CURDIR}//$$version/Makefile ; \
+			echo "ln -s ../../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile ${CURDIR}/$$version/Makefile" ; \
+			echo "git add ${CURDIR}//$$version/Makefile" ; \
+			echo "make sanity-check" ; \
 			$(call dft_error ,1911-1607) ; \
 		fi ; \
+		echo "trying to readlink $$version/Makefile" ; \
 		s=`readlink $$version/Makefile` ; \
-		if [ !  "$$s" = "../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile" ] ; then \
+		if [ !  "$$s" = "../../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile" ] ; then \
 			echo "Makefile symlink in $$version must link to $(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile" ; \
+			echo "it currently targets to $$s" ; \
 			echo "You can fix with the following shell commands :" ; \
-			git rm -f ${CURDIR}/$$version/Makefile || rm -f ${CURDIR}/$$version/Makefile ; \
-			ln -s ../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile ${CURDIR}//$$version/Makefile ; \
-			git add ${CURDIR}//$$version/Makefile ; \
-			$(call dft_error ,1911-2110) ; \
+			echo "git rm -f ${CURDIR}/$$version/Makefile || rm -f ${CURDIR}/$$version/Makefile" ; \
+			echo "ln -s ../../$(DFT_BUILDSYSTEM)/$(SW_NAME)-kernel-version.makefile ${CURDIR}/$$version/Makefile" ; \
+			echo "git add ${CURDIR}//$$version/Makefile" ; \
+			echo "make sanity-check" ; \
+			$(call dft_error ,1911-2118) ; \
 		fi ; \
 	done ;
 	@for folder in $(shell find . -mindepth 1 -maxdepth 1 -type d -name '*\.*') ; do \
