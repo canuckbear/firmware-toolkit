@@ -120,6 +120,7 @@ sanity-check:
 		touch ${CURDIR}/files/.gitkeep ; \
 		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
 		git add ${CURDIR}/files ; \
+		$(call dft_error ,2004-2706) ; \
 	fi ;
 	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
 		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the ${CURDIR}/files directory." ; \
@@ -128,17 +129,26 @@ sanity-check:
 		touch ${CURDIR}/files/.gitkeep ; \
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
 		echo git add ${CURDIR}/files ; \
+		$(call dft_error ,2004-2705) ; \
 	fi ;
 	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ;
 	if [ ! "$$s" == "../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
 		echo "The link to the markdown file in ${CURDIR}/files must target to ../../files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
+		echo "It currently tagets to $$s" ; \
 		echo "You can fix this with the following shell commands :" ; \
 		git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md ; \
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
 		git add ${CURDIR}/files ; \
+		echo "la je merde sur le sur CURDIR et lechemin courant de la boucle for et make recursif" ; \
+		$(call dft_error ,2004-2701) ; \
 	fi ;
 	@if [ ! -d "${CURDIR}/patches" ] ; then \
 		echo "patches directory is missing in ${CURDIR}. It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
+		echo "You can fix this with the following commands : " ; \
+		mkdir -p ${CURDIR}/patches ; \
+		touch ${CURDIR}/patches/.gitkeep ; \
+		git add ${CURDIR}/patches ; \
+		$(call dft_error ,2004-2703) ; \
 	fi ;
 	@if [ ! -d "${CURDIR}/debian" ]  then
 		echo "debian directory is missing in ${CURDIR}. It should contains the files needed to create the debian package for $(BOARD_NAME) u-boot." ;
