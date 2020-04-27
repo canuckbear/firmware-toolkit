@@ -85,8 +85,8 @@ sanity-check:
 	@if [ ! -f "../board.mk" ] ; then \
 		echo "file board.mk is missing in directory ${CURDIR}/.." ; \
 		$(call dft_error ,1911-1512) ; \
-	fi ;
-	@if [ ! -d "${CURDIR}/files" ] ; then \
+	fi ; \
+	if [ ! -d "${CURDIR}/files" ] ; then \
 		echo "files directory is missing in ${CURDIR}. It should contains a link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md needed by target package." ; \
 		echo "You can fix this with the following commands : " ; \
 		echo "mkdir -p $(shell pwd)/files" ; \
@@ -121,8 +121,8 @@ sanity-check:
 		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
 		git add ${CURDIR}/files ; \
 		$(call dft_error ,2004-2706) ; \
-	fi ;
-	@if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
+	fi ; \
+	if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
 		echo "The link to the markdown file install.$(SW_NAME)-$(BOARD_NAME).md is missing in the ${CURDIR}/files directory." ; \
 		echo "You can fix this with the following commands : " ; \
 		mkdir -p ${CURDIR}/files ; \
@@ -140,9 +140,9 @@ sanity-check:
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
 		git add ${CURDIR}/files ; \
 		echo "la je merde sur le sur CURDIR et lechemin courant de la boucle for et make recursif" ; \
-		$(call dft_warning ,2004-2701) ; \
-	fi ;
-	@if [ ! -d "${CURDIR}/patches" ] ; then \
+		$(call dft_warning ,2004-2705) ; \
+	fi ; \
+	if [ ! -d "${CURDIR}/patches" ] ; then \
 		echo "patches directory is missing in ${CURDIR}. It is used to store patches to be applied on sources after extract and before build targets. By default it is an empty folder." ; \
 		echo "You can fix this with the following commands : " ; \
 		mkdir -p ${CURDIR}/patches ; \
