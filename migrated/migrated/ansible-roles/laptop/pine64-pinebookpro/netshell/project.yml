@@ -44,7 +44,6 @@ configuration:
   # project name will be created under this path, and subdirectories used to
   # store rootfs, bootchain, image, etc will be created
   # working_dir: "../../working_dir"
-  working_dir: "/home/william/dft-forge"
 
   # Defines the path to project configuration files. By default (undefined
   # value) configuration files are searched in the same directory as the
@@ -63,13 +62,14 @@ configuration:
 
   # Defines if the file /etc/apt/apt.conf.d/10no-check-valid-until should be generated or not
   # If generated this file contains Acquire::Check-Valid-Until: "0"; which disables validity
-  # date checking when updating the local repository catalog. Default value is True
+  # date checking when updating the local repository catalog. Default valueis True
   # generate_validity_check: True
 
   # Defines if the file /etc/apt/apt.conf.d/10no-check-valid-until should be removed at the end
   # of rootfs generation process. Default value is False
   # remove_validity_check: False
 
+  keep_bootstrap_files: true
 
 # ----------------------------------------------------------------------------
 #
@@ -90,7 +90,7 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
-  project_name: "pine64-pinebookpro"
+  project_name: "orangepi-zero_rootfs"
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
@@ -102,7 +102,7 @@ project_definition:
 
   # Definition of the rootfs content
   rootfs:
-    - project-rootfs.yml
+    - rootfs-netshell.yml
 
   # Definition of the image structure
   image:
@@ -114,7 +114,7 @@ project_definition:
 
   # Definition of the variables to be passed to rootfs creation
   variables:
-    - project-variables.yml
+    - variables-netshell.yml
     - board-variables.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
@@ -127,7 +127,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster, board: pine64-pinebookpro }
+    - { version: buster , board: orangepi-zero }
 
 # ----------------------------------------------------------------------------
 #
@@ -183,5 +183,4 @@ building_sequences:
       - action: build_rootfs
       - action: install_bootchain
       - action: build_image
-
 

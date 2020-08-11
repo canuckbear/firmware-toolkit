@@ -62,7 +62,7 @@ configuration:
 
   # Defines if the file /etc/apt/apt.conf.d/10no-check-valid-until should be generated or not
   # If generated this file contains Acquire::Check-Valid-Until: "0"; which disables validity
-  # date checking when updating the local repository catalog. Default value is True
+  # date checking when updating the local repository catalog. Default valueis True
   # generate_validity_check: True
 
   # Defines if the file /etc/apt/apt.conf.d/10no-check-valid-until should be removed at the end
@@ -97,20 +97,20 @@ project_definition:
 
   # Definition of the repositories to use
   repositories:
-    - repository-debian.yml
+    - repositories.yml
 
   # Definition of the rootfs content
   rootfs:
-    - project-rootfs.yml
+    - rootfs.yml
 
   # Definition of the image structure
   image:
-    - disk-image.yml
+    - image-rootfs.yml
 
   # Definition of the variables to be passed to rootfs creation
   variables:
-    - project-variables.yml
-    - board-variables.yml
+    - variables.yml
+    - variables-cubieboard-2.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -122,7 +122,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: cubieboard-2 }
+    - { version: stretch , board: cubieboard-2 }
 
 # ----------------------------------------------------------------------------
 #
