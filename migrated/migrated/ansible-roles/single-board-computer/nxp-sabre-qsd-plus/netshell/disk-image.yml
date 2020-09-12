@@ -50,19 +50,7 @@ devices:
 
   # Defines the filename used to store the device image. This file is created and allocated at
   # image creation.
-  filename: "sabre-qsd-plus-rootfs"
-
-  # Defines the suffix appended to the filename. Default value is img. The dot should not be
-  # included in suffix, it zill be added automatically. If the string is emty, no suffix at all
-  # will be appended
-  # filename_suffix: "img"
-
-  # Should the filename include a timestamp ? Default is false
-  filename_timestamp: True
-
-  # Defines the timestamp format. Syntax is based upon python datetime strftime method
-  # Default value is : %Y%m%d (ex: 20180312)
-  filename_timestamp_format: "%Y%m%d"
+  filename: "odroid-c0-netshell-rootfs.img"
 
   # Defines the kind of compression to apply on the image once its created. Valid values are :
   # . bzip2
@@ -115,7 +103,7 @@ devices:
         unit: "MB" ,
 
         # Frst sector of the partition
-        start_sector: "65536" ,
+        start_sector: "8192" ,
 
         # Toggle the given set of flags on the partition
         # flag: "" ,
@@ -179,8 +167,6 @@ filesystems:
       dump: "0" ,
       pass: "1"
     }
-
-
 # ----------------------------------------------------------------------------
 #
 # Definition of the content ource to use. Source can be either firmware or

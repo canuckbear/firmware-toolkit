@@ -89,7 +89,7 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
-  project_name: "odroid-c1-plus"
+  project_name: "odroid-hc1"
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
@@ -110,7 +110,7 @@ project_definition:
   # Definition of the variables to be passed to rootfs creation
   variables:
     - variables.yml
-    - variables-odroid-c1-plus.yml
+    - variables-odroid-hc1.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -122,7 +122,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: stretch , board: odroid-c1-plus }
+    - { version: stretch , board: odroid-hc1 }
 
 # ----------------------------------------------------------------------------
 #
