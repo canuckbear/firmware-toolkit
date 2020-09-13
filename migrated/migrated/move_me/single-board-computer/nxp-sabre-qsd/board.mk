@@ -1,0 +1,1 @@
+./../../../board-support/devkit/nxp-sabre-qsd/board.mk
