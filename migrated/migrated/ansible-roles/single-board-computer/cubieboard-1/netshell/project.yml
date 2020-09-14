@@ -44,8 +44,11 @@ configuration:
   # project name will be created under this path, and subdirectories used to
   # store rootfs, bootchain, image, etc will be created
   # working_dir: "../../working_dir"
+<<<<<<< HEAD
   working_dir: "/home/william/dft-forge"
 
+=======
+>>>>>>> 8010fb21 (manifest cleanup)
 
   # Defines the path to project configuration files. By default (undefined
   # value) configuration files are searched in the same directory as the
@@ -99,6 +102,7 @@ project_definition:
 
   # Definition of the repositories to use
   repositories:
+<<<<<<< HEAD
     - repository-debian.yml
 
   # Definition of the rootfs content
@@ -113,6 +117,22 @@ project_definition:
   variables:
     - variables-netshell.yml
     - board-variables.yml
+=======
+    - repositories.yml
+
+  # Definition of the rootfs content
+  rootfs:
+    - rootfs.yml
+
+  # Definition of the image structure
+  image:
+    - image-rootfs.yml
+
+  # Definition of the variables to be passed to rootfs creation
+  variables:
+    - variables.yml
+    - variables-cubieboard-1.yml
+>>>>>>> 8010fb21 (manifest cleanup)
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -124,7 +144,11 @@ project_definition:
   # DFT installation
   #
   targets:
+<<<<<<< HEAD
     - { version: buster , board: cubieboard-1 }
+=======
+    - { version: stretch , board: cubieboard-1 }
+>>>>>>> 8010fb21 (manifest cleanup)
 
 # ----------------------------------------------------------------------------
 #
