@@ -97,24 +97,24 @@ project_definition:
 
   # Definition of the repositories to use
   repositories:
-    - repositories.yml
+    - repository-debian.yml
 
   # Definition of the rootfs content
   rootfs:
-    - rootfs.yml
-
-  # Definition of the firmware content and structure
-  firmware:
-    - firmware.yml
+    - rootfs-netshell.yml
 
   # Definition of the image structure
   image:
-    - image-firmware.yml
+    - disk-image.yml
+
+  # Path to bootscript template to instanciate and inject in to the image.
+  # This field is optional, if not defined
+  # bootscript: /path/to/boot.scr
 
   # Definition of the variables to be passed to rootfs creation
   variables:
-    - variables.yml
-    - variables-cubieboard-4.yml
+    - variables-netshell.yml
+    - board-variables.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -126,7 +126,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: stretch , board: cubieboard-4 }
+    - { version: buster , board: cubieboard-4 }
 
 # ----------------------------------------------------------------------------
 #
@@ -181,7 +181,5 @@ building_sequences:
       # list of arguments to pass. Arguments are the same as arguments from the CLI
       - action: build_rootfs
       - action: install_bootchain
-      - action: build_firmware
-      - action: assemble_firmware
       - action: build_image
 

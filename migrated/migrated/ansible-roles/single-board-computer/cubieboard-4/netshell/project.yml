@@ -44,7 +44,10 @@ configuration:
   # project name will be created under this path, and subdirectories used to
   # store rootfs, bootchain, image, etc will be created
   # working_dir: "../../working_dir"
+<<<<<<< HEAD
   working_dir: "/home/william/dft-forge"
+=======
+>>>>>>> 6276fd63 (update cubi4 image project to be compliant with new dir tree)
 
   # Defines the path to project configuration files. By default (undefined
   # value) configuration files are searched in the same directory as the
