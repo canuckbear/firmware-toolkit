@@ -92,7 +92,7 @@ sanity-check:
 
 # Forward target call to subfolders where are stored the board.mk files specifying board architecture
 # $(MAKE) $@ --no-print-directory --directory=$(category) arch=$(arch) ;
-list-boards list-architectures:
+list-boards:
 	@if [ "$(arch)" = "armhf" ] ; then \
 		arch=armv7l; \
 	fi ; \
