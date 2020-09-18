@@ -45,11 +45,16 @@ configuration:
   # store rootfs, bootchain, image, etc will be created
   # working_dir: "../../working_dir"
 <<<<<<< HEAD
+<<<<<<< HEAD
   working_dir: "/home/william/dft-forge"
 
 =======
 >>>>>>> 8010fb21 (manifest cleanup)
 
+=======
+  working_dir: "/home/william/dft-forge"
+
+>>>>>>> a448e9bd (update pinebook image definition)
   # Defines the path to project configuration files. By default (undefined
   # value) configuration files are searched in the same directory as the
   # current project.yml file
@@ -62,8 +67,13 @@ configuration:
   # which are copied to /dft_bootstrap during rootfs bootstrapping. These paths
   # contains project specific definition (which are not included in the dft
   # open-source tool)
+<<<<<<< HEAD
   # additional_roles:
   #  - "/usr/share/dft/examples/redefined-roles"
+=======
+  additional_roles:
+    - "/usr/share/dft/examples/redefined-roles"
+>>>>>>> a448e9bd (update pinebook image definition)
 
   # Defines if the file /etc/apt/apt.conf.d/10no-check-valid-until should be generated or not
   # If generated this file contains Acquire::Check-Valid-Until: "0"; which disables validity
@@ -94,7 +104,11 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
+<<<<<<< HEAD
   project_name: "cubieboard-1"
+=======
+  project_name: "pine64-pinebook"
+>>>>>>> a448e9bd (update pinebook image definition)
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
@@ -103,6 +117,9 @@ project_definition:
   # Definition of the repositories to use
   repositories:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a448e9bd (update pinebook image definition)
     - repository-debian.yml
 
   # Definition of the rootfs content
@@ -113,10 +130,18 @@ project_definition:
   image:
     - disk-image.yml
 
+<<<<<<< HEAD
+=======
+  # Path to bootscript template to instanciate and inject in to the image.
+  # This field is optional, if not defined
+  # bootscript: /path/to/boot.scr
+
+>>>>>>> a448e9bd (update pinebook image definition)
   # Definition of the variables to be passed to rootfs creation
   variables:
     - variables-netshell.yml
     - board-variables.yml
+<<<<<<< HEAD
 =======
     - repositories.yml
 
@@ -133,6 +158,8 @@ project_definition:
     - variables.yml
     - variables-cubieboard-1.yml
 >>>>>>> 8010fb21 (manifest cleanup)
+=======
+>>>>>>> a448e9bd (update pinebook image definition)
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
@@ -145,10 +172,14 @@ project_definition:
   #
   targets:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - { version: buster , board: cubieboard-1 }
 =======
     - { version: stretch , board: cubieboard-1 }
 >>>>>>> 8010fb21 (manifest cleanup)
+=======
+    - { version: buster , board: pine64-pinebook }
+>>>>>>> a448e9bd (update pinebook image definition)
 
 # ----------------------------------------------------------------------------
 #
@@ -205,3 +236,7 @@ building_sequences:
       - action: install_bootchain
       - action: build_image
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a448e9bd (update pinebook image definition)

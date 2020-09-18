@@ -50,7 +50,11 @@ devices:
 
   # Defines the filename used to store the device image. This file is created and allocated at
   # image creation.
+<<<<<<< HEAD
   filename: "cubieboard-1-rootfs"
+=======
+  filename: "orangepi-zero-rootfs"
+>>>>>>> a448e9bd (update pinebook image definition)
 
   # Defines the suffix appended to the filename. Default value is img. The dot should not be
   # included in suffix, it zill be added automatically. If the string is emty, no suffix at all
