@@ -121,6 +121,7 @@ project_definition:
   # DFT installation
   #
   targets:
+<<<<<<< HEAD
     - { version: buster , board: asus-tinkerboard }
 
 # ----------------------------------------------------------------------------
@@ -178,3 +179,6 @@ building_sequences:
       - action: install_bootchain
       - action: build_image
 
+=======
+    - { version: busterstretch , board: asus-tinkerboard }
+>>>>>>> 88d11469 (fix netshell image  for tinkerboard)
