@@ -1,2 +1,2 @@
 # Set the hostname according to the project name
-dft_hostname: "nanopi-neo-plus2"
+dft_hostname: "__BOARD_NAME__"
