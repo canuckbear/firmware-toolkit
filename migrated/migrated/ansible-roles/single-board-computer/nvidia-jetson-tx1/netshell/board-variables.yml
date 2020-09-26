@@ -1,2 +1,2 @@
 # Set the hostname according to the project name
-dft_hostname: "jetson-tx1"
+dft_hostname: "asus-tinkerboard"
