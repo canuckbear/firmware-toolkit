@@ -16,7 +16,6 @@
 #
 #    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
 #
-#
 
 
 # ----------------------------------------------------------------------------
@@ -69,7 +68,6 @@ configuration:
   # of rootfs generation process. Default value is False
   # remove_validity_check: False
 
-  # keep_bootstrap_files: true
 
 # ----------------------------------------------------------------------------
 #
@@ -90,13 +88,13 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
-  project_name: "orangepi-zero"
+  project_name: "pine64-h64"
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
   debootstrap_repository: "http://ftp.de.debian.org/debian"
 
-  # Definition of the repositories to use
+   # Definition of the repositories to use
   repositories:
     - repository-debian.yml
 
@@ -127,7 +125,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: orangepi-zero }
+    - { version: buster , board: pine64-h64 }
 
 # ----------------------------------------------------------------------------
 #

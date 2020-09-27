@@ -16,7 +16,6 @@
 #
 #    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
 #
-#
 
 
 # ----------------------------------------------------------------------------
@@ -69,7 +68,6 @@ configuration:
   # of rootfs generation process. Default value is False
   # remove_validity_check: False
 
-  # keep_bootstrap_files: true
 
 # ----------------------------------------------------------------------------
 #
@@ -90,7 +88,7 @@ configuration:
 project_definition:
 
   # Defines the project name. Mostly used for output and directories creation
-  project_name: "orangepi-zero"
+  project_name: "pine64-a64_rootfs"
 
   # Definition of the repositories used for bootstrapping
   # There can be only one repo, thus its url is defined here
@@ -108,9 +106,17 @@ project_definition:
   image:
     - disk-image.yml
 
-  # Path to bootscript template to instanciate and inject in to the image.
-  # This field is optional, if not defined
-  # bootscript: /path/to/boot.scr
+  # Definition of the control to apply on the rootfs
+#  check:
+#    - check_rootfs.yml
+
+  # Definition of the stripping rules (to remove extra packages, files etc.)
+#  stripping:
+#    - stripping.yml
+
+  # Definition of the content to generate
+#  content_information:
+#    - content.yml
 
   # Definition of the variables to be passed to rootfs creation
   variables:
@@ -127,7 +133,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: orangepi-zero }
+    - { version: buster , board: pine64-a64 }
 
 # ----------------------------------------------------------------------------
 #
@@ -183,4 +189,3 @@ building_sequences:
       - action: build_rootfs
       - action: install_bootchain
       - action: build_image
-
