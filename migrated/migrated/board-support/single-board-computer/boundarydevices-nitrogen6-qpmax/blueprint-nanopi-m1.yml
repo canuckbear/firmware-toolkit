@@ -45,20 +45,9 @@ kernel:
   #   armwizard   358F3893AF23DDDA17381B8D962EBD6B1B362699
   # pubkey:
 
-  # Parameters for custom origin.
-  # Two parameters control the download of the custom repository sining key. There is no
-  # default values. Lack of definition will lead to an execution failure.
-
-  # First defines the URL of the repository signing pubkey to download and import
-  # pubkey_url: "http://custom.example.com/debian/key.pub"
-
-  # Second defines the fingerprint of the signing pubkey to retrieve and import (it needs to have
-  # internet connection and use MIT server as key server)
-  # pubkey_gpg: "http://custom.example.com/debian/key.pub"
-
-  # List of packages to install from the repository to add kernel
+  # List of packages to install from the repository
   packages:
-    - linux-kernel-orangepi-zero
+    - linux-kernel-nanopi-m1
 
   # Defines if the source generated to install kernel packaged should be kept or not after
   # intallation. Default value is True
@@ -72,7 +61,7 @@ u-boot:
 
   # List of packages to install from the repository to add u-boot.
   packages:
-    - u-boot-orangepi-zero
+    - u-boot-nanopi-m1
 
   # List of action needed to install the u-boot binary to the image
   installation:
@@ -87,6 +76,7 @@ u-boot:
       options: "bs=1k count=1023 seek=1 status=noxfer"
     }
   - {
-      source: "/boot/u-boot/u-boot-nanopi-neo" ,
+      source: "/boot/u-boot/u-boot-nanopi-m1" ,
       options: "bs=1024 seek=8 status=noxfer"
     }
+
