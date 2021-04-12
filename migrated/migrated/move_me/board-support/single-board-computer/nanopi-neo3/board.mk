@@ -9,7 +9,7 @@
 # License.
 #
 #
-# Copyright 2019 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
@@ -29,30 +29,25 @@ BOARD_NAME = nanopi-neo3
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
 BOARD_ARCH = aarch64
 
+
+
 #
 # u-boot support and configuration
 #
 
-# Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
+# Defines if u-boot should be generated (set UBOOT_SUPPORT to 1) (0 means u-boot is not available).
 # if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = 1
+UBOOT_SUPPORT = 1
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-<<<<<<< HEAD:ansible-roles/single-board-computer/nanopi-neo3/board.mk
-UBOOT_DEFCONFIG   = nanopi-r2s-rk3328_defconfig
-
-# List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
-DEFAULT_DTB       = u-boot.dtb
-
-=======
+#UBOOT_DEFCONFIG = nanopineo3-rk3328_defconfig
 UBOOT_DEFCONFIG = nanopi-r2s-rk3328_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
-UBOOT_BINARY_FILE = u-boot-nanopi-r2s
-DEFAULT_DTB = default.dtb
->>>>>>> 6463089b8 ( add missing arch default install targets for sparc and ppc64):move_me/board-support/single-board-computer/nanopi-r2s/board.mk
+UBOOT_BINARY_FILE = u-boot-nanopi-neo3
+DEFAULT_DTB = nanopi-neo3.dtb
+
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
