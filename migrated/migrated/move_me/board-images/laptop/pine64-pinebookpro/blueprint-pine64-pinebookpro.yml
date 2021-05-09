@@ -87,6 +87,10 @@ u-boot:
       options: "bs=1k count=1023 seek=1 status=noxfer"
     }
   - {
+      source: "/boot/u-boot/idbloader.img" ,
+      options: "bs=1024 seek=8 status=noxfer"
+    }
+  - {
       source: "/boot/u-boot/u-boot-pine64-pinebookpro" ,
       options: "bs=1024 seek=8 status=noxfer"
     }
