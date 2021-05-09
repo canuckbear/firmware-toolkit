@@ -1,4 +1,4 @@
-# u-boot installation for pine64-a64
+# u-boot installation for pine64-pinebook
 
 ## Disclaimer
 
@@ -12,17 +12,17 @@ You have been warned :)
 ## u-boot installation
 
 The u-boot binary to install has been copied by this package to :
-/boot/u-boot/u-boot-pine64-a64
+/boot/u-boot/u-boot-pine64-pinebook
 
 This is a symlink to the current u-boot file stored at the same location in a
-file named u-boot-pine64-a64.VERSION
+file named u-boot-pine64-pinebook.VERSION
 
 u-boot binary has to be installed on the first sectors of the device used by
 the board to boot. This can be done by the following commands, assuming that :
 
 . The commands are run as root or using sudo ( that's the example)
 
-. The commands are run on the target board (pine64-a64)
+. The commands are run on the target board (pine64-pinebook)
 
 . Which means the /dev/mmcblk0 is the internal CF card used to boot
 
@@ -32,8 +32,6 @@ u-boot itself.
 
 ## shell commands
 
-# Blank and erase u-boot environnment variables stored on MMC (does not modify u-boot binary itself)
-sudo dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer
-
 # Copy binary to MMC and update u-boot (environnment variables stored on MMC are not modified)
-sudo dd if=/boot/u-boot/u-boot-pine64-a64 of=/dev/mmcblk0 bs=1024 seek=8 status=noxfer
+sudo dd if=/boot/u-boot/idbloader.img of=/dev/mmcblk0 seek=64 status=noxfer
+sudo dd if=/boot/u-boot/u-boot-pine64-pinebook of=/dev/mmcblk0 seek=16364 status=noxfer
