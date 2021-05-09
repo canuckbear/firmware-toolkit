@@ -67,13 +67,14 @@ u-boot:
       # The source can be either a file or a special device like /dev/zero or /dev/random
       # If the path is absolute, it will be left unchanged, otherwise it is prefix by the
       # BSP path
-      source: "/dev/zero" ,
-
+      source: "/boot/u-boot/idbloader.img" ,
+      
       # Defines the options to be passed to dd
-      options: "bs=1k count=1023 seek=1 status=noxfer"
+      options: "seek=64 status=noxfer conv=notrunc"
     }
   - {
       source: "/boot/u-boot/u-boot-pine64-rock64" ,
-      options: "bs=1024 seek=8 status=noxfer"
+      options: "seek=16384 status=noxfer conv=notrunc"
     }
+
 
