@@ -31,7 +31,16 @@ CATEGORIES    = laptop desktop devkit set-top-box single-board-computer phone ta
 #
 # Targets not associated with a file (aka PHONY)
 #
-.PHONY: help sanity-check list-boards list-architectures show-u-boot-available-upgrade show-kernel-available-upgrade
+.PHONY: help sanity-check list-boards list-architectures show-u-boot-available-upgrade show-kernel-available-upgrade status
+
+# ------------------------------------------------------------------------------
+#
+# Run git status
+#
+status:
+	@echo "running git status in board-support"
+	@echo
+	@git status
 
 # Build only u-boot package target
 u-boot-package:
