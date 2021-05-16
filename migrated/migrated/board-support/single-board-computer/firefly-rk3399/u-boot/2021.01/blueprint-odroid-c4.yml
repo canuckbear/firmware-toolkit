@@ -24,7 +24,7 @@
 # Only one architecture can be set at a time, if a board can support several architecture
 # armel and armhf, or armhf and arm64, then you need to create several bsp definition file,
 # one for each architecture
-architecture: aarch64
+architecture: arm64
 
 # The kernel section defines the different parameters needed to select and install the kernel
 # used to boot the board. It is defined by a source (Debian repository) and a list of packages
@@ -47,7 +47,7 @@ kernel:
 
   # List of packages to install from the repository
   packages:
-    - linux-kernel-odroid-c2
+    - linux-kernel-odroid-c4
 
 # The uboot section defines the different parameters needed to select and install the uboot
 # used to boot the board an run kernel. It is defined by XXX
@@ -57,7 +57,7 @@ u-boot:
 
   # List of packages to install from the repository to add u-boot.
   packages:
-    - u-boot-odroid-c2
+    - u-boot-odroid-c4
 
   # List of action needed to install the u-boot binary to the image
   installation:
@@ -72,14 +72,10 @@ u-boot:
       options: "bs=1k count=1023 seek=1 status=noxfer"
     }
   - {
-      source: "/boot/u-boot/u-boot-odroid-c2" ,
-      options: "conv=fsync bs=1 count=442"
+      source: "/boot/u-boot/u-boot-odroid-c4" ,
+      options: "conv=fsync,notrunc bs=512 skip=1 seek=1"
     }
   - {
-      source: "/boot/u-boot/u-boot-odroid-c2" ,
-      options: "conv=fsync bs=512 skip=1 seek=1"
-    }
-  - {
-      source: "/boot/u-boot/u-boot.gxbb" ,
-      options: "conv=fsync bs=512 seek=97"
+      source: "/boot/u-boot/u-boot-odroid-c4" ,
+      options: "conv=fsync,notrunc bs=1 count=444"
     }
