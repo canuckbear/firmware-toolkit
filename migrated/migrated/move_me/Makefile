@@ -33,6 +33,14 @@ MAKE_FILTERS  = Makefile README.md . inc sbit
 # definition of the board categories to process
 CATEGORIES    = laptop desktop devkit set-top-box single-board-computer phone tablet
 
+# ------------------------------------------------------------------------------
+#
+# Run git status
+#
+status:
+	@echo "running git status in board-images"
+	@git status
+
 # Simple target forwarder
 list-images:
 sanity-check:
