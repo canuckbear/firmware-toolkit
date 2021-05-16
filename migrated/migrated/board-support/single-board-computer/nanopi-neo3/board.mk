@@ -72,15 +72,20 @@ DEFAULT_DTB = rk3328-nanopi-r2s.dtb
 =======
 # Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
 # if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = __UBOOT_SUPPORT__
+UBOOT_SUPPORT     = 1
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-UBOOT_DEFCONFIG   = __UBOOT_DEFCONFIG__
+UBOOT_DEFCONFIG   = nanopi-r2s-rk3328_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
 UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+<<<<<<< HEAD
 DEFAULT_DTB       = __DEFAULT_DTB__
 >>>>>>> 829794ff (initialize nanopi-neo 3 entry)
+=======
+DEFAULT_DTB       = u-boot.dtb
+
+>>>>>>> 3bc3690a (add netshell image for nano pi neo3 and r2s)
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
