@@ -50,7 +50,7 @@ UBOOT_ASSEMBLING = 1
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-nodtb.bin
+UBOOT_BINARY_FILE = u-boot.itb
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
 DEFAULT_DTB = nanopi-neo3.dtb
 
