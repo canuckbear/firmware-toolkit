@@ -61,6 +61,15 @@ UBOOT_ASSEMBLING = 1
 UBOOT_DEFCONFIG = tinker-rk3288_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
+<<<<<<< HEAD:board-support/single-board-computer/asus-tinkerboard/board.mk
+=======
+<<<<<<< HEAD
+UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+UBOOT_BINARY_EXTRA_FILES = idbloader.img 
+DEFAULT_DTB = rk3288-tinker.dtb
+=======
+>>>>>>> 55e3ae46e (upgrade asus-tinkerboard-kernel to 5.11.22)
+>>>>>>> 84bebd393 (upgrade asus-tinkerboard-kernel to 5.11.22):move_me/single-board-computer/asus-tinkerboard/board.mk
 
 
 #
