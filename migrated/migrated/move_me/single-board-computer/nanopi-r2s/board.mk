@@ -28,8 +28,8 @@ BOARD_NAME = nanopi-r2s
 
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
 BOARD_ARCH = aarch64
-BOARD_SOC = rockchip-rk3328
-BOARD_PLATFORM = rk3328
+BOARD_SOC = rk3328
+BOARD_PLATFORM = rockchip
 
 #
 # u-boot support and configuration
@@ -47,7 +47,7 @@ UBOOT_DEFCONFIG = nanopi-r2s-rk3328_defconfig
 UBOOT_ASSEMBLING = 1
 
 # Defines the script used to produce (assemble and sign) the u-boot binary
-UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_SOC).sh
+UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  

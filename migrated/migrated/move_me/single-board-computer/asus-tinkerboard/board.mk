@@ -28,6 +28,8 @@ BOARD_NAME = asus-tinkerboard
 
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
 BOARD_ARCH = armv7l
+BOARD_PLATFORM = rockchip
+BOARD_SOC = rk3288
 
 
 #
@@ -39,10 +41,21 @@ BOARD_ARCH = armv7l
 UBOOT_SUPPORT = 1
 
 # Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
-UBOOT_ASSEMBLING = 0
+UBOOT_ASSEMBLING = 1
 
 # Defines the script used to produce (assemble and sign) the u-boot binary
-#UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_NAME).sh
+UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
+
+# List of files to copy from build to install directory (path is relative to build dir)
+UBOOT_BINARY_FILE = u-boot-nodtb.bin
+UBOOT_BINARY_EXTRA_FILES = idbloader.img
+DEFAULT_DTB = nanopi-neo3.dtb
+
+# Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
+UBOOT_ASSEMBLING = 1
+
+# Defines the script used to produce (assemble and sign) the u-boot binary
+UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_NAME).sh
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
 UBOOT_DEFCONFIG = tinker-rk3288_defconfig

@@ -1,0 +1,17 @@
+linux-kernel-asus-tinkerboard (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 May 2021 10:51:54 +0000
+
+linux-kernel-asus-tinkerboard (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 May 2021 10:51:54 +0000
+
+linux-headers-asus-tinkerboard (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 May 2021 10:51:54 +0000
