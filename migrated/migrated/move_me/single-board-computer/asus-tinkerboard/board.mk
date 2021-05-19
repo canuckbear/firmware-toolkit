@@ -47,9 +47,8 @@ UBOOT_ASSEMBLING = 1
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-nodtb.bin
-UBOOT_BINARY_EXTRA_FILES = idbloader.img
-DEFAULT_DTB = nanopi-neo3.dtb
+UBOOT_BINARY_FILE = u-boot.img
+UBOOT_BINARY_EXTRA_FILES = idbloader.img 
 
 # Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
 UBOOT_ASSEMBLING = 1
@@ -61,9 +60,6 @@ UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_NAME).sh
 UBOOT_DEFCONFIG = tinker-rk3288_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot.img
-UBOOT_BINARY_EXTRA_FILES = idbloader.img 
-DEFAULT_DTB = rk3288-tinker.dtb
 
 
 #
