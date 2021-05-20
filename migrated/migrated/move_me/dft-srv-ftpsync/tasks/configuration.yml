@@ -1,0 +1,127 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+---
+
+# -------------------------------------------------------------------------------------------------
+# Create the ftpsync group
+- name: Create the ftpsync group
+  group: name={{ dft_srv_ftpsync.group | default('ftpsync')}}
+         state=present
+
+# Add the user 'ftpsync' with a bash shell, appending the group ftpsync and
+# {{ dft_srv_ftpsync.webserver_definition.group }} to the user's groups
+- name: Create the ftpsync user
+  user: name={{ dft_srv_ftpsync.username | default('ftpsync') }}
+        shell={{ dft_srv_ftpsync.shell | default('/bin/bash')}}
+        home={{ dft_srv_ftpsync.home | default('/home/ftpsync')}}
+        group={{ dft_srv_ftpsync.group | default('ftpsync') }}
+        groups={{ dft_srv_ftpsync.groups | default('ftpsync') }}
+        append=yes
+
+# Create the ftpsync script directory
+- name: Create ftpsync home directory
+  file: path={{ dft_srv_ftpsync.home | default('/home/ftpsync') }}
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_ftpsync.username }}
+        group={{ dft_srv_ftpsync.group }}
+        mode="0755"
+
+- name: Create ftpsync configuration directory
+  file: path={{ dft_srv_ftpsync.home | default('/home/ftpsync') }}/.config/ftpsync
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_ftpsync.username }}
+        group={{ dft_srv_ftpsync.group }}
+        mode="0755"
+
+- name: Create ftpsync synchrnization scripts directory
+  file: path={{ dft_srv_ftpsync.home | default('/home/ftpsync') }}/bin
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_ftpsync.username }}
+        group={{ dft_srv_ftpsync.group }}
+        mode="0755"
+
+# Create the ftpsync log directory
+- name: Create ftpsync log directory
+  file: path=/var/log/ftpsync
+        state=directory
+        owner={{ dft_srv_ftpsync.username }}
+        group={{ dft_srv_ftpsync.group }}
+        mode="0750"
+  with_items:
+    - "{{ dft_srv_ftpsync.repositories }}"
+  when: dft_srv_ftpsync.repositories is defined
+
+
+#
+# Create the ftpsync configuration file
+#
+- name: Generate ftpsync synchronization script
+  template:  src=ftpsync.conf.j2
+             dest={{ dft_srv_ftpsync.home }}/.config/ftpsync/ftpsync.conf
+             owner={{ dft_srv_ftpsync.username }}
+             group={{ dft_srv_ftpsync.group }}
+             mode="0755"
+  with_items:
+    - "{{ dft_srv_ftpsync.repositories }}"
+  when: dft_srv_ftpsync.repositories is defined
+
+#
+# Create the ftpsync script file (used by cron)
+#
+- name: Generate ftpsync synchronization script
+  template:  src=run-ftpsync.j2
+             dest={{ dft_srv_ftpsync.home }}/bin/run-ftpsync-{{ item.name }}.sh
+             owner={{ dft_srv_ftpsync.username }}
+             group={{ dft_srv_ftpsync.group }}
+             mode="0755"
+  with_items:
+    - "{{ dft_srv_ftpsync.repositories }}"
+  when: dft_srv_ftpsync.repositories is defined
+
+
+
+# Create the ftpsync target directory
+- name: Create ftpsync target directory
+  file: path={{ item.sync_path }}
+        state=directory
+        owner={{ dft_srv_ftpsync.username }}
+        group={{ dft_srv_ftpsync.group }}
+        mode="0755"
+  with_items:
+        - "{{ dft_srv_ftpsync.repositories }}"
+  when: dft_srv_ftpsync.repositories is defined
+
+# -------------------------------------------------------------------------------------------------
+# Add ftpsync user ftpsync. Scheduled once a day per default
+- cron: name="DFT - Add repository synchronization script to user cron table"
+        month={{ item.cron_month }}
+        weekday={{ item.cron_weekday }}
+        day={{ item.cron_day }}
+        hour={{ item.cron_hour }}
+        minute={{ item.cron_minute }}
+        user={{ dft_srv_ftpsync.username }}
+        job={{ dft_srv_ftpsync.home }}/bin/run-ftpsync-{{ item.name }}.sh
+  with_items:
+        - "{{ dft_srv_ftpsync.repositories }}"
+  when: dft_srv_ftpsync.repositories is defined
