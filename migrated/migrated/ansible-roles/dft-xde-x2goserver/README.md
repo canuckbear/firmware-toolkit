@@ -1,7 +1,7 @@
 Role Name
 =========
 
-__ROLENAME__ : A brief description of the role goes here.
+dft-xde-x2goserver : Installation of the X2Go server
 
 Requirements
 ------------
