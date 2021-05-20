@@ -35,14 +35,27 @@ CATEGORIES    = laptop desktop devkit set-top-box single-board-computer phone ta
 
 # ------------------------------------------------------------------------------
 #
-# Run git status
+# Targets not associated with a file (aka PHONY)
 #
-status:
-	@echo "running git status in board-images"
-	@git status
+.PHONY: help sanity-check list-boards list-architectures show-u-boot-available-upgrade show-kernel-available-upgrade
 
-# Simple target forwarder
-list-images:
+# Build only u-boot package target
+u-boot-package:
+	@for i in $(filter-out $(MAKE_FILTERS),$(shell find . -mindepth 1 -maxdepth 1 -type d )) ; do \
+		if [ -f $$i/Makefile ] ; then \
+			$(MAKE) --no-print-directory --directory=$$i u-boot-package; \
+		fi ; \
+	done
+
+# Build only linux kernel an package target
+linux-kernel-package:
+kernel-package:
+	@for i in $(filter-out $(MAKE_FILTERS),$(shell find . -mindepth 1 -maxdepth 1 -type d )) ; do \
+		if [ -f $$i/Makefile ] ; then \
+			$(MAKE) --no-print-directory --directory=$$i kernel-package ; \
+		fi ; \
+   done
+
 sanity-check:
 	@for category in $(CATEGORIES) ; do \
 		if [ ! -d ${CURDIR}/$$category ] ; then \
@@ -83,8 +96,7 @@ sanity-check:
 		fi ; \
 		for board in `find $$category -mindepth 1 -maxdepth 1 -type d | tr / \  | cut --delimiter=\  --fields=2` ; do \
 			if [ ! -f sbit/$$board.sbit.yml ] ; then \
-				pwd ; \
-				echo "Missing image XXX support tests description file sbit/$$board.sbit.yml" ; \
+				echo "Missing board support tests description file sbit/$$board.sbit.yml" ; \
 				$(call dft_error ,200819-01) ; \
 				fi ; \
 	  done ; \
@@ -92,26 +104,6 @@ sanity-check:
 			echo "Warning : $$category folder is missing, recursive targets may fail or produce incomplete set of binaries." ; \
 		fi ; \
 	done
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ ! -e "$$v/buildsystem" ] ; then \
@@ -149,3 +141,59 @@ help:
 	@echo "   sanity-check            Check recursivly the availability of required items (files, symlinks, directories)"
 	@echo "                           This target only warns you and do not make any change to the tree content."
 	@echo "   help                    Display this help"
+
+# Forward target call to subfolders where are stored the board.mk files specifying board architecture
+# $(MAKE) $@ --no-print-directory --directory=$(category) board-arch=$(arch) ;
+list-boards:
+	@MY_ARCH=$(board-arch) ; \
+	if [ "$(board-arch)" = "armhf" ] ; then \
+		MY_ARCH="armv7l"; \
+	fi ; \
+	if [ "$(board-arch)" = "arm64" ] ; then \
+		MY_ARCH="aarch64"; \
+	fi ; \
+	if [ "$(board-arch)" = "amd64" ] ; then \
+		MY_ARCH="x86_64"; \
+	fi ; \
+	if [ ! "$(category)" = "" ] ; then \
+		if [ ! "$(board-arch)" = "" ] ; then \
+			$(MAKE) $@ --no-print-directory --directory=$(category) board-arch=$$MY_ARCH verbosity=$(verbosity); \
+		else \
+			$(MAKE) $@ --no-print-directory --directory=$(category) verbosity=$(verbosity); \
+		fi ; \
+	else \
+	for category in $(filter-out $(MAKE_FILTERS),$(shell find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
+		if [ ! "$$MY_ARCH" = "" ] ; then \
+			$(MAKE) $@ --no-print-directory --directory=$$category board-arch=$$MY_ARCH verbosity=$(verbosity); \
+		else \
+			$(MAKE) $@ --no-print-directory --directory=$$category verbosity=$(verbosity); \
+		fi ; \
+	done ; \
+	fi | sort -u ;
+
+list-architectures:
+	@if [ ! "$(category)" = "" ] ; then \
+			$(MAKE) $@ --no-print-directory --directory=$(category) verbosity=$(verbosity); \
+	fi | sort -u ;
+
+show-u-boot-available-upgrade:
+	@if [ ! "$(category)" = "" ] ; then \
+				$(MAKE) --no-print-directory --directory=$(category) $@ board-arch=$(board-arch) verbosity=$(verbosity); \
+	else \
+		for category in $(CATEGORIES) ; do \
+			if [ -f $$category/Makefile ] ; then \
+				$(MAKE) --no-print-directory --directory=$$category $@ board-arch=$(board-arch) verbosity=$(verbosity); \
+			fi ; \
+		done ; \
+	fi | sort -u ; \
+
+show-kernel-available-upgrade:
+	@if [ ! "$(category)" = "" ] ; then \
+				$(MAKE) --no-print-directory --directory=$$category $@ board-arch=$(board-arch) verbosity=$(verbosity); \
+	else \
+		for category in $(CATEGORIES) ; do \
+			if [ -f $$category/Makefile ] ; then \
+				$(MAKE) --no-print-directory --directory=$$category $@ board-arch=$(board-arch) verbosity=$(verbosity); \
+			fi ; \
+		done ; \
+	fi | sort -u ; \
