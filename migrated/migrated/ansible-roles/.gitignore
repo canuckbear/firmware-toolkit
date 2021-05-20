@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 .cookies
-=======
-=======
->>>>>>> cfe5d1b (rename after repo move)
 # Prerequisites
 *.d
 
@@ -56,10 +51,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-<<<<<<< HEAD
->>>>>>> ce7c6f0 (rename after repo move)
-=======
-=======
-.cookies
->>>>>>> db89c12 (rename after repo move)
->>>>>>> cfe5d1b (rename after repo move)
