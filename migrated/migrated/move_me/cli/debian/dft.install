@@ -1,8 +1,8 @@
 config/dftrc /etc/dft/
-../ansible-roles /usr/share/dft
-../board-images /usr/share/dft
-../board-support /usr/share/dft
-../buildsystem /usr/share/dft
+../../ansible-roles /usr/share/dft
+../../board-images /usr/share/dft
+../../board-support /usr/share/dft
+../../buildsystem /usr/share/dft
 ../board-catalog.yml /usr/share/dft
 library /usr/share/dft
 scripts/* /usr/share/dft

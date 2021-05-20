@@ -1,3 +1,9 @@
+dft (0.7.0-1) unstable; urgency=low
+
+  * Move boot.scr and uEnv.txt under templates
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Tue, 16 May 2021 20:41:00 +0100
+
 dft (0.6.54-1) unstable; urgency=low
 
   * Fix missing / in path generation

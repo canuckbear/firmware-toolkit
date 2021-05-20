@@ -31,7 +31,17 @@ CHECK_FOR_SANITY    = ansible-roles board-support board-images
 #
 # Targets not associated with a file (aka PHONY)
 #
-.PHONY: help sanity-check
+.PHONY: help sanity-check status
+
+# ------------------------------------------------------------------------------
+#
+# Run git status
+#
+status:
+	@echo "running git status in dft"
+	@echo
+	@git status
+
 
 # Simple forwarder
 sanity-check:
