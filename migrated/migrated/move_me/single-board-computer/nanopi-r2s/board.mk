@@ -37,22 +37,22 @@ BOARD_PLATFORM = rockchip
 
 # Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
 # if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = 1
+UBOOT_SUPPORT = 1
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
 UBOOT_DEFCONFIG = nanopi-r2s-rk3328_defconfig
 
-# ockage
-# :qDefines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
+# Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
 UBOOT_ASSEMBLING = 1
 
 # Defines the script used to produce (assemble and sign) the u-boot binary
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
+UBOOT_BINARY_FILE = u-boot-nodtb.bin
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
-UBOOT_BINARY_FILE = u-boot-nanopi-r2s
-DEFAULT_DTB = nanopir2s_findme.dtb
+DEFAULT_DTB = nanopi-neo3.dtb
+
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
