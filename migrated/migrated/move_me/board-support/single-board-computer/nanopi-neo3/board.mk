@@ -49,8 +49,12 @@ UBOOT_DEFCONFIG = nanopi-r2s-rk3328_defconfig
 UBOOT_BINARY_FILE = u-boot.itb
 >>>>>>> 53b854946 (fix uboot binary name for nanopi neo3)
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
+<<<<<<< HEAD
 UBOOT_BINARY_FILE = u-boot-nanopi-neo3
 DEFAULT_DTB = nanopi-neo3.dtb
+=======
+DEFAULT_DTB = rk3328-nanopi-r2s.dtb
+>>>>>>> 3d751ed44 (fix neo3 uboot defconfif, so fas r2s file is used)
 
 
 #
