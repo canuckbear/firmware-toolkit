@@ -1,0 +1,68 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+# This variables is the base directory for the repositories, everything will be created under
+# this path
+dft_srv_reprepro:
+  base_directory: /srv/debian-repositories
+  server_name: undefined.dft_srv_reprepro.server_name
+# This variable is a list of repository configurations. Each item in the list is a repo
+  repositories:
+  - origin: DFT
+    name: dft_repo
+    directory: debian
+    label: DFT Test repository
+    suite: testing
+    codename: buster
+    # current version: 10.0
+    architectures: arm64 amd64 source
+    components: main
+    udeb_components: main
+    log: /var/log/dft-srv-reprepro.log
+    description: DFT test repository (you should change this to your real configuration)
+    # deb_override: override.buster
+    # dsc_override: override.buster
+    sign_with: default
+    # udeb_override:
+    # dsc_override:
+    # deb_indices: Packages Release . .gz .bz2
+    # udeb_indices: Packages . .gz .bz2
+    # dsc_indices: Sources Release .gz .bz2
+    # contents: Sources Release .gz .bz2
+    # The allow variable is a list of rules to output to the Allow section
+    allow:
+      - testing>buster buster
+    user_definition:
+      username: reprepro
+      group: reprepro
+      groups: "www-data"
+      home_dir: /home/reprepro/
+      shell: /bin/bash
+    crontab_entry:
+      month: "*"
+      weekday: "*"
+      day: "*"
+      hour: "*"
+      minute: "0"
+
+
+#    uploaders:
+#      - rule: "*"
+#        key: "123456789ABCDEF"
