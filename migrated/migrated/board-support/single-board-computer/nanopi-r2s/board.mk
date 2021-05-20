@@ -42,7 +42,18 @@ UBOOT_SUPPORT = 1
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
 UBOOT_DEFCONFIG = nanopi-r2s-rk3328_defconfig
 
+<<<<<<< HEAD:board-support/single-board-computer/nanopi-r2s/board.mk
 # Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+# ockage
+# :qDefines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
+=======
+# Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
+>>>>>>> 8e9453f07 (fix nanopir2s)
+>>>>>>> b829ed9b4 (fix nanopir2s):move_me/single-board-computer/nanopi-r2s/board.mk
 UBOOT_ASSEMBLING = 1
 
 # Defines the script used to produce (assemble and sign) the u-boot binary
@@ -51,8 +62,18 @@ UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 # List of files to copy from build to install directory (path is relative to build dir)
 UBOOT_BINARY_FILE = u-boot-nodtb.bin
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
+<<<<<<< HEAD:board-support/single-board-computer/nanopi-r2s/board.mk
 DEFAULT_DTB = nanopi-neo3.dtb
 
+=======
+<<<<<<< HEAD
+UBOOT_BINARY_FILE = u-boot-nanopi-r2s
+DEFAULT_DTB = default.dtb
+=======
+DEFAULT_DTB = nanopi-neo3.dtb
+
+>>>>>>> 8e9453f07 (fix nanopir2s)
+>>>>>>> b829ed9b4 (fix nanopir2s):move_me/single-board-computer/nanopi-r2s/board.mk
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
