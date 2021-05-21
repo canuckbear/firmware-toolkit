@@ -11,6 +11,7 @@
 # Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
+
 #
 # Contributors list :
 #
@@ -19,3 +20,11 @@
 #
 
 ---
+# List of the Ansible role to apply to the rootfs
+roles:
+  - dft-os-base
+  - dft-network-base
+  - dft-security-base
+  - dft-os-apt
+  - dft-os-power-management
+  - dft-os-banner
