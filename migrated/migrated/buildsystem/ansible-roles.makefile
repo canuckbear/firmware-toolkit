@@ -24,20 +24,11 @@
 # since git add will loose variable name and generate an absolute path, which
 # is not comptible with user need ans or workspace relocation nor packagng needs.
 # better solutions wille be really welcomeds contributions.
-DFT_BUILDSYSTEM := buildsystem
-#include $(DFT_BUILDSYSTEM)/inc/lib.mk
+DFT_BUILDSYSTEM := ../buildsystem
+include $(DFT_BUILDSYSTEM)/inc/lib.mk
 
 # Do not recurse the following subdirs
 MAKE_FILTERS  := Makefile README.md .
-
-# ------------------------------------------------------------------------------
-#
-# Run git status
-#
-status:
-	@echo "running git status in ansible-roles"
-	@echo
-	@git status
 
 # ------------------------------------------------------------------------------
 #
