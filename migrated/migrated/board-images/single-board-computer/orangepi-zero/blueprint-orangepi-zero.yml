@@ -87,6 +87,6 @@ u-boot:
       options: "bs=1k count=1023 seek=1 status=noxfer"
     }
   - {
-      source: "/boot/u-boot/u-boot-nanopi-neo" ,
+      source: "/boot/u-boot/u-boot-orangepi-zero" ,
       options: "bs=1024 seek=8 status=noxfer"
     }
