@@ -9,11 +9,7 @@
 # License.
 #
 #
-<<<<<<< HEAD
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
-=======
 # Copyright 2019 DFT project (http://www.firmwaretoolkit.org).
->>>>>>> 829794ff (initialize nanopi-neo 3 entry)
 # All rights reserved. Use is subject to license terms.
 #
 #
