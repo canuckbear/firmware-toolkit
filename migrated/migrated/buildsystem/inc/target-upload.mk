@@ -85,7 +85,7 @@ do-upload:
 		scp $(WORK_DIR)/*.deb $(WORK_DIR)/*.buildinfo $(WORK_DIR)/*.orig.tar.gz $(WORK_DIR)/*.changes $(DFT_DEB_UPLOAD_USER)@$(DFT_DEB_UPLOAD_SERVER):$(DFT_DEB_UPLOAD_PATH) ; \
 	else \
 		echo "The cookie $(COOKIE_DIR)/upload already exist, $@ is skipped to avoid doing it once and again" ; \
-	fi ; \
+	fi ; 
 	$(TARGET_DONE)
 
 # Match initial ifdef DFT_TARGET_UPLOAD
