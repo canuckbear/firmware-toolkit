@@ -216,7 +216,7 @@ CONFIG_OVERRIDES    ?=
 BUILD_PROCESS_COUNT ?= -j$(shell grep -c ^processor /proc/cpuinfo)
 
 # Defines common build arguments and flags, independantly of boards architecture
-LINUX_KERNEL_COMMON_BUILD_ARGS   ?= modules
+LINUX_KERNEL_COMMON_BUILD_ARGS   ?= modules dtbs
 LINUX_KERNEL_COMMON_BUILD_FLAGS  ?= 
 LINUX_KERNEL_COMMON_INSTALL_ARGS ?= zinstall
 UBOOT_COMMON_BUILD_FLAGS         ?= 
