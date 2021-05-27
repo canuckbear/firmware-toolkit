@@ -35,11 +35,5 @@ u-boot itself.
 # sudo dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer
 
 # Copy binary to MMC and update u-boot (environnment variables stored on MMC are not modified)
-<<<<<<< HEAD:board-support/single-board-computer/asus-tinkerboard/u-boot/files/install.u-boot-asus-tinkerboard.md
 sudo dd if=/boot/u-boot/u-boot-asus-tinkerboard of=/dev/mmcblk0 seek=16384
 sudo dd if=/boot/u-boot/idbloader.img of=/dev/mmcblk0 seek=64
-
-=======
-sudo dd if=/boot/u-boot/u-boot-asus-tinkerboard of=/dev/mmcblk0 seek=64
-sudo dd if=/boot/u-boot/u-boot-dtb.img of=/dev/mmcblk0 seek=16384
->>>>>>> 0c80c3830 (update asus tinker board u-boot deployement doc and blueprint):move_me/board-support/single-board-computer/asus-tinkerboard/u-boot/files/install.u-boot-asus-tinkerboard.md

@@ -29,20 +29,8 @@
 
 # The board name fragment will be used in package naming, path and files content generation
 BOARD_NAME = nanopi-neo3
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-<<<<<<< HEAD
->>>>>>> d20f66549 (initialize nanopi-neo 3 entry)
 BOARD_SOC = rockchip-rk3328
 BOARD_PLATFORM = rk3328
-=======
->>>>>>> 829794ff (initialize nanopi-neo 3 entry)
-<<<<<<< HEAD
-=======
->>>>>>> 17b4dda1a (initialize nanopi-neo 3 entry)
->>>>>>> d20f66549 (initialize nanopi-neo 3 entry)
 
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
 BOARD_ARCH = aarch64
@@ -51,7 +39,6 @@ BOARD_ARCH = aarch64
 # u-boot support and configuration
 #
 
-<<<<<<< HEAD
 # Defines if u-boot should be generated (set UBOOT_SUPPORT to 1) (0 means u-boot is not available).
 # if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
 UBOOT_SUPPORT = 1
@@ -71,45 +58,6 @@ UBOOT_BINARY_FILE = u-boot.itb
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
 DEFAULT_DTB = rk3328-nanopi-r2s.dtb
 
-
-
-
-
-
-# List of files to copy from build to install directory (path is relative to build dir)
-
-=======
-# Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
-# if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = 1
-
-# Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-UBOOT_DEFCONFIG   = nanopi-r2s-rk3328_defconfig
-
-# List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
-<<<<<<< HEAD
-DEFAULT_DTB       = __DEFAULT_DTB__
->>>>>>> 829794ff (initialize nanopi-neo 3 entry)
-=======
-DEFAULT_DTB       = u-boot.dtb
-
-<<<<<<< HEAD
->>>>>>> 3bc3690a (add netshell image for nano pi neo3 and r2s)
-=======
-=======
-# Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
-# if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = __UBOOT_SUPPORT__
-
-# Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-UBOOT_DEFCONFIG   = __UBOOT_DEFCONFIG__
-
-# List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
-DEFAULT_DTB       = __DEFAULT_DTB__
->>>>>>> 829794ff (initialize nanopi-neo 3 entry)
->>>>>>> d20f66549 (initialize nanopi-neo 3 entry)
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).

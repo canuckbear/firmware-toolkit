@@ -33,20 +33,13 @@ BOARD_ARCH = aarch64
 # u-boot support and configuration
 #
 
-<<<<<<< HEAD
 # Defines if u-boot should be generated (set UBOOT_SUPPORT to 1) (0 means u-boot is not available).
 # if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
 UBOOT_SUPPORT = 1
-=======
-# Defines if u-boot should be generated (UBOOT_SUPPORT is set to 1) (0 means u-boot is not available).
-# if UBOOT_SUPPORT is disabled packaging is skipped. In this case, you may have to activate GRUB.
-UBOOT_SUPPORT     = 0
->>>>>>> f477cee3 (create netshell project for pinebook pro)
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
 UBOOT_DEFCONFIG   = pinebook-pro-rk3399_defconfig
 
-<<<<<<< HEAD
 # Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
 UBOOT_ASSEMBLING = 1
 
@@ -54,15 +47,9 @@ UBOOT_ASSEMBLING = 1
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
-#UBOOT_BINARY_FILE = u-boot-nodtb.bin
-UBOOT_BINARY_FILE = u-boot.img
+UBOOT_BINARY_FILE = u-boot-nodtb.bin
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
-DEFAULT_DTB = rk3399-pinebook-pro.dtb
-=======
-# List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot
 DEFAULT_DTB       = rk3399-pinebook-pro.dtb
->>>>>>> f477cee3 (create netshell project for pinebook pro)
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).

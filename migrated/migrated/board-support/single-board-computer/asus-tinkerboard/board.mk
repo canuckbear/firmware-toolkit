@@ -44,33 +44,16 @@ UBOOT_SUPPORT = 1
 UBOOT_ASSEMBLING = 0
 
 # Defines the script used to produce (assemble and sign) the u-boot binary
-<<<<<<< HEAD:board-support/single-board-computer/asus-tinkerboard/board.mk
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot.img
-UBOOT_BINARY_EXTRA_FILES = idbloader.img 
 
 # Defines if an assembly script has to be executed (this script can execute final assembly and/or signature operation)
 UBOOT_ASSEMBLING = 1
-=======
-#UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_NAME).sh
->>>>>>> d62ae8f8d (assembly script is not needed for rk3288 boards):move_me/board-support/single-board-computer/asus-tinkerboard/board.mk
-
-# Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
 UBOOT_DEFCONFIG = tinker-rk3288_defconfig
 
-# List of files to copy from build to install directory (path is relative to build dir)
-<<<<<<< HEAD:board-support/single-board-computer/asus-tinkerboard/board.mk
-=======
-<<<<<<< HEAD
 UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
 UBOOT_BINARY_EXTRA_FILES = idbloader.img 
-DEFAULT_DTB = rk3288-tinker.dtb
-=======
->>>>>>> 55e3ae46e (upgrade asus-tinkerboard-kernel to 5.11.22)
->>>>>>> 84bebd393 (upgrade asus-tinkerboard-kernel to 5.11.22):move_me/single-board-computer/asus-tinkerboard/board.mk
-
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
