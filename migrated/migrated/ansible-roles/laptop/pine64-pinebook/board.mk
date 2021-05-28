@@ -1,1 +1,0 @@
-./../../../board-support/laptop/pine64-pinebook/board.mk
