@@ -54,6 +54,8 @@ UBOOT_DEFCONFIG = tinker-rk3288_defconfig
 
 UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
 UBOOT_BINARY_EXTRA_FILES = idbloader.img 
+DEFAULT_DTB = rk3288-tinker.dtb
+
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
