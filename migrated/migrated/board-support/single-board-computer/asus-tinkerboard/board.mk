@@ -52,7 +52,8 @@ UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 UBOOT_ASSEMBLING = 1
 UBOOT_DEFCONFIG = tinker-rk3288_defconfig
 
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+#UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+UBOOT_BINARY_FILE = u-boot-nodtb.bin
 UBOOT_BINARY_EXTRA_FILES = idbloader.img 
 DEFAULT_DTB = rk3288-tinker.dtb
 
