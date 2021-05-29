@@ -13,8 +13,8 @@
 setenv fstype         __FILESYSTEM_TYPE__
 setenv fdtfile        'boot/default.dtb'
 setenv image          'boot/zImage'
-setenv mmcroot        '/dev/mmcblk0p1 rootwait rw'
-setenv mmcdev         0
+setenv mmcroot        '/dev/mmcblk1p1 rootwait rw'
+setenv mmcdev         1
 setenv mmcpart        1
 setenv uenv_file      boot/uEnv.txt
 setenv cmdline_file   boot/kernel_cmdline_extra_parameters.txt
