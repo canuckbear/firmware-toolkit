@@ -1,0 +1,17 @@
+linux-kernel-nanopi-neo2 (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 May 2021 03:38:48 +0200
+
+linux-kernel-nanopi-neo2 (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 May 2021 03:38:48 +0200
+
+linux-headers-nanopi-neo2 (5.11.22-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 May 2021 03:38:48 +0200
