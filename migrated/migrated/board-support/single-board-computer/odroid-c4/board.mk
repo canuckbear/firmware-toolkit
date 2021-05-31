@@ -45,7 +45,7 @@ UBOOT_ASSEMBLING = 1
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_NAME).sh
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-UBOOT_DEFCONFIG       = odroidc4_defconfig
+UBOOT_DEFCONFIG       = odroid-c4_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
 UBOOT_BINARY_FILE     = u-boot-$(BOARD_NAME)
