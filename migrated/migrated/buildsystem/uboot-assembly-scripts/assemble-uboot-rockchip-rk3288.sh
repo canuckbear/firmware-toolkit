@@ -29,5 +29,5 @@ set -ex
 cd $1/
 
 # Create the u-boot image and assemble the final binary
-mkimage -n rk3288 -T rksd -d ./tpl/u-boot-tpl.bin u-boot.img
-cat spl/u-boot-spl-dtb.bin >> u-boot.img
+mkimage -n rk3288 -T rksd -d ./tpl/u-boot-tpl.bin idbloader.img
+cat spl/u-boot-spl-dtb.bin >> idbloader.img
