@@ -36,11 +36,6 @@ make realclean
 make PLAT=rk3328
 
 # Create the u-boot image and assemble the final binary
-cd -
-ls -la
-mkimage -n rk3328 -T rksd -d ./tpl/u-boot-tpl.bin u-boot.img
-cat spl/u-boot-spl-dtb.bin >> u-boot.img
-
-echo "DEBUG je suis à la fin de la procedure ";
-ls -la
-pwd 
+cd $1/
+mkimage -n rk3328 -T rksd -d ./tpl/u-boot-tpl.bin idbloader.img
+cat spl/u-boot-spl-dtb.bin >> idbloader.img
