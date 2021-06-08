@@ -74,19 +74,13 @@ u-boot:
   packages:
     - u-boot-bananapi-r2
 
-  # List of action needed to install the u-boot binary to the image
+        # List of actions needed to install the u-boot binary to the image
   installation:
   - {
-      # Defines the source of the data to be copied to the image
-      # The source can be either a file or a special device like /dev/zero or /dev/random
-      # If the path is absolute, it will be left unchanged, otherwise it is prefix by the
-      # BSP path
-      source: "/dev/zero" ,
-
-      # Defines the options to be passed to dd
-      options: "bs=1k count=1023 seek=1 status=noxfer"
+      source: "/boot/u-boot/u-boot-mtk.bin" ,
+      options: "seek=2 bs=1k"
     }
   - {
       source: "/boot/u-boot/u-boot-bananapi-r2" ,
-      options: "bs=1024 seek=8 status=noxfer"
+      options: "seek=320 bs=1k"
     }
