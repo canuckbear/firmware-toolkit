@@ -27,7 +27,7 @@
 BOARD_NAME = hifive-unmatched
 
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
-BOARD_ARCH = riscv
+BOARD_ARCH = riscv64
 
 #
 # u-boot support and configuration
