@@ -62,7 +62,7 @@ u-boot:
   packages:
     - u-boot-asus-tinkerboard
 
-  # List of action needed to install the u-boot binary to the image
+  # List of actions needed to install the u-boot binary to the image
   installation:
   - {
       source: "/boot/u-boot/idbloader.img" ,
