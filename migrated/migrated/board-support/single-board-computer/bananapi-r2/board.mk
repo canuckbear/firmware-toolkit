@@ -43,7 +43,8 @@ UBOOT_SUPPORT = 1
 UBOOT_DEFCONFIG = mt7623n_bpir2_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-nodtb.bin
+UBOOT_BINARY_FILE = u-boot.bin
+UBOOT_BINARY_EXTRA_FILES = u-boot-mtk.bin
 DEFAULT_DTB =
 
 
