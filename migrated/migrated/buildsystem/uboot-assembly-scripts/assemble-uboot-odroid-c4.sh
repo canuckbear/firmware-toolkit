@@ -53,7 +53,7 @@ cp $UBOOTDIR/fip/g12a/piei.fw $UBOOTDIR/fip/
 cp $UBOOTDIR/fip/g12a/aml_ddr.fw $UBOOTDIR/fip/
 cp u-boot.bin $UBOOTDIR/fip/bl33.bin
 
-i$UBOOTDIR/fip/blx_fix.sh \
+$UBOOTDIR/fip/blx_fix.sh \
     $UBOOTDIR/fip/bl30.bin \
     $UBOOTDIR/fip/zero_tmp \
     $UBOOTDIR/fip/bl30_zero.bin \
