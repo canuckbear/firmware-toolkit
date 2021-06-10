@@ -49,9 +49,9 @@ UBOOT_ASSEMBLING = 1
 UBOOT_ASSEMBLY_SCRIPT = assemble-uboot-$(BOARD_PLATFORM)-$(BOARD_SOC).sh
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-nanopi-r2s
+UBOOT_BINARY_FILE = u-boot-dtb.itb
 UBOOT_BINARY_EXTRA_FILES = idbloader.img  
-DEFAULT_DTB = nanopi-neo3.dtb
+DEFAULT_DTB = rk3328-nanopi-r2s.dtb
 
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
