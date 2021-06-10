@@ -99,10 +99,9 @@ post-build:
 				echo "Error variable : UBOOT_ASSEMBLY_SCRIPT is undefined" ; \
 			else \
 				echo "Using UBOOT_ASSEMBLY_SCRIPT : $(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT)" ; \
-				echo "PLOP DEBUG de $(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) is not executable" ; \
 				ls -la $(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) ; \
 				if [ ! -x  $(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) ] ; then \
-					echo "$(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) is not executable" ; \
+				echo "ERROR : $(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) is not executable" ; \
 				else \
 					$(DFT_BUILDSYSTEM)/uboot-assembly-scripts/$(UBOOT_ASSEMBLY_SCRIPT) $(BUILD_DIR) ; \
 				fi ; \
