@@ -86,7 +86,7 @@ do-install:
 					 	echo "to process : $(UBOOT_BINARY_EXTRA_FILES)";  \
 						for f in $(UBOOT_BINARY_EXTRA_FILES) ; do \
 							echo "copying: _$$f_" ; \
-							cp -fv $(BUILD_DIR)/$$f $(INSTALL_DIR)/u-boot/ ; \
+							cp -f $(BUILD_DIR)/$$f $(INSTALL_DIR)/u-boot/ ; \
 						done ; \
 					else \
 						echo "UBOOT_BINARY_EXTRA_FILES not defined or empty : $(UBOOT_BINARY_EXTRA_FILES)" ;  \
