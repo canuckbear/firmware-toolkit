@@ -37,5 +37,6 @@ make PLAT=rk3328
 
 # Create the u-boot image and assemble the final binary
 cd $1/
+echo "BL31 : $BL31"
 mkimage -n rk3328 -T rksd -d ./tpl/u-boot-tpl.bin idbloader.img
 cat spl/u-boot-spl-dtb.bin >> idbloader.img
