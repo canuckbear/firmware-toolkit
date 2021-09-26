@@ -77,7 +77,15 @@ u-boot:
         # List of actions needed to install the u-boot binary to the image
   installation:
   - {
-      source: "/boot/u-boot/u-boot-mtk.bin" ,
+      source: "/boot/u-boot/BPI-R2-HEAD440-0k.img" ,
+      options: "seek=0 bs=440 count=1"
+    }
+  - {
+      source: "/boot/u-boot/BPI-R2-HEAD1-512b.img" ,
+      options: "seek=1 bs=512"
+    }
+  - {
+      source: "/boot/u-boot/preloader_iotg7623Np1_emmc.bin" ,
       options: "seek=2 bs=1k"
     }
   - {
