@@ -53,9 +53,9 @@ dft_os_apt:
   #
   repositories_keys:
     # Id of the key to import
-    - key_id: 3F873450D48C4F9C
+    #- key_id: 3F873450D48C4F9C
       # Keyserver to use to retrieve the key
-      key_server: keyserver.ubuntu.com
+      # key_server: keyserver.ubuntu.com
       # URL of the key to download and import ( alternative to define id and keyserver)
       # key_url:  https://ftp-master.debian.org/keys/archive-key-6.0.asc
 
