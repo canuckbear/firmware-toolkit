@@ -38,10 +38,10 @@ BOARD_ARCH = aarch64
 UBOOT_SUPPORT     = 1
 
 # Make use the defconfig file from UBOOT_DEFCONFIG unless you specify your own in USE_CONFIG_FILE
-UBOOT_DEFCONFIG   = _unknown_
+UBOOT_DEFCONFIG   = nanopi-r4s-rk3399_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+UBOOT_BINARY_FILE = u-boot.itb
 DEFAULT_DTB       = unknown
 
 #
