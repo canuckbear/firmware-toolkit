@@ -1,1 +1,1 @@
-../../../board-support/single-board-computer/nanopi-r2s/board.mk
+../../../board-support/single-board-computer/nanopi-r2c/board.mk
