@@ -25,7 +25,7 @@
 distributions:
     # Debian 10.0 Buster
     - name: 'buster'
-      architectures: [ 'amd64' , 'mips' , 'armel' , 'armhf' , 'arm64' , 'i386' ]
+      architectures: [ 'riscv64' ]
       repositories:
         - url: 'http://ftp.de.debian.org/debian/'
           suite: 'buster'
