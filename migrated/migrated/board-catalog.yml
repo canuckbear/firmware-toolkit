@@ -115,11 +115,15 @@ board-catalog:
                   support-level: planning
          - nanopi-r2s:
                   support-level: planning
-                  uboot_provider: armwizard
-                  uboot_version: 2020.07
-                  kernel_provider: armwizard
-                  kernel_version: 5.9.11
-                  feature_support:
+                  uboot:
+                    provider: armwizard
+                    version: 2020.07
+                    status: planning
+                  kernel:
+                    provider: armwizard
+                    status: planning
+                    version: 5.9.11
+                  peripheral_support:
                     video: unavailable
          - odroid-c0:
                   support-level: planning
@@ -127,6 +131,16 @@ board-catalog:
                   support-level: planning
          - odroid-c2:
                   support-level: planning
+                  uboot:
+                    version: 2020.07
+                      provider: armwizard
+                      status: planning
+                  kernel:
+                    version: 5.9.11
+                    provider: armwizard
+                    status: planning
+                    peripheral_support:
+                      video: unavailable
          - odroid-c4:
                   support-level: planning
          - odroid-hc1:
@@ -149,15 +163,19 @@ board-catalog:
                   uboot_version: 2020.04
                   kernel_provider: armwizard
                   kernel_version: 4.17.1
-                  feature_support:
-                    video: unavailable
+                  peripheral_support:
+                    - Vvideo: unavailable
+                  images:
+                    - name: netshell
+                      status : unknown
+
          - orangepi-zero:
                   support-level: stable
                   uboot_provider: armwizard
                   uboot_version: 2020.07
                   kernel_provider: armwizard
                   kernel_version: 4.17.1
-                  feature_support:
+                  peripheral_support:
                     wifi: supported
                     lan: supported
                     mmc: supported
