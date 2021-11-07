@@ -21,54 +21,21 @@
 ---
 
 #
-# Create the virtual hosts configuration files into sites-available from template
-#
-- name: Install apache2 HTTP virtual hosts
-  template:  src=virtual-host.j2
-             dest=/etc/apache2/sites-available/{{ item.name }}.conf
-             owner=root
-             group=root
-             mode="0644"
-  with_items: "{{ dft_apache2.http_sites_available }}"
-  when: dft_apache2.http_sites_available is defined
-
-- name: Install apache2 HTTPS virtual hosts
-  template:  src=ssl-virtual-host.j2
-             dest=/etc/apache2/sites-available/{{ item.name }}.conf
-             owner=root
-             group=root
-             mode="0644"
-  with_items: "{{ dft_apache2.https_sites_available}}"
-  when: dft_apache2.https_sites_available is defined
-
-#
 # Activate the virtual hosts configuration files
 #
-- name: Activate apache2 enabled virtual hosts
+- name: Activate apache2 enabled modules
   command: a2ensite {{ item.name }}
   with_items: "{{ dft_apache2.sites_enabled}}"
-  when: dft_apache2.sites_enabled is defined
+  when: dft_apache2.modules_enabled is defined
 #-  notify:
 #    - restart apache
 
 #
 # Deactivate the virtual hosts configuration files
 #
-- name: Deactivate apache2 disabled virtual hosts
+- name: Deactivate apache2 disabled modules
   command: a2dissite {{ item.name }}
   with_items: "{{ dft_apache2.sites_disabled}}"
-  when: dft_apache2.sites_disabled is defined
+  when: dft_apache2.modules_disabled is defined
 #-  notify:
 #    - restart apache
-
-
-#  apt: name={{ item }}
-#       state=latest
-#       install_recommends=no
-#  with_items:
-#    - apache2
-#
-#|-- conf-enabled
-#|       `-- *.conf
-#|-- sites-enabled
-#|       `-- *.conf
