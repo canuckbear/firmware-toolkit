@@ -128,7 +128,7 @@
 #   SSLCertificateFile is undefined in inventory
 {% endif %}
 
-{% if item.ssl_crtificate_key is defined %}
+{% if item.ssl_certificate_key is defined %}
     # Defines path to the certificate private key
     SSLCertificateKeyFile {{ item.ssl_certificate_key }}
 {% else %}
