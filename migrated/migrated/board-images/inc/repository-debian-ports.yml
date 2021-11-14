@@ -23,7 +23,7 @@
 # Definition of the distributions used to build rootfs
 #
 distributions:
-    # Debian 10.0 Buster
+    # Debian sid since this architecture is not yet official nor released
     - name: 'sid'
       architectures: [ 'riscv64' ]
       repositories:
