@@ -37,8 +37,8 @@
 #
 - name: Enable apache2 virtual hosts according to inventory
   command: a2ensite {{ item.server_name }}
-  with_items: "{{ dft_srv_apache2.sites_enabled }}"
-  when: dft_srv_apache2.sites_enabled is defined
+  with_items: "{{ dft_srv_apache2.sites_available }}"
+  when: dft_srv_apache2.sites_available is defined
   notify:
     Reload Apache2
 
