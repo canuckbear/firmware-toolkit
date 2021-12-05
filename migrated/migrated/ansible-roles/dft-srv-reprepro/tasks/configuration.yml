@@ -65,7 +65,7 @@
 # -------------------------------------------------------------------------------------------------
 # Create the repositories subdirectories
 - name: Create repository directories
-  file: path={{ item[1].base_directory }}/{{ item[0] }}
+  file: path={{ item[1].base_directory }}/{{ item[1].name }}/{{ item[0] }}
         state=directory
         recurse=yes
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
@@ -99,14 +99,13 @@
 
 # Incoming is created alone because of the group forced to reprepro mode
 - name: Create repository incoming directory
-  file: path={{ item[1].base_directory }}/{{ item[0].name }}
+  file: path={{ item.base_directory }}/{{ item.name }}/incoming
         state=directory
         recurse=yes
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
         group=reprepro
         mode="0775"
-  with_nested:
-    - [ 'incoming' ]
+  with_items:
     - "{{ dft_srv_reprepro.repositories }}"
 
 # Instanciate the distributions template file

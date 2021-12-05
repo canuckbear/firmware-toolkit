@@ -3,7 +3,7 @@
 {% if item.base_directory is defined %}
 
 # Import packages to {{ item.distributions.origin }} repository
-reprepro -b {{ item.base_directory }}/{{ item.directory }} processincoming incoming-{{ item.codename }} >> /var/log/reprepro/{{ item.name }}.log
-reprepro -b {{ item.base_directory }}/{{ item.directory }} export >> /var/log/reprepro/{{ item.name }}.log
+reprepro -b {{ item.base_directory }}/{{ item.name }} processincoming incoming-{{ item.codename }} >> /var/log/reprepro/{{ item.name }}.log
+reprepro -b {{ item.base_directory }}/{{ item.name }} export >> /var/log/reprepro/{{ item.name }}.log
 
 {% endif %}
