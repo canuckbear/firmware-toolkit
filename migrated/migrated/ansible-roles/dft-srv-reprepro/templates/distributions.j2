@@ -24,8 +24,8 @@ UDebComponents: {{ item.udeb_components }}
 {% if item.description is defined %}
 Description: {{ item.description }}
 {% endif %}
-{% if item.log is defined %}
-Log: {{ item.log }}
+{% if item.distributions.log is defined %}
+Log: {{ item.distributions.log }}
 {% else %}
 Log: {{ dft_srv_reprepro.base_directory }}/{{ item.directory }}/logs/{{ item.name }}.log
 {% endif %}
