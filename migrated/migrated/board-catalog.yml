@@ -32,7 +32,7 @@ board-catalog:
   tablet:
   phone:
   desktop:
-          - b1eelink-j45:
+          - beelink-j45:
             support-level: planning
           - beelink-mii-3350:
             support-level: planning
@@ -123,7 +123,7 @@ board-catalog:
                     provider: armwizard
                     status: planning
                     version: 5.9.11
-                  peripheral_support:
+                  peripheral-support:
                     video: unavailable
          - odroid-c0:
                   support-level: planning
@@ -139,7 +139,7 @@ board-catalog:
                     version: 5.9.11
                     provider: armwizard
                     status: planning
-                    peripheral_support:
+                    peripheral-support:
                       video: unavailable
          - odroid-c4:
                   support-level: planning
@@ -163,8 +163,8 @@ board-catalog:
                   uboot_version: 2020.04
                   kernel_provider: armwizard
                   kernel_version: 4.17.1
-                  peripheral_support:
-                    - Vvideo: unavailable
+                  peripheral-support:
+                    - video: unavailable
                   images:
                     - name: netshell
                       status : unknown
@@ -175,7 +175,7 @@ board-catalog:
                   uboot_version: 2020.07
                   kernel_provider: armwizard
                   kernel_version: 4.17.1
-                  peripheral_support:
+                  peripheral-support:
                     wifi: supported
                     lan: supported
                     mmc: supported
