@@ -73,7 +73,7 @@ endif
 #
 
 sanity-check:
-	@echo "Checking Linux kernel $(SW_VERSION) folder sanity for board $(BOARD_NAME)" 
+	@echo "Checking Linux kernel $(SW_VERSION) folder sanity for board $(BOARD_NAME)"
 	@if [ ! -d "${CURDIR}/defconfig" ] ; then \
 		echo "defconfig directory is missing in ${CURDIR}. It contains the configuration files of the different Linux kernel versions." ; \
 		echo "You can fix with the following commands : " ; \

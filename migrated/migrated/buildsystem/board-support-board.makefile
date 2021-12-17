@@ -171,9 +171,23 @@ sanity-check-subdirs:
 		fi ; \
         done
 
+# Create a new linux-kernel version entry
+add-linux-kernel-version:
+	if [ "$(new-version)" == "" ] ; then \
+		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+		$(call dft_error ,2112-1501) ; \
+	else \
+		$(MAKE) --warn-undefined-variables --directory=kernel add-linux-kernel-version new-version=$(new-version) ; \
+	fi ;
+
 # Create a new u-boot version entry
 add-u-boot-version:
-	$(MAKE) --warn-undefined-variables --directory=u-boot add-u-boot-version new-version=$(new-version) ;
+	if [ "$(new-version)" == "" ] ; then \
+		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+		$(call dft_error ,2112-1502) ; \
+	else \
+		$(MAKE) --warn-undefined-variables --directory=u-boot add-u-boot-version new-version=$(new-version) ; \
+	fi ;
 
 check-u-boot-defconfig:
 	$(MAKE) --directory=u-boot check-u-boot-defconfig verbosity=$(verbosity);
