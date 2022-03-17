@@ -1,0 +1,17 @@
+linux-kernel-cubieboard-3 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:36 +0100
+
+linux-kernel-cubieboard-3 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:36 +0100
+
+linux-headers-cubieboard-3 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:36 +0100

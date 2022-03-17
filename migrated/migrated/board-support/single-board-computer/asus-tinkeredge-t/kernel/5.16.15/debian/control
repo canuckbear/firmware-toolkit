@@ -1,0 +1,21 @@
+Source: linux-kernel-asus-tinkeredge-t
+Section: kernel
+Priority: optional
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: linux-kernel-asus-tinkeredge-t
+Architecture: any
+Depends: ${misc:Depends},
+         kmod, 
+         linux-base (>= 4.3~), 
+         initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool
+Description: Linux kernel, version 5.16.15 for asus-tinkeredge-t
+ This packages contains the Linux kernel version 5.16.15 compiled for asus-tinkeredge-t board.
+
+# Package: linux-headers-asus-tinkeredge-t-5.16.15
+# Architecture: any
+# Depends: ${misc:Depends}
+# Description: Linux kernel headers, version 5.16.15 for asus-tinkeredge-t
+#  This packages contains the Linux kernel headers version 5.16.15 for asus-tinkeredge-t board.
