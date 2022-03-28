@@ -37,3 +37,4 @@
         - traceroute
         - bind9-host
         - net-tools
+        - firmware-realtek
