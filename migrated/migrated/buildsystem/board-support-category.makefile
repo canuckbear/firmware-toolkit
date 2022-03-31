@@ -189,6 +189,29 @@ list-boards:
 		fi ; \
 	done | sort -u ;
 
+# Create a new linux-kernel version entry
+add-linux-kernel-version:
+	if [ "$(new-version)" == "" ] ; then \
+		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+		$(call dft_error ,2112-1503) ; \
+	else \
+		for board in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
+			$(MAKE) --warn-undefined-variables --directory=$$board add-linux-kernel-version new-version=$(new-version) ; \
+		done ; \
+	fi ;
+
+# Create a new u-boot version entry
+add-u-boot-version:
+	if [ "$(new-version)" == "" ] ; then \
+		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+		$(call dft_error ,2112-1504) ; \
+	else \
+		for board in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
+			$(MAKE) --warn-undefined-variables --directory=$$boardu-boot add-u-boot-version new-version=$(new-version) ; \
+		done ; \
+	fi ;
+
+
 # Create a new board entry
 add-board:
 	@echo "DEBUG : in board-support-category.makefile running add-board with argument(s) board-name $(board-name) arch $(arch) uboot-support $(uboot-support) grub-support $(grub-support) uboot-defconfig $(uboot-defconfig) default-dtb $(default-dtb)" ; \
