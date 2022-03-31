@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 {% if item.base_directory is defined %}
+{% for version in item.distributions %}
+# Import packages to {{ item.origin }} repository for Debian release : {{ version.codename }}
+reprepro -b {{ item.base_directory }}/{{ item.name }} processincoming incoming-{{ version.codename }} >> /var/log/reprepro/{{ item.name }}-{{ version.codename }}.log
+reprepro -b {{ item.base_directory }}/{{ item.name }} export >> /var/log/reprepro/{{ item.name }}-{{ version.codename }}.log
 
-# Import packages to {{ item.distributions.origin }} repository
-reprepro -b {{ item.base_directory }}/{{ item.name }} processincoming incoming-{{ item.codename }} >> /var/log/reprepro/{{ item.name }}.log
-reprepro -b {{ item.base_directory }}/{{ item.name }} export >> /var/log/reprepro/{{ item.name }}.log
-
+{% endfor %}
 {% endif %}

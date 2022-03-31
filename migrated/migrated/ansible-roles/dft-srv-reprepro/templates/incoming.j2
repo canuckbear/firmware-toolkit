@@ -1,7 +1,21 @@
-Name: incoming-{{ item.codename }}
-IncomingDir: {{ item.base_directory }}/{{ item.name }}/incoming
+{% for distrib in item.distributions %}
+{% if distrib.codename is defined %}
+Name: incoming-{{ distrib.codename }}
+{% endif %}
+{% if distrib.default is defined %}
+Default: {{ distrib.default }}
+{% endif %}
 TempDir: {{ item.base_directory }}/{{ item.name }}/tmp
 LogDir: {{ item.base_directory }}/{{ item.name }}/logs
-{% if item.allow is defined %}
-Allow: {% for rule_allow in item.allow %} {{ rule_allow }} {% endfor %}
+{% if distrib.incoming_dir is defined %}
+IncomingDir: {{ item.base_directory }}/{{ distrib.incoming_dir }}
+{% else %}
+IncomingDir: {{ item.base_directory }}/{{ item.name }}/incoming-{{ item.codename }}
 {% endif %}
+{% if distrib.allow is defined %}
+{% for rule_allow in distrib.allow %}
+Allow: {{ rule_allow }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
