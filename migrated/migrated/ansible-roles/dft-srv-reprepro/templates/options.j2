@@ -1,3 +1,5 @@
 verbose
-basedir {{ item.base_directory }}
+{% if item[0].base_directory is defined %}
+basedir {{ item[0].base_directory }}
+{% endif %}
 ask-passphrase

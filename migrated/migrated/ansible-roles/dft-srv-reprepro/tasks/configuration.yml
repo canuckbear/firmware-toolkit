@@ -60,23 +60,23 @@
             group={{ dft_srv_reprepro.user_definition.group | default('reprepro')}}
             mode="0755"
   with_items:
-    - "{{ dft_srv_reprepro.repositories }}"
+      - "{{ dft_srv_reprepro.repositories }}"
 
 # -------------------------------------------------------------------------------------------------
 # Create the repositories subdirectories
 - name: Create repository directories
-  file: path={{ item[1].base_directory }}/{{ item[1].name }}/{{ item[0] }}
+  file: path={{ item[0].base_directory }}/{{ item[0].name }}/{{ item[1] }}
         state=directory
         recurse=yes
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
         group={{ dft_srv_reprepro.webserver_definition.group | default('www-data')}}
         mode="0775"
   with_nested:
-    - [ 'conf', 'db', 'dists', 'logs', 'indices', 'override', 'pool', 'project', 'tmp' ]
     - "{{ dft_srv_reprepro.repositories }}"
+    - [ 'conf', 'db', 'dists', 'logs', 'indices', 'override', 'pool', 'project', 'tmp', 'incoming' ]
 
 # Create the deb override files
-- name: Create override files
+- name: Create deb override files
   file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.deb_override }}
         state=touch
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
@@ -84,10 +84,10 @@
         mode="0775"
   when: "item.deb_override is defined"
   with_items:
-    - "{{ dft_srv_reprepro.repositories }}"
+      - "{{ dft_srv_reprepro.repositories }}"
 
 # Create the dsc override files
-- name: Create override files
+- name: Create dsc override files
   file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.dsc_override }}
         state=touch
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
@@ -95,70 +95,64 @@
         mode="0775"
   when: "item.dsc_override is defined"
   with_items:
-    - "{{ dft_srv_reprepro.repositories }}"
+      - "{{ dft_srv_reprepro.repositories }}"
 
 # Incoming is created alone because of the group forced to reprepro mode
 - name: Create repository incoming directory
-  file: path={{ item.base_directory }}/{{ item.name }}/{{ item.incoming_dir}}
+  file: path="{{ item[0].base_directory }}/{{ item[0].name }}/incoming/{{ item[1].codename }}"
         state=directory
         recurse=yes
         owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
         group=reprepro
         mode="0775"
-  with_items:
+  with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-
-- name: Create repository per codename incoming directory
-  file: path={{ item.base_directory }}/{{ item.name }}/incoming-{{ item.codename }}
-        state=directory
-        recurse=yes
-        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
-        group=reprepro
-        mode="0775"
-  with_items:
-    - "{{ dft_srv_reprepro.repositories }}"
-
+    - distributions
 
 # Instanciate the distributions template file
-- name: Copy distributions template
+- name: Instantiate distributions template
   template: src=distributions.j2
-            dest={{ item.base_directory }}/{{ item.name }}/conf/distributions
+            dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/distributions
             owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
             group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
             mode="0644"
-  with_items:
+  with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
+    - distributions
 
 # Instanciate the options template file
-- name: Copy options template
+- name: Instantiate options template
   template: src=options.j2
-            dest={{ item.base_directory }}/{{ item.name }}/conf/options
+            dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/options
             owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
             group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
             mode="0644"
-  with_items:
+  with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
+    - distributions
 
 # Instanciate the incoming template file
-- name: Copy incoming template
+- name: Instantiate incoming template
   template: src=incoming.j2
-            dest={{ item.base_directory }}/{{ item.name }}/conf/incoming
+            dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/incoming
             owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
             group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
             mode="0644"
-  with_items:
+  with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
+    - distributions
 
 # Instanciate the uploaders template file
-- name: Copy uploaders template
+- name: Instantiate uploaders template
   template: src=uploaders.j2
-            dest={{ item.base_directory }}/{{ item.name }}/conf/uploaders
+            dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/uploaders
             owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
             group={{ dft_srv_reprepro.webserver_definition.user | default('reprepro')}}
             mode="0644"
-  with_items:
+  with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-  when: item.uploaders is defined
+    - distributions
+  when: item[0].uploaders is defined
 
 # -------------------------------------------------------------------------------------------------
 # Add processincoming script cron table for user reprepro. Scheduled every hour by default
@@ -171,4 +165,4 @@
         user="{{ dft_srv_reprepro.user_definition.username }}"
         job="cd {{ dft_srv_reprepro.user_definition.home_dir }} && {{ dft_srv_reprepro.user_definition.home_dir }}/bin/reprepro_import_{{ item.name }}_packages"
   with_items:
-    - "{{ dft_srv_reprepro.repositories }}"
+      - "{{ dft_srv_reprepro.repositories }}"
