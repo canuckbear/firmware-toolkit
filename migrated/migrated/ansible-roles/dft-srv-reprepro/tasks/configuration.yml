@@ -107,7 +107,7 @@
         mode="0775"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-    - distributions
+    - releases
 
 # Instanciate the distributions template file
 - name: Instantiate distributions template
@@ -118,7 +118,7 @@
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-    - distributions
+    - releases
 
 # Instanciate the options template file
 - name: Instantiate options template
@@ -129,7 +129,7 @@
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-    - distributions
+    - releases
 
 # Instanciate the incoming template file
 - name: Instantiate incoming template
@@ -140,7 +140,7 @@
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-    - distributions
+    - releases
 
 # Instanciate the uploaders template file
 - name: Instantiate uploaders template
@@ -151,7 +151,7 @@
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
-    - distributions
+    - releases
   when: item[0].uploaders is defined
 
 # -------------------------------------------------------------------------------------------------
