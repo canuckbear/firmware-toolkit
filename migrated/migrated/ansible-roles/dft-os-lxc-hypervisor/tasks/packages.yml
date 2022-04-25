@@ -26,3 +26,4 @@
     pkg:
     - lxc
     - bridge-utils
+    - lxc-templates
