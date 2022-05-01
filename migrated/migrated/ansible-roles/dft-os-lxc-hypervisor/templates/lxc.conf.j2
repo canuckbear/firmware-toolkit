@@ -8,8 +8,6 @@
 # New variables declared in inventory will be added, undeclared ones (or no longer declared) removed.
 
 # You can access documentation on the content of this file by running man lxc.conf(5)
-
-
 # This file content is based on documentation available from https://linuxcontainers.org/lxc/manpages/man5/lxc.system.conf.5.html
 
 # Description:
@@ -18,5 +16,5 @@
 # This configuration file is used to set values such as default lookup paths and storage backend settings for LXC.
 
 {% for item in dft_os_lxc_hypervisor.system.config %}
-{{ item.name }} {{ item.value }}
+{{ item.name }} = {{ item.value }}
 {% endfor %}
