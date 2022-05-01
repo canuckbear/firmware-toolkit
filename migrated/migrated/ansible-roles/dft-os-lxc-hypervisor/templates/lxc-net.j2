@@ -14,3 +14,8 @@ USE_LXC_BRIDGE={{ dft_os_lxc_hypervisor.system.default.use_lxc_bridge }}
 {% else %}
 USE_LXC_BRIDGE="false"  # same default value as in /etc/default/lxc
 {% endif %}
+{% if dft_os_lxc_hypervisor.system.default.lxc_auto is defined %}
+USE_LXC_AUTO={{ dft_os_lxc_hypervisor.system.default.lxc_auto }}
+{% else %}
+USE_LXC_AUTO="false"  # same default value as in /etc/default/lxc
+{% endif %}
