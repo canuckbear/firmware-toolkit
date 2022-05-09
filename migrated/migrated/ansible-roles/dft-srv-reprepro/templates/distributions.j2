@@ -1,53 +1,63 @@
-item[0] {{ item[0] }}
-item[1] {{ item[1] }}
-{% if item[0].codename is defined %}
-Codename: {{ item[0].codename }}
+{% for release in item.releases %}
+{% if release.origin is defined %}
+Origin: {{ release.origin }}
+{% else %}
+{% if item.origin is defined %}
+Origin: {{ item.origin }}
 {% endif %}
-{% if item[0].components is defined %}
-Components: {{ item[0].components }}
 {% endif %}
-{% if item[0].udeb_components is defined %}
-UDebComponents: {{ item[0].udeb_components }}
+{% if release.label is defined %}
+Label: {{ release.label }}
 {% endif %}
-{% if item[0].distributions.origin is defined %}
-Origin: {{ item[0].distributions.origin }}
+{% if release.codename is defined %}
+Codename: {{ release.codename }}
 {% endif %}
-{% if item[0].distributions.label is defined %}
-Label: {{ item[0].distributions.label }}
+{% if release.suite is defined %}
+Suite: {{ release.suite }}
 {% endif %}
-{% if item[0].architectures is defined %}
-Architectures: {{ item[0].architectures }}
+{% if release.architectures is defined %}
+Architectures: {{ release.architectures }}
 {% endif %}
-{% if item[0].description is defined %}
-Description: {{ item[0].description }}
+{% if release.components is defined %}
+Components: {{ release.components }}
 {% endif %}
-{% if item[0].log is defined %}
-Log: {{ item[0].log }}
+{% if release.udeb_components is defined %}
+UDebComponents: {{ release.udeb_components }}
 {% endif %}
-{% if item[0].sign_with is defined %}
-SignWith: {{ item[0].sign_with }}
+{% if release.description is defined %}
+Description: {{ release.description }}
 {% endif %}
-{% if item[0].deb_override is defined %}
-DebOverride: {{ item[0].deb_override }}
+{% if release.log is defined %}
+Log: {{ release.log }}
 {% endif %}
-{% if item[0].udeb_override is defined %}
-UDebOverride: {{ item[0].udeb_override }}
+{% if release.sign_with is defined %}
+SignWith: {{ release.sign_with }}
 {% endif %}
-{% if item[0].dsc_override is defined %}
-DscOverride: {{ item[0].dsc_override }}
+{% if release.deb_override is defined %}
+DebOverride: {{ release.deb_override }}
 {% endif %}
-{% if item[0].deb_indices is defined %}
-DebIndices: {{ item[0].deb_indices }}
+{% if release.udeb_override is defined %}
+UDebOverride: {{ release.udeb_override }}
 {% endif %}
-{% if item[0].udeb_indices is defined %}
-UDebIndices: {{ item[0].udeb_indices }}
+{% if release.dsc_override is defined %}
+DscOverride: {{ release.dsc_override }}
 {% endif %}
-{% if item[0].dsc_indices is defined %}
-DscIndices: {{ item[0].dsc_indices }}
+{% if release.deb_indices is defined %}
+DebIndices: {{ release.deb_indices }}
 {% endif %}
-{% if item[0].contents is defined %}
-Contents: {{ item[0].contents }}
+{% if release.udeb_indices is defined %}
+UDebIndices: {{ release.udeb_indices }}
 {% endif %}
-{% if item[0].uploaders is defined %}
-Uploaders: TODO uploaders
+{% if release.dsc_indices is defined %}
+DscIndices: {{ release.dsc_indices }}
 {% endif %}
+{% if release.contents is defined %}
+Contents: {{ release.contents }}
+{% endif %}
+{% if release.uploaders is defined %}
+Uploaders: {{ release.uploaders }}
+{% else %}
+Uploaders: allow-upload
+{% endif %}
+
+{% endfor %}

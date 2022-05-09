@@ -112,13 +112,12 @@
 # Instanciate the distributions template file
 - name: Instantiate distributions template
   template: src=distributions.j2
-            dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/distributions
+            dest={{ item.base_directory }}/{{ item.name }}/conf/distributions
             owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
             group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
             mode="0644"
-  with_subelements:
-    - "{{ dft_srv_reprepro.repositories }}"
-    - releases
+  with_items:
+      - "{{ dft_srv_reprepro.repositories }}"
 
 # Instanciate the options template file
 - name: Instantiate options template
