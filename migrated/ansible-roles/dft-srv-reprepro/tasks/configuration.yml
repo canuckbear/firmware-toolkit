@@ -35,7 +35,6 @@
         groups={{ dft_srv_reprepro.user_definition.groups | default('www-data') }}
         append=yes
 
-# Create the reprepro script directory
 - name: Create reprepro script directory
   file: path={{ dft_srv_reprepro.user_definition.home_dir }}/bin
         state=directory
@@ -48,16 +47,16 @@
 - name: Create reprepro log directory
   file: path=/var/log/reprepro
         state=directory
-        owner={{ dft_srv_reprepro.user_definition.username | default('reprepro')}}
-        group={{ dft_srv_reprepro.user_definition.group | default('reprepro')}}
+        owner={{ dft_srv_reprepro.user_definition.username | default('reprepro') }}
+        group={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
         mode="0750"
 
 # Instanciate the options template file
 - name: Instantiate reprepro_import_packages script template
   template: src=reprepro_import_packages.j2
             dest={{ dft_srv_reprepro.user_definition.home_dir }}/bin/reprepro_import_{{ item.name }}_packages
-            owner={{ dft_srv_reprepro.user_definition.username | default('reprepro')}}
-            group={{ dft_srv_reprepro.user_definition.group | default('reprepro')}}
+            owner={{ dft_srv_reprepro.user_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
             mode="0755"
   with_items:
       - "{{ dft_srv_reprepro.repositories }}"
@@ -68,8 +67,8 @@
   file: path={{ item[0].base_directory }}/{{ item[0].name }}/{{ item[1] }}
         state=directory
         recurse=yes
-        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
-        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data')}}
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
         mode="0775"
   with_nested:
     - "{{ dft_srv_reprepro.repositories }}"
@@ -79,8 +78,8 @@
 - name: Create deb override files
   file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.deb_override }}
         state=touch
-        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
-        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data')}}
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
         mode="0775"
   when: "item.deb_override is defined"
   with_items:
@@ -90,8 +89,8 @@
 - name: Create dsc override files
   file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.dsc_override }}
         state=touch
-        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
-        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data')}}
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
         mode="0775"
   when: "item.dsc_override is defined"
   with_items:
@@ -102,7 +101,7 @@
   file: path="{{ item[0].base_directory }}/{{ item[0].name }}/incoming/{{ item[1].codename }}"
         state=directory
         recurse=yes
-        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data')}}
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
         group=reprepro
         mode="0775"
   with_subelements:
@@ -113,8 +112,8 @@
 - name: Instantiate distributions template
   template: src=distributions.j2
             dest={{ item.base_directory }}/{{ item.name }}/conf/distributions
-            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
-            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
             mode="0644"
   with_items:
       - "{{ dft_srv_reprepro.repositories }}"
@@ -123,8 +122,8 @@
 - name: Instantiate options template
   template: src=options.j2
             dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/options
-            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
-            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
@@ -134,8 +133,8 @@
 - name: Instantiate incoming template
   template: src=incoming.j2
             dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/incoming
-            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
-            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro')}}
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
@@ -145,8 +144,8 @@
 - name: Instantiate uploaders template
   template: src=uploaders.j2
             dest={{ item[0].base_directory }}/{{ item[0].name }}/conf/uploaders
-            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro')}}
-            group={{ dft_srv_reprepro.webserver_definition.user | default('reprepro')}}
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.user | default('reprepro') }}
             mode="0644"
   with_subelements:
     - "{{ dft_srv_reprepro.repositories }}"
