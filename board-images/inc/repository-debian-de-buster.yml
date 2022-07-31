@@ -23,18 +23,18 @@
 # Definition of the distributions used to build rootfs
 #
 distributions:
-    # Debian 10.0 Buster
-    - name: 'buster'
+    # Debian 11.0 Bullseye
+    - name: 'bullseye'
       architectures: [ 'riscv64' ]
       repositories:
         - url: 'http://ftp.de.debian.org/debian/'
-          suite: 'buster'
+          suite: 'bullseye'
           sections: [ 'main' , 'contrib' , 'non-free' ]
         - url: 'http://ftp.de.debian.org/debian-security/'
-          suite: 'buster/updates'
+          suite: 'bullseye/updates'
           sections: [ 'main', 'contrib', 'non-free' ]
         - url: 'http://ftp.de.debian.org/debian/'
-          suite: 'buster-updates'
+          suite: 'bullseye-updates'
           sections: [ 'main', 'contrib', 'non-free' ]
 
 # ----------------------------------------------------------------------------

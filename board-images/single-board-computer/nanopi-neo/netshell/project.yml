@@ -121,7 +121,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: nanopi-neo }
+    - { version: bullseye , board: nanopi-neo }
 
 # ----------------------------------------------------------------------------
 #
