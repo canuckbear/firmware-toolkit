@@ -157,7 +157,7 @@ add-image:
 		ln -s ../buildsystem $(image-name)/buildsystem ; \
 		ln -s ../blueprint-$(BOARD_NAME).yml $(image-name)/blueprint.yml ; \
 	fi ; \
-	ln -s ../../../inc/repository-debian-de-buster.yml $(image-name)/repository-debian.yml ; \
+	ln -s ../../../inc/repository-debian-de-bullseye.yml $(image-name)/repository-debian.yml ; \
 	ln -s ../../../inc/rootfs-$(image-name).yml $(image-name)/project-rootfs.yml ; \
 	ln -s ../../../inc/variables-$(image-name).yml $(image-name)/project-variables.yml ; \
 	cp  $(DFT_BUILDSYSTEM)/templates/board-images/$(image-name)/* $(image-name)/ ; \
