@@ -51,6 +51,7 @@ configuration:
 
   # Path to the dft installation directory. Default value is /usr/share/dft
   # dft_base: "../ansible"
+  #   dft_base: "/home/william/workspace/canuckbear/firmware-toolkit/"
 
   # Define a list of directories with additional content (roles, playbooks, etc)
   # which are copied to /dft_bootstrap during rootfs bootstrapping. These paths
