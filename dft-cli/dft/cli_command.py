@@ -620,8 +620,9 @@ class CliCommand(object):
           # Defines the file name and content for armbian APT sources
           logging.debug("Using ArmWizard repo as source provider. Adding firmwaretoolkit.list")
           filepath += "firmwaretoolkit_repository.list"
-          working_file.write("deb http://apt.firmaretoolkit.org/debian " + version)
-          working_file.write(" main firmwaretoolkit\n")
+#          working_file.write("deb http://apt.firmaretoolkit.org/debian " + version)
+#          working_file.write(" main firmwaretoolkit\n")
+          working_file.write("deb [trusted=yes] http://192.168.11.128/armwizard/armwizard " + version + " bullseye main debian armwizard ") 
 
           # Check if the public key of the repository is defined in the BSP file, otherwise
           # Set the default value of the key
