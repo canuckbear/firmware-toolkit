@@ -1,25 +1,19 @@
-{% if item[0].default is defined %}
-Default: {{ item[0].default }}
-{% endif %}
-{% if item[0].base_directory is defined %}
-{% if item[0].log_dir is defined %}
-LogDir: {{ item[0].base_directory }}/{{ item[0].name }}/{{ item[0].log_dir }}
+{% for distribution in item.distributions %}
+Name: {{ distribution.codename }}
+{% if item.log_dir is defined %}
+LogDir: {{ item.base_directory }}/{{ item.name }}/{{ item.log_dir }}
 {% else %}
-LogDir: {{ item[0].base_directory }}/{{ item[0].name }}/logs
+LogDir: {{ item.base_directory }}/{{ item.name }}/logs
 {% endif %}
-{% if item[0].tmp_dir is defined %}
-TempDir: {{ item[0].base_directory }}/{{ item[0].name }}/{{ item[0].tmp_dir }}
+{% if item.tmp_dir is defined %}
+TempDir: {{ item.base_directory }}/{{ item.name }}/{{ item.tmp_dir }}
 {% else %}
-TempDir: {{ item[0].base_directory }}/{{ item[0].name }}/tmp
+TempDir: {{ item.base_directory }}/{{ item.name }}/tmp
 {% endif %}
-{% endif %}
-{% if item[0].incoming_dir is defined %}
-IncomingDir: {{ item[0].base_directory }}/{{ item[0].incoming_dir }}
+{% if distribution.incoming_dir is defined %}
+IncomingDir: {{ distribution.incoming_dir }}
 {% else %}
-IncomingDir: {{ item[0].base_directory }}/{{ item[0].name }}/incoming
+IncomingDir: {{ item.base_directory }}/incoming/{{ distribution.codename }}
 {% endif %}
-{% if item[0].allow is defined %}
-{% for rule_allow in item[0].allow %}
-Allow: {{ rule_allow }}
+Allow: {{ distribution.allow[0] }}
 {% endfor %}
-{% endif %}
