@@ -1,9 +1,20 @@
+dft (0.7.3-1) unstable; urgency=low
+
+  * Fix pthon3-dev dependancy
+
+ -- William Bonnet <canuckbear@wbonnet.net>  Fri, 12 Aug 2022 01:37:00 +0100
+
+dft (0.7.2-1) unstable; urgency=low
+
+  * Add default_bsp repository config variables
+
+ -- William Bonnet <canuckbear@wbonnet.net>  Sat, 06 Aug 2022 23:41:00 +0100
+
 dft (0.7.0-1) unstable; urgency=low
 
   * Move boot.scr and uEnv.txt under templates
 
  -- William Bonnet <wbonnet@theitmakers.com>  Tue, 16 May 2021 20:41:00 +0100
-
 dft (0.6.54-1) unstable; urgency=low
 
   * Fix missing / in path generation

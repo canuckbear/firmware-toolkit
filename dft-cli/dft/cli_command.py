@@ -614,11 +614,11 @@ class CliCommand(object):
             logging.debug("Using default Armbian signing key " + repo_pub_key)
           else:
             repo_pub_key = target[Key.PUBKEY.value]
-            logging.debug("Add Armbian signing key " + repo_pub_key)
+            logging.debug("Add default signing key " + repo_pub_key)
 
-        elif target[Key.ORIGIN.value] == Key.ARMWIZARD.value:
-          # Defines the file name and content for armbian APT sources
-          logging.debug("Using ArmWizard repo as source provider. Adding firmwaretoolkit.list")
+        elif target[Key.ORIGIN.value] == Key.FIRMWARE_TOOLKIT.value:
+          # Defines the file name and content for firmware-toolkit APT sources
+          logging.debug("Using firmwaretoolkit repo as source provider. Adding firmwaretoolkit.list")
           filepath += "firmwaretoolkit_repository.list"
 #          working_file.write("deb http://apt.firmaretoolkit.org/debian " + version)
 #          working_file.write(" main firmwaretoolkit\n")
@@ -627,11 +627,11 @@ class CliCommand(object):
           # Check if the public key of the repository is defined in the BSP file, otherwise
           # Set the default value of the key
           if Key.PUBKEY.value not in target:
-            repo_pub_key = Key.ARMWIZARD_SIGNING_PUBKEY.value
-            logging.debug("Using default Armwizard signing key " + repo_pub_key)
+            repo_pub_key = Key.FIRMWARE_TOOLKIT_SIGNING_PUBKEY.value
+            logging.debug("Using default Firmwaretoolkit signing key " + repo_pub_key)
           else:
             repo_pub_key = target[Key.PUBKEY.value]
-            logging.debug("Add Armbian signing key " + repo_pub_key)
+            logging.debug("Add default signing key " + repo_pub_key)
 
         elif target[Key.ORIGIN.value] == Key.CUSTOM.value:
           # Defines the file name and content for custom APT sources
@@ -654,8 +654,18 @@ class CliCommand(object):
 
           # Public key is not available, installation is likely to fail
           else:
-            logging.error("No public key is defined in board definition.")
-            logging.error("Continuing, but installation of kernel is likely to fail.")
+# Still nothing activated, then log it
+            logging.error("No public key nor known repository is defined in board definition.")
+            logging.error("Continuing with default repo if it's defined, but installation of kernel is likely to fail.")
+        else:
+          # Check if the default BSP repository is activated, if yes then generate the source
+          if self.get_use_default_bsp_repository():
+              self.project.logging.info("attempting to use use_default_bsp_repository")
+              filepath += "self.get_default_bsp_repository_filename()"
+              working_file.write(self.get_default_bsp_repository())
+          else: 
+              self.project.logging.error("The key default_bsp_repository is not defined. Installation is likely to fail")
+              self.project.logging.error("There is no repository defined for BSP; thus u-boot or kernel at least will be missing)")
 
       # Update new source file permissions. It has to be world readable
       os.chmod(working_file.name, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IROTH)

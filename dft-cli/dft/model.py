@@ -230,6 +230,13 @@ class Project(object):
     self.use_debootstrap_cachedir = False
     self.debootstrap_cachedir = None
 
+    # Use a default APT  repository if not defined to retrieve BSP when chrooted
+    # into image under generation
+    self.activate_default_bsp_repository = False
+    self.default_bsp_repository_filename = None
+    self.default_bsp_repository = None
+
+
 
   # ---------------------------------------------------------------------------
   #
@@ -336,6 +343,19 @@ class Project(object):
 
     # Return what has been generated
     return filename
+
+
+  # ---------------------------------------------------------------------------
+  #
+  # get_use_default_bsp_repository
+  #
+  # ---------------------------------------------------------------------------
+  def get_use_default_bsp_repository(self):
+    """ Simple getter to retrieve if the default bsp repository is activated.
+    """
+
+    # Return the boolean flag
+    return self.use_default_bsp_repository
 
   # ---------------------------------------------------------------------------
   #
@@ -861,3 +881,36 @@ class Project(object):
 
     # Retrieve the mode
     return bool(self.image[Key.CONTENT.value][Key.TYPE.value].lower() == Key.FIRMWARE.value)
+
+
+  # ---------------------------------------------------------------------------
+  #
+  # get_default_bsp_repository_filename
+  #
+  # ---------------------------------------------------------------------------
+  def get_default_bsp_repository_filename(self):
+    """ Simple getter to retrieve if the default bsp repository definition filename use as an apt source
+    """
+
+    if Key.DEFAULT_BSP_REPOSITORY_FILENAME.value in self.project[Key.PROJECT_DEFINITION.value]:
+      return self.project[Key.PROJECT_DEFINITION.value]\
+                         [Key.DEFAULT_BSP_REPOSITORY_FILENAME.value][0]
+    else:
+      return None
+
+
+  # ---------------------------------------------------------------------------
+  #
+  # get_default_bsp_repository
+  #
+  # ---------------------------------------------------------------------------
+  def get_default_bsp_repository(self):
+    """ Simple getter to retrieve if the default bsp repository is activated.
+    """
+
+    if Key.DEFAULT_BSP_REPOSITORY.value in self.project[Key.PROJECT_DEFINITION.value]:
+      return self.project[Key.PROJECT_DEFINITION.value]\
+                         [Key.DEFAULT_BSP_REPOSITORY.value][0]
+    else:
+      return None
+
