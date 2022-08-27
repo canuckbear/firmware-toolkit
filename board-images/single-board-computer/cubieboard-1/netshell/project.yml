@@ -124,7 +124,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: cubieboard-1 }
+    - { version: bullseye , board: cubieboard-1 }
 
 # ----------------------------------------------------------------------------
 #
