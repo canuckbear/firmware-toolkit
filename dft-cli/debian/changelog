@@ -1,20 +1,33 @@
-dft (0.7.3-1) unstable; urgency=low
+dft (0.7.6-1) unstable; urgency=low
 
-  * Fix pthon3-dev dependancy
+  * Fix default firmwaretoolkit repo sub path
 
- -- William Bonnet <canuckbear@wbonnet.net>  Fri, 12 Aug 2022 01:37:00 +0100
+ -- William Bonnet <william@wbonnet.net>  Mon, 29 Aug 2022 19:34:00 +0100
+
+dft (0.7.5-1) unstable; urgency=low
+
+  * Fix default firmwaretoolkit repo sub path
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 27 Aug 2022 18:42:00 +0100
+
+dft (0.7.4-1) unstable; urgency=low
+
+  * Fix armward instead of firmwaretoolkit repo name
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 20 Aug 2022 19:15:00 +0100
 
 dft (0.7.2-1) unstable; urgency=low
 
   * Add default_bsp repository config variables
 
- -- William Bonnet <canuckbear@wbonnet.net>  Sat, 06 Aug 2022 23:41:00 +0100
+ -- William Bonnet <william@wbonnet.net>  Sat, 06 Aug 2022 23:41:00 +0100
 
 dft (0.7.0-1) unstable; urgency=low
 
   * Move boot.scr and uEnv.txt under templates
 
  -- William Bonnet <wbonnet@theitmakers.com>  Tue, 16 May 2021 20:41:00 +0100
+
 dft (0.6.54-1) unstable; urgency=low
 
   * Fix missing / in path generation
@@ -50,7 +63,6 @@ dft (0.6.49-1) unstable; urgency=low
   * Fix permissions on generated fstab sources list and apt.conf.d files
 
  -- William Bonnet <wbonnet@theitmakers.com>  Mon, 19 May 2020 21:10:00 +0100
-
 
 dft (0.6.48-1) unstable; urgency=low
 

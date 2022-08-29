@@ -149,6 +149,16 @@
             mode="0644"
   with_items:
     - "{{ dft_srv_reprepro.repositories }}"
+
+# Instanciate the apache2 virtual host configuration file
+- name: Instantiate apache2 virtual host template
+  template: src=repositories-vhost.j2
+            dest=/etc/apache2/sites-available/reprepro-vhost.conf
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('root') }}
+            group={{ dft_srv_reprepro.webserver_definition.user | default('root') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
   
 # -------------------------------------------------------------------------------------------------
 # Add processincoming script cron table for user reprepro. Scheduled every hour by default
