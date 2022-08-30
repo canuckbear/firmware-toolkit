@@ -1,0 +1,5 @@
+u-boot-asus-tinkerboard (2022.07-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 30 Aug 2022 22:39:30 +0200
