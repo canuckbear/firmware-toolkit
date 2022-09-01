@@ -121,7 +121,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: asus-tinkerboard }
+    - { version: bullseye , board: asus-tinkerboard }
 
 # ----------------------------------------------------------------------------
 #
