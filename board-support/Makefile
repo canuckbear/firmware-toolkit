@@ -99,37 +99,7 @@ list-boards:
 	if [ "$(arch)" = "arm64" ] ; then \
 		arch=aarch64; \
 	fi ; \
-<<<<<<< HEAD
-	if [ "$(arch)" = "am64" ] ; then \
-=======
 	if [ "$(arch)" = "amd64" ] ; then \
-		arch=x86_64; \
-	fi ; \
-	if [ ! "$(category)" = "" ] ; then \
-		if [ ! "$(arch)" = "" ] ; then \
-			$(MAKE) $@ --no-print-directory --directory=$(category) arch=$$arch verbosity=$(verbosity); \
-		else \
-			$(MAKE) $@ --no-print-directory --directory=$(category) verbosity=$(verbosity); \
-		fi ; \
-	else \
-	for category in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
-		if [ ! "$(arch)" = "" ] ; then \
-			$(MAKE) $@ --no-print-directory --directory=$$category arch=$$arch verbosity=$(verbosity); \
-		else \
-			$(MAKE) $@ --no-print-directory --directory=$$category verbosity=$(verbosity); \
-		fi ; \
-	done ; \
-	fi | sort -u ;
-
-list-boards:
-	@if [ "$(arch)" = "armhf" ] ; then \
-		arch=armv7l; \
-	fi ; \
-	if [ "$(arch)" = "arm64" ] ; then \
-		arch=aarch64; \
-	fi ; \
-	if [ "$(arch)" = "amd64" ] ; then \
->>>>>>> 5c29f3ff3 (fix display bugs on list boards and liste architectures)
 		arch=x86_64; \
 	fi ; \
 	if [ ! "$(category)" = "" ] ; then \
