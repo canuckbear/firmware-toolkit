@@ -29,4 +29,4 @@ roles:
   - dft-os-apt
   - dft-os-power-management
   - dft-os-banner
-  - dft-os-sbit
+  - dft-sysop-sbit
