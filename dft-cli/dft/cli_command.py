@@ -620,9 +620,7 @@ class CliCommand(object):
           # Defines the file name and content for firmware-toolkit APT sources
           logging.debug("Using firmwaretoolkit repo as source provider. Adding firmwaretoolkit.list")
           filepath += "firmwaretoolkit_repository.list"
-#          working_file.write("deb http://apt.firmaretoolkit.org/debian " + version)
-#          working_file.write(" main firmwaretoolkit\n")
-          working_file.write("deb [trusted=yes] http://192.168.11.128/firmwaretoolkit " + version + " debian firmwaretoolkit/mainline\n") 
+          working_file.write("deb https://apt.firmwaretoolkit.org/firmwaretoolkit " + version + " debian stable lonterm mainline\n") 
 
           # Check if the public key of the repository is defined in the BSP file, otherwise
           # Set the default value of the key

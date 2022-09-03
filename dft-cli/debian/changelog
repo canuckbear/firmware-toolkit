@@ -1,3 +1,9 @@
+dft (0.7.7-1) unstable; urgency=low
+
+  * Batch of test finished restore firmwaretool.org url in apt source file generation
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 03 Sep 2022 17:40:00 +0100
+
 dft (0.7.6-1) unstable; urgency=low
 
   * Fix default firmwaretoolkit repo sub path
