@@ -1,3 +1,45 @@
+dft (0.7.14-1) unstable; urgency=low
+
+  * Fix unless dir creation under   /etc/apt/trusted.gpg.d
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 08 Sep 2022 19:35:00 +0100
+
+dft (0.7.13-1) unstable; urgency=low
+
+  * Update firmwaretookit repo public key in python code to retrieve it from keyserver
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 08 Sep 2022 18:47:00 +0100
+
+dft (0.7.12-1) unstable; urgency=low
+
+  * Add firmwaretookit repo public key to  /etc/apt/trusted.gpg.d
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 08 Sep 2022 01:54:00 +0100
+
+dft (0.7.11-1) unstable; urgency=low
+
+  * Fix on firmwaretookit repo source.list generation
+
+ -- William Bonnet <william@wbonnet.net>  Wed, 07 Sep 2022 22:15:00 +0100
+
+dft (0.7.10-1) unstable; urgency=low
+
+  * Fix on firmwaretookit repo source.list generation
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 06 Sep 2022 19:18:00 +0100
+
+dft (0.7.9-1) unstable; urgency=low
+
+  * Add dft-sysop-sbit role to package
+
+ -- William Bonnet <william@wbonnet.net>  Sun, 04 Sep 2022 17:20:00 +0100
+
+dft (0.7.8-1) unstable; urgency=low
+
+  * Fix a role include issue while addint sbit role
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 03 Sep 2022 19:42:00 +0100
+
 dft (0.7.7-1) unstable; urgency=low
 
   * Batch of test finished restore firmwaretool.org url in apt source file generation

@@ -81,5 +81,4 @@ publish_dft_to_repo:
 		else \
 	    	echo "        DFT_DEB_UPLOAD_PATH = $(DFT_DEB_UPLOAD_PATH)"  ; \
 		fi ; \
-	fi ; \
-	scp $$COPY_LIST ${DFT_DEB_UPLOAD_USER}@${DFT_DEB_UPLOAD_SERVER}:${DFT_DEB_UPLOAD_PATH} ; \
+	fi ; 

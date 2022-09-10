@@ -583,8 +583,9 @@ class CliCommand(object):
       # Target is not Debian, then we need to create a temporary file for source file generation
       # and complete the path according to the known providers
       with tempfile.NamedTemporaryFile(mode='w+', delete=False) as working_file:
+        logging.debug("Repository source provides (Key.ORIGIN.value) is defined to : " + target[Key.ORIGIN.value])
         if target[Key.ORIGIN.value] == Key.DEVUAN.value:
-          # Defines the file name and content for devuan APT sources
+          # Defines the file name and content for devuan APT sourc
           logging.debug("Using Devuan repo as source provider. Adding devuan.list")
           filepath += "devuan_repository.list"
           working_file.write("deb http://packages.devuan.org/devuan ")
@@ -620,7 +621,7 @@ class CliCommand(object):
           # Defines the file name and content for firmware-toolkit APT sources
           logging.debug("Using firmwaretoolkit repo as source provider. Adding firmwaretoolkit.list")
           filepath += "firmwaretoolkit_repository.list"
-          working_file.write("deb https://apt.firmwaretoolkit.org/firmwaretoolkit " + version + " debian stable lonterm mainline\n") 
+          working_file.write("deb https://apt.firmwaretoolkit.org/ " + version + " debian stable lonterm mainline\n") 
 
           # Check if the public key of the repository is defined in the BSP file, otherwise
           # Set the default value of the key
@@ -652,7 +653,7 @@ class CliCommand(object):
 
           # Public key is not available, installation is likely to fail
           else:
-# Still nothing activated, then log it
+            # Still nothing activated, then log it
             logging.error("No public key nor known repository is defined in board definition.")
             logging.error("Continuing with default repo if it's defined, but installation of kernel is likely to fail.")
         else:
