@@ -99,6 +99,7 @@ project_definition:
   # Definition of the repositories to use
   repositories:
     - repository-debian.yml
+    - repository-firmwaretoolkit.yml
 
   # Definition of the rootfs content
   rootfs:
