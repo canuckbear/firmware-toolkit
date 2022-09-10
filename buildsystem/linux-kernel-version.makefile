@@ -50,6 +50,13 @@ HOST_ARCH      ?= $(shell uname -m)
 # Do not recurse the following subdirs
 MAKE_FILTERS  := Makefile README.md debian patches
 
+#
+# Linux kernel configuration fragment to apply during make configure stage.
+#
+# Board hardware support hardware model and family specific fragment
+LINUX_KERNEL_BOARD_HW_SPECIFIIC_FRAGMENTS  ?= hardware/board-blueprints/$(BOARD_NAME).defconfig
+LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/board-blueprints/$(BOARD_FAMILY).defconfig
+
 # ------------------------------------------------------------------------------
 #
 # Mandatory defines that have to be defined at least in the main Makefile

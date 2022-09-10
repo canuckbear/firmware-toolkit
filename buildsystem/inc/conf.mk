@@ -302,6 +302,27 @@ UBOOT_SPARC64_INSTALL_ARGS ?=
 UBOOT_SPARC_INSTALL_ARGS   ?= 
 UBOOT_POWERPC_INSTALL_ARGS ?= 
 
+# Defines common build arguments and flags, independantly of boards architecture
+LINUX_KERNEL_COMMON_BUILD_ARGS   ?= modules dtbs
+LINUX_KERNEL_COMMON_BUILD_FLAGS  ?= 
+LINUX_KERNEL_COMMON_INSTALL_ARGS ?= zinstall
+UBOOT_COMMON_BUILD_FLAGS         ?= 
+UBOOT_COMMON_BUILD_ARGS          ?= 
+UBOOT_COMMON_INSTALL_ARGS        ?= 
+
+# Defines linux kernel configuration fragments to apply during configure stage depending on the board architectures
+LINUX_KERNEL_ARMV7L_FRAGMENTS  ?= 
+LINUX_KERNEL_X86_64_FRAGMENTS  ?= 
+LINUX_KERNEL_I386__FRAGMENTS   ?= 
+LINUX_KERNEL_AARCH64_FRAGMENTS ?= 
+LINUX_KERNEL_RISCV64_FRAGMENTS ?= 
+LINUX_KERNEL_PPC64_FRAGMENTS   ?= 
+LINUX_KERNEL_SPARC64_FRAGMENTS ?= 
+LINUX_KERNEL_SPARC_FRAGMENTS   ?= 
+LINUX_KERNEL_MIPS_FRAGMENTS    ?= 
+LINUX_KERNEL_POWERPC_FRAGMENTS ?= 
+
+# Defines common install arguments and flags, depending on the board architectures
 INSTALL_ARGS    ?= $(ARCH_COMMON_INSTALL_ARGS) $(ARCH_$(shell echo $(BOARD_ARCH) | tr a-z A-Z)_INSTALL_ARGS)
 INSTALL_ARGS    ?= $(ARCH_COMMON_INSTALL_ARGS) $(ARCH_$(shell echo $(BOARD_ARCH) | tr a-z A-Z)_INSTALL_ARGS)
 

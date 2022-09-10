@@ -1,4 +1,4 @@
-# vim: ft=make ts=4 sw=4 noet
+o# vim: ft=make ts=4 sw=4 noet
 #
 # The contents of this file are subject to the Apache 2.0 license you may not
 # use this file except in compliance with the License.
@@ -51,3 +51,13 @@ DEFAULT_DTB = sun7i-a20-cubietruck.dtb
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
 #
 GRUB_SUPPORT = 0
+
+
+#
+# Linux kernel configuration fragment to apply
+#
+
+# Defines the kernel defconfig fragments to apply during make configure stage.
+
+LINUX_KERNEL_BOARD_FRAGMENTS  ?= hardware/board-blueprints/cubieboard-3.defconfig
+

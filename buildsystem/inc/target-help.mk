@@ -99,7 +99,7 @@ help-bsp:
 	@echo "                            It will contain the Makefile and all the files needed to fetch and build the given"
 	@echo "                            version. It also instanciate Debian package template."
 	@echo "    add-board               board_name=xxx board_arch=xxx uboot_support=[1|0] uboot_support=[0|1] uboot_defconfig=name_defconfig default_dtb board.dtb" ;
-	@echo  XXX
+	@echo  "XXXXXXX_WIP CANUCK"
 	@echo
 	@echo
 	@echo
