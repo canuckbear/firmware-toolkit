@@ -42,7 +42,7 @@ UBOOT_SUPPORT   := $(subst ,,$(UBOOT_SUPPORT))
 UBOOT_DEFCONFIG := $(subst ,,$(UBOOT_DEFCONFIG))
 USE_CONFIG_FILE := $(subst ,,$(USE_CONFIG_FILE))
 
-# default behavior is to process only th latest version
+# default behavior is to process only the latest version
 only-latest      ?= 1
 only-native-arch ?= 1
 arch-warning     ?= 0
@@ -200,7 +200,7 @@ add-linux-kernel-version:
 	fi ;
 
 # Override standard targets
-# upload is overriden too otherwise make would walk through arch and latest tests and build because of dependancies
+# upload is overriden too, otherwise make would walk through arch and latest tests and build because of dependancies
 # build configure package install upload :
 build:
 	if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] ; then \
