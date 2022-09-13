@@ -78,7 +78,7 @@ reconfigure: patch pre-reconfigure $(RECONFIGURE_TARGETS) configure post-reconfi
 
 configure: extract pre-configure do-configure post-configure
 do-configure:
-	@skip_target=0 ; \
+	skip_target=0 ; \
 	if [ "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
 		skip_target=1 ; \
 		true ; \
@@ -108,7 +108,7 @@ do-configure:
 			else \
 				if [ "$(SW_NAME)" = "linux" ] ; then \
 					if [ ! -f "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" ] ; then \
-						echo "DEBUG : config/$(BOARD_NAME)-kernel-$(SW_VERSION).config does not exist using default instead" ; \
+						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config does not exist using default instead" ; \
 						cp "../config/$(BOARD_NAME)-kernel-default.config" "$(BUILD_DIR)/.config" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
@@ -116,15 +116,27 @@ do-configure:
 						cp "$(BUILD_DIR)/.config" "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
 						git add "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
 					else \
-						echo "DEBUG : config/$(BOARD_NAME)-kernel-$(SW_VERSION).config exist using it" ; \
+						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config exist using it" ; \
 						cp "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" "$(BUILD_DIR)/.config" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
 					fi ; \
 				fi ; \
+				cd "$(BUILD_DIR)" ; \
+  			  	cp -fr "$(FRAGMENT_HOME)"  "$(FRAGMENT_DIR)/" ; \
 			fi ; \
 		fi ; \
+		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
+		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config \
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)"\
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
+		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; \
+		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.after-merge" ; \
 	fi ;
+	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
 # Match initial ifdef DFT_TARGET_CONFIGURE
