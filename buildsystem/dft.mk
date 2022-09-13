@@ -201,7 +201,9 @@ show-config:
 	@echo "  DFT_HOME                          $(DFT_HOME)"
 	@echo "  DFT_FORGE                         $(DFT_FORGE)"
 	@echo "  WORK_DIR                          $(WORK_DIR)"
-	@echo "  FILE_DIR                          $(FILE_DIR)"
+	@echo "  WORK_DIR                          $(WORK_DIR)"
+	@echo "  FRAGMENT_HOME                     $(FRAGMENT_HOME)"
+	@echo "  FRAGMENT_DIR                      $(FRAGMENT_DIR)"
 	@echo "  PATCH_DIR                         $(PATCH_DIR)"
 	@echo "  DOWNLOAD_DIR                      $(DOWNLOAD_DIR)"
 	@echo "  COOKIE_DIR                        $(COOKIE_DIR)"
@@ -244,6 +246,16 @@ show-config:
 	@echo "  DEBUILD_ARGS                      $(DEBUILD_ARGS)"
 	@echo "  DEBUILD_ENV                       $(DEBUILD_ENV)"
 	@echo "  BL31                              $(BL31)"
+	@echo
+	@echo "Kernel hardware support defconfig fragments"
+	@echo "  BOARD_HW_COMMON_FRAGMENTS         hardware/board-blueprints/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)"
+	@echo "  BOARD_HW_FAMILY_FRAGMENTS         hardware/board-blueprints/$(BOARD_FAMILY).defconfig"
+	@echo "  BOARD_HW_SPECIFIC_FRAGMENTS       hardware/board-blueprints/$(BOARD_NAME).defconfig"
+	@echo
+	@echo "Kernel functional features defconfig fragments"
+	@echo "  BOARD_FUNC_COMMON_FRAGMENTS       $(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)"
+	@echo "  BOARD_FUNC_FAMILY_FRAGMENTS       $(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)"
+	@echo "  BOARD_FUNC_SPECIFIC_FRAGMENTS     $(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)"
 	@echo
 	@echo "Internal variables"
 	@echo "  MAKE_FILTERS                      $(MAKE_FILTERS)"

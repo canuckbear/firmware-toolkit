@@ -40,6 +40,7 @@ include $(buildsystem)/dft.mk
 # some calls will fail (when passing defconfig name etc.)
 BOARD_NAME      := $(subst ,,$(BOARD_NAME))
 BOARD_ARCH      := $(subst ,,$(BOARD_ARCH))
+BOARD_FAMILY    ?= unknow-board-family
 UBOOT_SUPPORT   := $(subst ,,$(UBOOT_SUPPORT))
 UBOOT_DEFCONFIG := $(subst ,,$(UBOOT_DEFCONFIG))
 USE_CONFIG_FILE := $(subst ,,$(USE_CONFIG_FILE))
@@ -53,9 +54,20 @@ MAKE_FILTERS  := Makefile README.md debian patches
 #
 # Linux kernel configuration fragment to apply during make configure stage.
 #
-# Board hardware support hardware model and family specific fragment
-LINUX_KERNEL_BOARD_HW_SPECIFIIC_FRAGMENTS  ?= hardware/board-blueprints/$(BOARD_NAME).defconfig
-LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/board-blueprints/$(BOARD_FAMILY).defconfig
+
+# Board hardware support fragments for any board, family and model specific
+LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS     ?= hardware/common/any-board.defconfig
+LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS   ?= hardware/common/empty.defconfig
+LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/common/empty.defconfig
+#LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS   ?= hardware/board-blueprints/$(BOARD_NAME).defconfig
+#INUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/board-blueprints/$(BOARD_FAMILY).defconfig
+
+# Board functioninal support fragments for any board, family and model specific
+LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS   ?= functional/common/any-board.defconfig
+LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS ?= functional/common/empty.defconfig
+LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS   ?= functional/common/empty.defconfig
+#LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS ?= functional/board-blueprints/$(BOARD_NAME).defconfig
+#LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS   ?= functional/board-blueprints/$(BOARD_FAMILY).defconfig
 
 # ------------------------------------------------------------------------------
 #
