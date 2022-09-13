@@ -1,4 +1,4 @@
-o# vim: ft=make ts=4 sw=4 noet
+# vim: ft=make ts=4 sw=4 noet
 #
 # The contents of this file are subject to the Apache 2.0 license you may not
 # use this file except in compliance with the License.
@@ -30,6 +30,11 @@ BOARD_NAME = cubieboard-3
 BOARD_ARCH = armv7l
 
 
+# Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
+BOARD_FAMILY = 
+
+#TODO BOARD Family bof..
+
 
 #
 # u-boot support and configuration
@@ -46,18 +51,19 @@ UBOOT_DEFCONFIG = Cubietruck_defconfig
 UBOOT_BINARY_FILE = u-boot-sunxi-with-spl.bin
 DEFAULT_DTB = sun7i-a20-cubietruck.dtb
 
-
 #
 # GRUB support and configuration (u-boot or grub should be activated to be able to boot the board).
 #
-GRUB_SUPPORT = 0
-
+GRUB_SUPPORT = 
 
 #
-# Linux kernel configuration fragment to apply
+# Linux kernel configuration fragment to apply (example of redefinition)
 #
 
-# Defines the kernel defconfig fragments to apply during make configure stage.
-
-LINUX_KERNEL_BOARD_FRAGMENTS  ?= hardware/board-blueprints/cubieboard-3.defconfig
-
+# LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS     ?= LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS
+# LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS
+# LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS   ?= LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS
+	
+# LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS   ?= LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS
+# LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS   ?= LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS
+# LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS ?= LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS
