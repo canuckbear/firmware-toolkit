@@ -160,6 +160,8 @@ PATCH_DIR           ?= $(WORK_DIR)/patches
 
 # Definition of the work dir subfolders (all are also volatile)
 BUILD_DIR           ?= $(WORK_DIR)/build
+FRAGMENT_HOME       ?= $(DFT_HOME)/board-support/linux-kernel-fragments
+FRAGMENT_DIR        ?= $(WORK_DIR)/build/kernel-fragments
 GIT_DIR             ?= $(WORK_DIR)/git
 COOKIE_DIR          ?= $(WORK_DIR)/cookies
 INSTALL_DIR         ?= $(WORK_DIR)/install
@@ -189,7 +191,7 @@ DOWNLOAD_TOOL       := wget
 WGET_OPTS           := -q
 
 # Default upload tool is scp. rsync is not yet supported
-# DOWNLOAD_TOOL should beset to git in custom makefiles if needed
+# DOWNLOAD_TOOL should be set to git in custom makefiles if needed
 UPLOAD_TOOL         := scp
 
 # Defines default values to undefined (to make simple retrieval with grep in logs...)
@@ -311,6 +313,7 @@ UBOOT_COMMON_BUILD_ARGS          ?=
 UBOOT_COMMON_INSTALL_ARGS        ?= 
 
 # Defines linux kernel configuration fragments to apply during configure stage depending on the board architectures
+LINUX_KERNEL_COMMON_FRAGMENTS  ?= 
 LINUX_KERNEL_ARMV7L_FRAGMENTS  ?= 
 LINUX_KERNEL_X86_64_FRAGMENTS  ?= 
 LINUX_KERNEL_I386__FRAGMENTS   ?= 
