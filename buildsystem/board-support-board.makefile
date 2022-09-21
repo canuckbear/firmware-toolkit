@@ -173,21 +173,31 @@ sanity-check-subdirs:
 
 # Create a new linux-kernel version entry
 add-linux-kernel-version:
-	if [ "$(new-version)" == "" ] ; then \
-		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
-		$(call dft_error ,2112-1501) ; \
+	@echo "BSB : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ; \
+	pwd ; \
+	if [ "$(arch)" = "" ] || [ "$(BOARD_ARCH)" = "$(arch)" ] ; then \
+		echo "BSB2 matched   : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)"  ; \
+		if [ "$(new-version)" == "" ] ; then \
+			echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+			$(call dft_error ,2112-1501) ; \
+		else \
+			$(MAKE) --warn-undefined-variables --directory=kernel add-linux-kernel-version new-version=$(new-version) ; \
+		fi ; \
 	else \
-		$(MAKE) --warn-undefined-variables --directory=kernel add-linux-kernel-version new-version=$(new-version) ; \
+			echo "BSB4 skipped     : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)"  ; \
 	fi ;
 
 # Create a new u-boot version entry
 add-u-boot-version:
-	if [ "$(new-version)" == "" ] ; then \
-		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
-		$(call dft_error ,2112-1502) ; \
-	else \
-		$(MAKE) --warn-undefined-variables --directory=u-boot add-u-boot-version new-version=$(new-version) ; \
-	fi ;
+	q@echo "BSB5 : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ; \
+	pwd ; \
+	if [ "$(arch)" = "" ] || [ "$(BOARD_ARCH)" = "$(arch)" ] ; then \
+		if [ "$(new-version)" == "" ] ; then \
+			echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+			$(call dft_error ,2112-1502) ; \
+		else \
+			$(MAKE) --warn-undefined-variables --directory=u-boot add-u-boot-version new-version=$(new-version) ; \
+		fi ;
 
 check-u-boot-defconfig:
 	$(MAKE) --directory=u-boot check-u-boot-defconfig verbosity=$(verbosity);

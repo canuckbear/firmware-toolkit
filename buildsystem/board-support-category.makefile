@@ -191,23 +191,45 @@ list-boards:
 
 # Create a new linux-kernel version entry
 add-linux-kernel-version:
+	@MY_ARCH=$(arch) ; \
+	if [ "$(arch)" = "armhf" ] ; then \
+		MY_ARCH="armv7l"; \
+	fi ; \
+	if [ "$(arch)" = "arm64" ] ; then \
+		MY_ARCH="aarch64"; \
+	fi ; \
+	if [ "$(arch)" = "amd64" ] ; then \
+		MY_ARCH="x86_64"; \
+	fi ; \
 	if [ "$(new-version)" == "" ] ; then \
 		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
-		$(call dft_error ,2112-1503f) ; \
+		$(call dft_error ,2112-1503) ; \
 	else \
 		for board in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
-			$(MAKE) --warn-undefined-variables --directory=$$board add-linux-kernel-version new-version=$(new-version) ; \
+			echo PLOOPPPPPP $(MAKE) --warn-undefined-variables --directory=$$board add-linux-kernel-version new-version=$(new-version) arch=$(arch) ; \
+			pwd ; \
+			$(MAKE) --warn-undefined-variables --directory=$$board add-linux-kernel-version new-version=$(new-version) arch=$(arch) ; \
 		done ; \
 	fi ;
 
 # Create a new u-boot version entry
 add-u-boot-version:
+	@MY_ARCH=$(arch) ; \
+	if [ "$(arch)" = "armhf" ] ; then \
+		MY_ARCH="armv7l"; \
+	fi ; \
+	if [ "$(arch)" = "arm64" ] ; then \
+		MY_ARCH="aarch64"; \
+	fi ; \
+	if [ "$(arch)" = "amd64" ] ; then \
+		MY_ARCH="x86_64"; \
+	fi ; \
 	if [ "$(new-version)" == "" ] ; then \
 		echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
 		$(call dft_error ,2112-1504) ; \
 	else \
 		for board in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
-			$(MAKE) --warn-undefined-variables --directory=$$board add-u-boot-version new-version=$(new-version) ; \
+			$(MAKE) --warn-undefined-variables --directory=$$board add-u-boot-version new-version=$(new-version) arch=$(arch) ; \
 		done ; \
 	fi ;
 
