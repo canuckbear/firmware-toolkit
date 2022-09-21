@@ -246,6 +246,7 @@ show-config:
 	@echo "  DEBUILD_ARGS                      $(DEBUILD_ARGS)"
 	@echo "  DEBUILD_ENV                       $(DEBUILD_ENV)"
 	@echo "  BL31                              $(BL31)"
+	@echo "  DFT_ENABLE_GIT_CHANGE             $(DFT_ENABLE_GIT_CHANGE)"
 	@echo
 	@echo "Kernel hardware support defconfig fragments"
 	@echo "  BOARD_HW_COMMON_FRAGMENTS         hardware/board-blueprints/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)"
@@ -264,7 +265,7 @@ show-kernel-upstream-version:
 	@wget -O-  https://www.kernel.org/ 2>&1| grep "<td><strong>" | tr '<' ' ' | tr '>' ' ' | awk '{ print $$3 }' | head -n 2 | tail -n 1
 
 show-u-boot-upstream-version:
-	@wget -O- https://github.com/u-boot/u-boot/releases 2>&1 | grep -v "rc" | grep "v20" | tr '<' ' ' | tr '>' ' ' | tr 'v' ' ' | head -n 2 | tail -n 1 | awk '{ print $$1 }'
+	@wget -O- https://github.com/u-boot/u-boot/tags 2>&1 | grep -v "rc" | grep "v20" | tr '<' ' ' | tr '>' ' ' | tr 'v' ' ' | head -n 2 | tail -n 1 | awk '{ print $$1 }'
 
 # ------------------------------------------------------------------------------
 # Match initial ifdef
