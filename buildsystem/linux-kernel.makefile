@@ -168,11 +168,11 @@ add-linux-kernel-version:
 	@if [ "$(new-version)" == "" ] ; then \
 		echo "WARNING : from linux-kernel.makefile argument new-version is missing or has no value. Doing nothing..." ; \
 		$(call dft_error ,2001-0801) ; \
-	fi ;
-	@if [ -d "./$(new-version)" ] ; then \
+	fi ; \
+	if [ -d "./$(new-version)" ] ; then \
 		echo ". Version $(new-version) already exist. Doing nothing..." ; \
 	else  \
-		echo ". Creating the directory for linux-kernel version $(new-version)" ; \
+		echo ". Creating the directory for $(BOARD_NAME) linux-kernel version $(new-version)" ; \
 		mkdir -p $(new-version) ; \
 		ln -s ../$(DFT_BUILDSYSTEM) $(new-version)/buildsystem ; \
 		ln -s ../$(DFT_BUILDSYSTEM)/linux-kernel-version.makefile $(new-version)/Makefile ; \
@@ -196,7 +196,11 @@ add-linux-kernel-version:
 		else \
 			find $(new-version)/debian -type f | xargs sed -i -e "s/__MAINTAINER_NAME__/${DEBFULLNAME}/g" ; \
 		fi ; \
-		echo "git add $(new-version)" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add "$(new-version)" ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE=1 is not set in shell environment. You may have to execute git add $(new-version)" ; \
+		fi ; \
 	fi ;
 
 # Override standard targets
