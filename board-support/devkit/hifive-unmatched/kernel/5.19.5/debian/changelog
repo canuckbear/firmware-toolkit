@@ -1,0 +1,17 @@
+linux-kernel-hifive-unmatched (5.19.5-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 22 Sep 2022 21:59:44 +0200
+
+linux-kernel-hifive-unmatched (5.19.5-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 22 Sep 2022 21:59:44 +0200
+
+linux-headers-hifive-unmatched (5.19.5-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 22 Sep 2022 21:59:44 +0200
