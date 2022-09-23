@@ -57,8 +57,12 @@ sanity-check: sanity-check-subdirs
 		echo "You can fix with the following commands : " ; \
 		echo "mkdir -p ${CURDIR}/kernel" ; \
 		echo "ln -s $(DFT_BUILDSYSTEM)/linux-kernel.makefile ${CURDIR}/kernel/Makefile" ; \
-		echo "git add ${CURDIR}/kernel" ; \
-	        $(call dft_error ,2001-0102) ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" == "1" ] ; then \
+			echo "enable : git add ${CURDIR}/kernel" ; \
+		else \
+			echo "dsabled : git add ${CURDIR}/kernel" ; \
+		fi ; \
+		$(call dft_error ,2001-0102) ; \
 	fi ;
 	@if [ ! -d "${CURDIR}/kernel/defconfig" ] ; then \
 		echo "defconfig directory is missing in ${CURDIR}/kernel. It is used to store kernel configuration files. It should at least contain a hidden empty file .gitkeep until first kernel version is added for $(BOARD_NAME)" ; \
@@ -171,33 +175,31 @@ sanity-check-subdirs:
 		fi ; \
         done
 
-# Create a new linux-kernel version entry
-add-linux-kernel-version:
-	@echo "BSB : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ; \
-	pwd ; \
-	if [ "$(arch)" = "" ] || [ "$(BOARD_ARCH)" = "$(arch)" ] ; then \
-		echo "BSB2 matched   : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)"  ; \
-		if [ "$(new-version)" == "" ] ; then \
-			echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
-			$(call dft_error ,2112-1501) ; \
-		else \
-			$(MAKE) --warn-undefined-variables --directory=kernel add-linux-kernel-version new-version=$(new-version) ; \
-		fi ; \
-	else \
-			echo "BSB4 skipped     : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)"  ; \
-	fi ;
-
 # Create a new u-boot version entry
 add-u-boot-version:
-	q@echo "BSB5 : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ; \
-	pwd ; \
+	@echo "BSB5 : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ; 
+	pwd ; 
 	if [ "$(arch)" = "" ] || [ "$(BOARD_ARCH)" = "$(arch)" ] ; then \
 		if [ "$(new-version)" == "" ] ; then \
 			echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
 			$(call dft_error ,2112-1502) ; \
 		else \
 			$(MAKE) --warn-undefined-variables --directory=u-boot add-u-boot-version new-version=$(new-version) ; \
-		fi ;
+		fi ; \
+	fi ;
+
+# Create a new kernel version entry
+add-linux-kernel-version:
+	@echo "BSB6 : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ;
+	pwd ; 
+	if [ "$(arch)" = "" ] || [ "$(BOARD_ARCH)" = "$(arch)" ] ; then \
+		if [ "$(new-version)" == "" ] ; then \
+			echo "WARNING : from board-support-board.makefile argument new-version is missing or has no value. Doing nothing..." ; \
+			$(call dft_error ,2112-1502) ; \
+		else \
+			$(MAKE) --warn-undefined-variables --directory=kernel add-linux-kernel-version new-version=$(new-version) ; \
+		fi ; \
+	fi ;
 
 check-u-boot-defconfig:
 	$(MAKE) --directory=u-boot check-u-boot-defconfig verbosity=$(verbosity);
