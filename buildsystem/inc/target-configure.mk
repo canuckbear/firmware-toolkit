@@ -52,7 +52,7 @@ configure: patch pre-configure do-configure post-configure
 	else \
 		pwd ; \
 		for v in configure_debug $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; \
-			do echo "target-configure iterateur extract_debug : $$v" ; \
+			do echo "target-configure iterateur configure_debug : $$v" ; \
 		done ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
@@ -74,7 +74,6 @@ reconfigure: patch pre-reconfigure $(RECONFIGURE_TARGETS) configure post-reconfi
 #
 # Execute the configure script
 #
-# TODO : DELTA DEFCONFIG
 
 configure: extract pre-configure do-configure post-configure
 do-configure:
@@ -127,18 +126,61 @@ do-configure:
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
-		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config \
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)"\
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
-		                                             "kernel-fragments/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; \
+		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.after-merge" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
+# ------------------------------------------------------------------------------
+#
+# When compiling a Linux  kernel Pre-configure target is in charge of gathering 
+# kernel configuration fragments and strip them from comments and emptry lines.
+# The generated .config-with-fragments file is ten used at configure step.
+# This pre- stage is meant to write simplier smaller parts of code, instead of
+# a big blurry chunk of code doing all the magic magic ^^
+#
+#
+# TODO : DELTA DEFCONFIG
+
+pre-configure:
+	echo "Creating collected config file" ; \
+	for f in "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
+			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
+			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
+			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" \
+			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
+			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
+			if  test -e "$$f" ; \
+			then \
+				echo "adding $$f to $(BUILD_DIR)/collected-kernel-fragments" ; \
+				cat "$$f" >> "$(BUILD_DIR)/collected-kernel-fragments.raw" ; \
+				cat "$$f" >> "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
+				sed --in-place -e's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
+			else \
+				echo NOT MERGING : "$$f" ; \
+			fi ; \
+	done ;
+	$(DISPLAY_COMPLETED_TARGET_NAME)
+	$(TARGET_DONE)
+
+# ------------------------------------------------------------------------------
+#
+# Kernel config file has been generated according to board mafiles, now clean
+# files which are no longer needed during compilation stagekernel configuration fragments and strip them from comments and emptry lines.
+# The generated .config-with-fragments file is ten used at configure step.
+# This pre- stage is meant to write simplier smaller parts of code, instead of
+# a big blurry chunk of code doing all the magic magic ^^
+#
+#
+# TODO : DELTA DEFCONFIG
+
+post-configure:
+	echo "Cleaning temporarifles generated when collecting kernel configuration fragments" ; \
+	mv "$(BUILD_DIR)/collected-kernel-fragments.cleaned" "$(BUILD_DIR)/collected-kernel-fragments.after_configure" ; \
+	
+	$(DISPLAY_COMPLETED_TARGET_NAME)
+	$(TARGET_DONE)
+
 # Match initial ifdef DFT_TARGET_CONFIGURE
 endif
-
