@@ -165,6 +165,8 @@ sanity-check:
 
 # Create a new linux-kernel version entry
 add-linux-kernel-version:
+	@echo "LK : arch=$(arch) BOARD_ARCH=$(BOARD_ARCH) BOARD_NAME=$(BOARD_NAME)" ;
+	pwd ; 
 	@if [ "$(new-version)" == "" ] ; then \
 		echo "WARNING : from linux-kernel.makefile argument new-version is missing or has no value. Doing nothing..." ; \
 		$(call dft_error ,2001-0801) ; \
@@ -196,10 +198,10 @@ add-linux-kernel-version:
 		else \
 			find $(new-version)/debian -type f | xargs sed -i -e "s/__MAINTAINER_NAME__/${DEBFULLNAME}/g" ; \
 		fi ; \
-		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
-			git add "$(new-version)" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then
+			echo "DFT_ENABLE_GIT_CHANGE = 1 then I run git add $(new-version)" ; \
 		else \
-			echo "DFT_ENABLE_GIT_CHANGE=1 is not set in shell environment. You may have to execute git add $(new-version)" ; \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add $(new-version)" ; \
 		fi ; \
 	fi ;
 
