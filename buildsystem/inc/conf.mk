@@ -161,7 +161,7 @@ PATCH_DIR           ?= $(WORK_DIR)/patches
 # Definition of the work dir subfolders (all are also volatile)
 BUILD_DIR           ?= $(WORK_DIR)/build
 FRAGMENT_HOME       ?= $(DFT_HOME)/board-support/linux-kernel-fragments
-FRAGMENT_DIR        ?= $(WORK_DIR)/build/kernel-fragments
+FRAGMENT_DIR        ?= $(WORK_DIR)/build/linux-kernel-fragments
 GIT_DIR             ?= $(WORK_DIR)/git
 COOKIE_DIR          ?= $(WORK_DIR)/cookies
 INSTALL_DIR         ?= $(WORK_DIR)/install
