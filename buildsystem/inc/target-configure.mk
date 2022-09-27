@@ -122,7 +122,7 @@ do-configure:
 					fi ; \
 				fi ; \
 				if [ "$(SW_NAME)" = "u-boot" ] ; then \
-					echo "    DEBBBUUUUGGGGG : dans le configure du uboot mmuff plopette" ; \
+					echo "    DEBBBUUUUGGGGG : dans le configure du uboot mmuffcollec plopette" ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
   			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(KERNEL_FRAGMENT_DIR)/" ; \
@@ -159,7 +159,28 @@ pre-configure:
 				echo "adding $$f to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 				cat "$$f" >> "$(BUILD_DIR)/collected-defconfig-fragments.raw" ; \
 				cat "$$f" >> "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-				sed --in-place -e 's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+				if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ]  then \
+					sed --in-place -e 's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+				fi ;
+			else \
+				echo NOT MERGING : "$$f" ; \
+			fi ; \
+		done ; \
+	fi ; 
+	if [ "$(SW_NAME)" = "u-boot" ] ; then \
+		for f in "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS)" \
+			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS)" \
+			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_SPECIFIC_FRAGMENTS)" \
+			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_COMMON_FRAGMENTS)" \
+			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS)" \
+			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
+			if  test -e "$$f" ; then \
+				echo "adding $$f to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+				cat "$$f" >> "$(BUILD_DIR)/collected-defconfig-fragments.raw" ; \
+				cat "$$f" >> "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+				if  test -e "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; then \
+					sed --in-place -e 's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+				fi ; \
 			else \
 				echo NOT MERGING : "$$f" ; \
 			fi ; \
@@ -167,7 +188,7 @@ pre-configure:
 	else \
 		echo "Not yet collecting config file fragment for uboot (coming soon)" ; \
 	fi ; 
-	$(DISPLAY_COMPLETED_TARGET_NAME)
+		$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
 # ------------------------------------------------------------------------------
@@ -182,8 +203,12 @@ pre-configure:
 # TODO : DELTA DEFCONFIG
 
 post-configure:
-	echo "Cleaning files generated when collecting kernel configuration fragments" ; \
-	mv "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/collected-defconfig-fragments.after_configure" ; \
+	echo "Cleaning files generated when collecting configuration fragments" ; \
+	ls -lah "$(BUILD_DIR)/" ]  ;
+#	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ]  then \
+#		mv "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/collected-defconfig-fragments.after_configure" ; \
+#	fi ;
+
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
