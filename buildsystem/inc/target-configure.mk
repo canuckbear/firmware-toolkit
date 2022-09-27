@@ -214,8 +214,11 @@ pre-configure:
 	fi ; \
 	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/collected-defconfig-fragments.cleaned ; \
 	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
-			echo sed ; \
+			sed --in-place -e '/^$$/d' -e '/^#.*$$/d' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
 	fi ;
+
+	$(DISPLAY_COMPLETED_TARGET_NAME)
+	$(TARGET_DONE)
 
 # ------------------------------------------------------------------------------
 #
