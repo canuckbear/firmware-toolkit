@@ -152,30 +152,32 @@ WORK_DIR            ?= $(DFT_FORGE)/$(BOARD_NAME)/$(SW_NAME)/$(SW_VERSION)
 # DFT_BUILDSYSTEM which is read-only for common use. DFT development like adding support
 # for a new board or new u-boot or kernel versions require git ande write access anyways,
 # thus git repo must be placed elsewhere than thedefault location which is /usr/share).
-FILE_DIR            ?= $(WORK_DIR)/files
+FILE_DIR            	?= $(WORK_DIR)/files
 
 # PATCH_DIR contain all the patches to be applied on upstream sources during
 # make patch target execution.
-PATCH_DIR           ?= $(WORK_DIR)/patches
+PATCH_DIR            	?= $(WORK_DIR)/patches
 
 # Definition of the work dir subfolders (all are also volatile)
-BUILD_DIR           ?= $(WORK_DIR)/build
-FRAGMENT_HOME       ?= $(DFT_HOME)/board-support/linux-kernel-fragments
-FRAGMENT_DIR        ?= $(WORK_DIR)/build/linux-kernel-fragments
-GIT_DIR             ?= $(WORK_DIR)/git
-COOKIE_DIR          ?= $(WORK_DIR)/cookies
-INSTALL_DIR         ?= $(WORK_DIR)/install
-PACKAGE_DIR         ?= $(WORK_DIR)/package
-CHECKSUM_FILE       ?= $(WORK_DIR)/checksums
-LOG_DIR             ?= $(WORK_DIR)/logs
-DOWNLOAD_DIR        ?= $(WORK_DIR)/download
+BUILD_DIR            	?= $(WORK_DIR)/build
+KERNEL_FRAGMENT_HOME 	?= $(DFT_HOME)/board-support/linux-kernel-fragments
+UBOOT_FRAGMENT_HOME 	?= $(DFT_HOME)/board-support/uboot-fragments
+KERNEL_FRAGMENT_DIR     ?= $(WORK_DIR)/build/linux-kernel-fragments
+UBOOT_FRAGMENT_DIR      ?= $(WORK_DIR)/build/uboot-fragments
+GIT_DIR              	?= $(WORK_DIR)/git
+COOKIE_DIR           	?= $(WORK_DIR)/cookies
+INSTALL_DIR          	?= $(WORK_DIR)/install
+PACKAGE_DIR          	?= $(WORK_DIR)/package
+CHECKSUM_FILE        	?= $(WORK_DIR)/checksums
+LOG_DIR              	?= $(WORK_DIR)/logs
+DOWNLOAD_DIR         	?= $(WORK_DIR)/download
 # if not overriden the temporary files will go to /tmp please check your env
 # in case you store /tmp into ramdisk it can use a lot a RAM...
-TEMP_DIR            ?= /tmp
+TEMP_DIR             	?= /tmp
 
 # Defines the default targets used for building
-CONFIGURE_SCRIPTS   ?= $(WORK_DIR)/configure
-BUILD_SCRIPTS       ?= $(WORK_DIR)/Makefile
+CONFIGURE_SCRIPTS   	?= $(WORK_DIR)/configure
+BUILD_SCRIPTS        	?= $(WORK_DIR)/Makefile
 
 # ------------------------------------------------------------------------------
 #
@@ -185,93 +187,93 @@ BUILD_SCRIPTS       ?= $(WORK_DIR)/Makefile
 
 # Default download tool is wget since it is used to retrieve most of source. git is available
 # DOWNLOAD_TOOL should beset to git in custom makefiles if needed
-DOWNLOAD_TOOL       := wget
+DOWNLOAD_TOOL       	:= wget
 
 # Default is to turn wget to quiet mode to hide progress bar in shell output
-WGET_OPTS           := -q
+WGET_OPTS           	:= -q
 
 # Default upload tool is scp. rsync is not yet supported
 # DOWNLOAD_TOOL should be set to git in custom makefiles if needed
-UPLOAD_TOOL         := scp
+UPLOAD_TOOL         	:= scp
 
 # Defines default values to undefined (to make simple retrieval with grep in logs...)
-BOARD_NAME          ?= undefined-board-name
-BOARD_ARCH          ?= undefined-board-arch
-DEFAULT_DTB         ?= undefined-default.dtb
+BOARD_NAME          	?= undefined-board-name
+BOARD_ARCH          	?= undefined-board-arch
+DEFAULT_DTB         	?= undefined-default.dtb
 
 # If the KERNEL_DEFCONFIG variale is set, the given file will be copied to
 # .config in the source directory. Default value is set to board name.
-KERNEL_DEFCONFIG     ?= $(BOARD_NAME).config
+KERNEL_DEFCONFIG     	?= $(BOARD_NAME).config
 
 # XXXX TODO If this variable is set, and USE_CONFIG_FILE is undefined, a config file will
 # be generated using the given target. Default is to define nothing and let the
 # user set one of the two choice, or run make by himself.
-UBOOT_DEFCONFIG       ?= undefined_config_in_board_mk
+UBOOT_DEFCONFIG       	?= undefined_config_in_board_mk
 
 # The config file can be modified once set in the build dir (either using a build
 # defconfig or by copying our own config file) by applying modifications defined
 # in the overrides files. This is useful to store only differences between
 # configuration file privided by kernel, and the config file we want to use
-CONFIG_OVERRIDES    ?=
+CONFIG_OVERRIDES    	?=
 
 # Defines build flags to use all available cpus when running make
-BUILD_PROCESS_COUNT ?= -j$(shell grep -c ^processor /proc/cpuinfo)
+BUILD_PROCESS_COUNT 	?= -j$(shell grep -c ^processor /proc/cpuinfo)
 
 # Defines common build arguments and flags, independantly of boards architecture
-LINUX_KERNEL_COMMON_BUILD_ARGS   ?= modules dtbs
-LINUX_KERNEL_COMMON_BUILD_FLAGS  ?= 
-LINUX_KERNEL_COMMON_INSTALL_ARGS ?= zinstall
-UBOOT_COMMON_BUILD_FLAGS         ?= 
-UBOOT_COMMON_BUILD_ARGS          ?= 
-UBOOT_COMMON_INSTALL_ARGS        ?= 
+LINUX_KERNEL_COMMON_BUILD_ARGS   	?= modules dtbs
+LINUX_KERNEL_COMMON_BUILD_FLAGS  	?= 
+LINUX_KERNEL_COMMON_INSTALL_ARGS 	?= zinstall
+UBOOT_COMMON_BUILD_FLAGS         	?= 
+UBOOT_COMMON_BUILD_ARGS          	?= 
+UBOOT_COMMON_INSTALL_ARGS        	?= 
 
 # Defines linux kernel architecture dependant build arguments and flags, independantly of boards architecture
-LINUX_KERNEL_ARMV7L_BUILD_ARGS  ?= zImage
-LINUX_KERNEL_X86_64_BUILD_ARGS  ?= 
-LINUX_KERNEL_I386_BUILD_ARGS    ?= 
-LINUX_KERNEL_AARCH64_BUILD_ARGS ?= Image.gz
-LINUX_KERNEL_RISCV64_BUILD_ARGS ?= Image.gz
-LINUX_KERNEL_PPC64_BUILD_ARGS   ?= Image.gz
-LINUX_KERNEL_SPARC64_BUILD_ARGS ?= Image.gz
-LINUX_KERNEL_SPARC_BUILD_ARGS   ?= zImage
-LINUX_KERNEL_MIPS_BUILD_ARGS    ?= zImage
-LINUX_KERNEL_POWERPC_BUILD_ARGS ?= zImage
+LINUX_KERNEL_ARMV7L_BUILD_ARGS  	?= zImage
+LINUX_KERNEL_X86_64_BUILD_ARGS  	?= 
+LINUX_KERNEL_I386_BUILD_ARGS    	?= 
+LINUX_KERNEL_AARCH64_BUILD_ARGS 	?= Image.gz
+LINUX_KERNEL_RISCV64_BUILD_ARGS 	?= Image.gz
+LINUX_KERNEL_PPC64_BUILD_ARGS   	?= Image.gz
+LINUX_KERNEL_SPARC64_BUILD_ARGS 	?= Image.gz
+LINUX_KERNEL_SPARC_BUILD_ARGS   	?= zImage
+LINUX_KERNEL_MIPS_BUILD_ARGS    	?= zImage
+LINUX_KERNEL_POWERPC_BUILD_ARGS 	?= zImage
 
 # Defines linux kernel default build targets depending on the board architectures
-LINUX_KERNEL_ARMV7L_BUILD_FLAGS   ?=
-LINUX_KERNEL_X86_64_BUILD_ARGS    ?= 
-LINUX_KERNEL_I386_BUILD_ARGS      ?= 
-LINUX_KERNEL_AARCH64_BUILD_FLAGS  ?=
-LINUX_KERNEL_RISCV64_BUILD_FLAGS  ?=
-LINUX_KERNEL_PPC64_BUILD_FLAGS    ?=
-LINUX_KERNEL_MIPS_BUILD_FLAGS     ?=
-LINUX_KERNEL_SPARC64_BUILD_FLAGS  ?=
-LINUX_KERNEL_SPARC_BUILD_FLAGS    ?=
-LINUX_KERNEL_POWERPC_BUILD_FLAGS  ?=
+LINUX_KERNEL_ARMV7L_BUILD_FLAGS   	?=
+LINUX_KERNEL_X86_64_BUILD_ARGS    	?= 
+LINUX_KERNEL_I386_BUILD_ARGS      	?= 
+LINUX_KERNEL_AARCH64_BUILD_FLAGS  	?=
+LINUX_KERNEL_RISCV64_BUILD_FLAGS  	?=
+LINUX_KERNEL_PPC64_BUILD_FLAGS    	?=
+LINUX_KERNEL_MIPS_BUILD_FLAGS     	?=
+LINUX_KERNEL_SPARC64_BUILD_FLAGS  	?=
+LINUX_KERNEL_SPARC_BUILD_FLAGS    	?=
+LINUX_KERNEL_POWERPC_BUILD_FLAGS  	?=
 
 # Defines u-boot default build targets depending on the board architectures
-UBOOT_ARMV7L_BUILD_FLAGS  ?=
-UBOOT_X86_64_BUILD_ARGS   ?= 
-UBOOT_I386_BUILD_ARGS     ?= 
-UBOOT_AARCH64_BUILD_FLAGS ?=
-UBOOT_RISCV64_BUILD_FLAGS ?=
-UBOOT_PPC64_BUILD_FLAGS   ?=
-UBOOT_MIPS_BUILD_FLAGS    ?=
-UBOOT_SPARC64_BUILD_FLAGS ?=
-UBOOT_SPARC_BUILD_FLAGS   ?=
-UBOOT_POWERPC_BUILD_FLAGS ?=
+UBOOT_ARMV7L_BUILD_FLAGS  			?=
+UBOOT_X86_64_BUILD_ARGS   			?= 
+UBOOT_I386_BUILD_ARGS     			?= 
+UBOOT_AARCH64_BUILD_FLAGS 			?=
+UBOOT_RISCV64_BUILD_FLAGS 			?=
+UBOOT_PPC64_BUILD_FLAGS   			?=
+UBOOT_MIPS_BUILD_FLAGS    			?=
+UBOOT_SPARC64_BUILD_FLAGS 			?=
+UBOOT_SPARC_BUILD_FLAGS   			?=
+UBOOT_POWERPC_BUILD_FLAGS 			?=
 
 # Defines u-boot default build targets depending on the board architectures
-UBOOT_ARMV7L_BUILD_ARGS   ?= 
-UBOOT_X86_64_BUILD_ARGS   ?= 
-UBOOT_I386_BUILD_ARGS     ?= 
-UBOOT_AARCH64_BUILD_ARGS  ?= 
-UBOOT_RISCV64_BUILD_ARGS  ?= 
-UBOOT_PPC64_BUILD_ARGS    ?= 
-UBOOT_SPARC64_BUILD_ARGS  ?= 
-UBOOT_SPARC_BUILD_ARGS    ?= 
-UBOOT_MIPS_BUILD_ARGS     ?= 
-UBOOT_POWERPC_BUILD_ARGS  ?= 
+UBOOT_ARMV7L_BUILD_ARGS   			?= 
+UBOOT_X86_64_BUILD_ARGS   			?= 
+UBOOT_I386_BUILD_ARGS     			?= 
+UBOOT_AARCH64_BUILD_ARGS  			?= 
+UBOOT_RISCV64_BUILD_ARGS  			?= 
+UBOOT_PPC64_BUILD_ARGS    			?= 
+UBOOT_SPARC64_BUILD_ARGS  			?= 
+UBOOT_SPARC_BUILD_ARGS    			?= 
+UBOOT_MIPS_BUILD_ARGS     			?= 
+UBOOT_POWERPC_BUILD_ARGS  			?= 
 
 # Defines standard make targets
 LINUX_KERNEL_BUILD_FLAGS  ?= $(LINUX_KERNEL_COMMON_BUILD_FLAGS) $(LINUX_KERNEL_$(shell echo $(BOARD_ARCH) | tr a-z A-Z)_BUILD_FLAGS)
@@ -281,49 +283,49 @@ UBOOT_BUILD_ARGS          ?= $(UBOOT_COMMON_BUILD_ARGS) $(UBOOT_$(shell echo $(B
 UBOOT_INSTALL_ARGS        ?= $(UBOOT_COMMON_INSTALL_ARGS) $(UBOOT_$(shell echo $(BOARD_ARCH) | tr a-z A-Z)_INSTALL_ARGS)
 
 # Defines default linux kernel installation arguments, depending on the board architectures
-LINUX_KERNEL_ARMV7L_INSTALL_ARGS  ?= 
-LINUX_KERNEL_X86_64_INSTALL_ARGS  ?= 
-LINUX_KERNEL_I386_INSTALL_ARGS    ?= 
-LINUX_KERNEL_AARCH64_INSTALL_ARGS ?= 
-LINUX_KERNEL_RISCV64_INSTALL_ARGS ?= 
-LINUX_KERNEL_PPC64_INSTALL_ARGS   ?= 
-LINUX_KERNEL_MIPS_INSTALL_ARGS    ?= 
-LINUX_KERNEL_SPARC64_INSTALL_ARGS ?= 
-LINUX_KERNEL_SPARC_INSTALL_ARGS   ?= 
-LINUX_KERNEL_POWERPC_INSTALL_ARGS ?= 
+LINUX_KERNEL_ARMV7L_INSTALL_ARGS  	?= 
+LINUX_KERNEL_X86_64_INSTALL_ARGS  	?= 
+LINUX_KERNEL_I386_INSTALL_ARGS    	?= 
+LINUX_KERNEL_AARCH64_INSTALL_ARGS 	?= 
+LINUX_KERNEL_RISCV64_INSTALL_ARGS 	?= 
+LINUX_KERNEL_PPC64_INSTALL_ARGS   	?= 
+LINUX_KERNEL_MIPS_INSTALL_ARGS    	?= 
+LINUX_KERNEL_SPARC64_INSTALL_ARGS 	?= 
+LINUX_KERNEL_SPARC_INSTALL_ARGS   	?= 
+LINUX_KERNEL_POWERPC_INSTALL_ARGS 	?= 
 
 # Defines default u-boot installation arguments, depending on the board architectures
-UBOOT_ARMV7L_INSTALL_ARGS  ?= 
-UBOOT_X86_64_INSTALL_ARGS  ?= 
-UBOOT_I386_INSTALL_ARGS    ?= 
-UBOOT_AARCH64_INSTALL_ARGS ?= 
-UBOOT_RISCV64_INSTALL_ARGS ?= 
-UBOOT_PPC64_INSTALL_ARGS   ?= 
-UBOOT_MIPS_INSTALL_ARGS    ?= 
-UBOOT_SPARC64_INSTALL_ARGS ?= 
-UBOOT_SPARC_INSTALL_ARGS   ?= 
-UBOOT_POWERPC_INSTALL_ARGS ?= 
+UBOOT_ARMV7L_INSTALL_ARGS  			?= 
+UBOOT_X86_64_INSTALL_ARGS  			?= 
+UBOOT_I386_INSTALL_ARGS    			?= 
+UBOOT_AARCH64_INSTALL_ARGS 			?= 
+UBOOT_RISCV64_INSTALL_ARGS 			?= 
+UBOOT_PPC64_INSTALL_ARGS   			?= 
+UBOOT_MIPS_INSTALL_ARGS    			?= 
+UBOOT_SPARC64_INSTALL_ARGS 			?= 
+UBOOT_SPARC_INSTALL_ARGS   			?= 
+UBOOT_POWERPC_INSTALL_ARGS 			?= 
 
 # Defines common build arguments and flags, independantly of boards architecture
-LINUX_KERNEL_COMMON_BUILD_ARGS   ?= modules dtbs
-LINUX_KERNEL_COMMON_BUILD_FLAGS  ?= 
-LINUX_KERNEL_COMMON_INSTALL_ARGS ?= zinstall
-UBOOT_COMMON_BUILD_FLAGS         ?= 
-UBOOT_COMMON_BUILD_ARGS          ?= 
-UBOOT_COMMON_INSTALL_ARGS        ?= 
+LINUX_KERNEL_COMMON_BUILD_ARGS   	?= modules dtbs
+LINUX_KERNEL_COMMON_BUILD_FLAGS  	?= 
+LINUX_KERNEL_COMMON_INSTALL_ARGS 	?= zinstall
+UBOOT_COMMON_BUILD_FLAGS         	?= 
+UBOOT_COMMON_BUILD_ARGS          	?= 
+UBOOT_COMMON_INSTALL_ARGS        	?= 
 
 # Defines linux kernel configuration fragments to apply during configure stage depending on the board architectures
-LINUX_KERNEL_COMMON_FRAGMENTS  ?= 
-LINUX_KERNEL_ARMV7L_FRAGMENTS  ?= 
-LINUX_KERNEL_X86_64_FRAGMENTS  ?= 
-LINUX_KERNEL_I386__FRAGMENTS   ?= 
-LINUX_KERNEL_AARCH64_FRAGMENTS ?= 
-LINUX_KERNEL_RISCV64_FRAGMENTS ?= 
-LINUX_KERNEL_PPC64_FRAGMENTS   ?= 
-LINUX_KERNEL_SPARC64_FRAGMENTS ?= 
-LINUX_KERNEL_SPARC_FRAGMENTS   ?= 
-LINUX_KERNEL_MIPS_FRAGMENTS    ?= 
-LINUX_KERNEL_POWERPC_FRAGMENTS ?= 
+LINUX_KERNEL_COMMON_FRAGMENTS  		?= 
+LINUX_KERNEL_ARMV7L_FRAGMENTS  		?= 
+LINUX_KERNEL_X86_64_FRAGMENTS  		?= 
+LINUX_KERNEL_I386__FRAGMENTS   		?= 
+LINUX_KERNEL_AARCH64_FRAGMENTS 		?= 
+LINUX_KERNEL_RISCV64_FRAGMENTS 		?= 
+LINUX_KERNEL_PPC64_FRAGMENTS   		?= 
+LINUX_KERNEL_SPARC64_FRAGMENTS 		?= 
+LINUX_KERNEL_SPARC_FRAGMENTS   		?= 
+LINUX_KERNEL_MIPS_FRAGMENTS    		?= 
+LINUX_KERNEL_POWERPC_FRAGMENTS 		?= 
 
 # Defines common install arguments and flags, depending on the board architectures
 INSTALL_ARGS    ?= $(ARCH_COMMON_INSTALL_ARGS) $(ARCH_$(shell echo $(BOARD_ARCH) | tr a-z A-Z)_INSTALL_ARGS)
