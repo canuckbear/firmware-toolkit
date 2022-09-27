@@ -62,10 +62,6 @@ extract: fetch pre-extract $(EXTRACT_TARGETS) post-extract
 		if [ ! "$(SW_LATEST)" = "" ] ; then \
 			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) && cd .. ;  \
 		fi ; \
-	else \
-		for v in extract_debug $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; \
-			do echo "target-extract iterateur extract_debug : $$v" ; \
-		done ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
