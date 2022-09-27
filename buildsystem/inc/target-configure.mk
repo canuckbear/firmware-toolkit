@@ -233,11 +233,9 @@ pre-configure:
 
 post-configure:
 	echo "Cleaning files generated when collecting configuration fragments" ; \
-	ls -lah "$(BUILD_DIR)/"  ;
-#	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ]  then \
-#		mv "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/collected-defconfig-fragments.after_configure" ; \
-#	fi ;
-
+	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
+		cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/.config" ; \
+	fi ;
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
