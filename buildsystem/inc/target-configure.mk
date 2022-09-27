@@ -122,7 +122,7 @@ do-configure:
 					fi ; \
 				fi ; \
 				if [ "$(SW_NAME)" = "u-boot" ] ; then \
-					echo "    DEBBBUUUUGGGGG : dans le configure du uboot mmuffcollec plopette" ; \
+					echo "    DEBBBUUUUGGGGG : dans le configure du uboot" ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
   			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(KERNEL_FRAGMENT_DIR)/" ; \
