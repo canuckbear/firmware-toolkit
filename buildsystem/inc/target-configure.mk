@@ -126,7 +126,7 @@ do-configure:
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
-		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
+		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config "$(BUILD_DIR)/collected-config-fragments.cleaned" ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.after-merge" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
@@ -144,23 +144,27 @@ do-configure:
 # TODO : DELTA DEFCONFIG
 
 pre-configure:
-	echo "Creating collected config file" ; \
-	for f in "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
-			if  test -e "$$f" ; \
-			then \
-				echo "adding $$f to $(BUILD_DIR)/collected-kernel-fragments" ; \
-				cat "$$f" >> "$(BUILD_DIR)/collected-kernel-fragments.raw" ; \
-				cat "$$f" >> "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
-				sed --in-place -e's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-kernel-fragments.cleaned" ; \
-			else \
-				echo NOT MERGING : "$$f" ; \
-			fi ; \
-	done ;
+	echo "Creating kernel collected config file" ; \
+	if [ "$(SW_NAME)" = "linux" ] ; then \
+		for f in "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
+				 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
+				 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
+				 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" \
+				 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
+				 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
+				if  test -e "$$f" ; \
+				then \
+					echo "adding $$f to $(BUILD_DIR)/collected-config-fragments" ; \
+					cat "$$f" >> "$(BUILD_DIR)/collected-config-fragments.raw" ; \
+					cat "$$f" >> "$(BUILD_DIR)/collected-config-fragments.cleaned" ; \
+					sed --in-place -e 's/#.*$//' -e 'd/^$/' "$(BUILD_DIR)/collected-config-fragments.cleaned" ; \
+				else \
+					echo NOT MERGING : "$$f" ; \
+				fi ; \
+		else \
+			echo "Not yet collecting config file fragment for uboot (coming soon)" ; \
+		done ;
+	fi ; \
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
@@ -177,7 +181,7 @@ pre-configure:
 
 post-configure:
 	echo "Cleaning temporarifles generated when collecting kernel configuration fragments" ; \
-	mv "$(BUILD_DIR)/collected-kernel-fragments.cleaned" "$(BUILD_DIR)/collected-kernel-fragments.after_configure" ; \
+	mv "$(BUILD_DIR)/collected-config-fragments.cleaned" "$(BUILD_DIR)/collected-config-fragments.after_configure" ; \
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
