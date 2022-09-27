@@ -121,8 +121,11 @@ do-configure:
 						make olddefconfig ; \
 					fi ; \
 				fi ; \
+				if [ "$(SW_NAME)" = "u-boot" ] ; then \
+					echo "    DEBBBUUUUGGGGG : dans le configure du uboot mmuff plopette" ; \
+				fi ; \
 				cd "$(BUILD_DIR)" ; \
-  			  	cp -fr "$(FRAGMENT_HOME)"  "$(FRAGMENT_DIR)/" ; \
+  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(FRAGMENT_DIR)/" ; \
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
@@ -144,14 +147,14 @@ do-configure:
 # TODO : DELTA DEFCONFIG
 
 pre-configure:
-	echo "Creating kernel collected config file" ; \
+	echo "Creating collected defconfig file" ; \
 	if [ "$(SW_NAME)" = "linux" ] ; then \
-		for f in "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
-			 "$(FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
+		for f in "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" \
+			 "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" \
+			 "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" \
+			 "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" \
+			 "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" \
+			 "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ; do \
 			if  test -e "$$f" ; then \
 				echo "adding $$f to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 				cat "$$f" >> "$(BUILD_DIR)/collected-defconfig-fragments.raw" ; \
@@ -173,13 +176,13 @@ pre-configure:
 # files which are no longer needed during compilation stagekernel configuration fragments and strip them from comments and emptry lines.
 # The generated .config-with-fragments file is ten used at configure step.
 # This pre- stage is meant to write simplier smaller parts of code, instead of
-# a big blurry chunk of code doing all the magic magic ^^
+# a big blurry chunk of code doing all the magic ^^
 #
 #
 # TODO : DELTA DEFCONFIG
 
 post-configure:
-	echo "Cleaning temporarifles generated when collecting kernel configuration fragments" ; \
+	echo "Cleaning files generated when collecting kernel configuration fragments" ; \
 	mv "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/collected-defconfig-fragments.after_configure" ; \
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
