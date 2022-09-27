@@ -125,7 +125,7 @@ do-configure:
 					echo "    DEBBBUUUUGGGGG : dans le configure du uboot mmuff plopette" ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
-  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(FRAGMENT_DIR)/" ; \
+  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(KERNEL_FRAGMENT_DIR)/" ; \
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
