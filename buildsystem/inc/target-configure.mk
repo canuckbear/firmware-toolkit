@@ -188,7 +188,7 @@ pre-configure:
 	else \
 		echo "Not yet collecting config file fragment for uboot (coming soon)" ; \
 	fi ; 
-		$(DISPLAY_COMPLETED_TARGET_NAME)
+	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
 # ------------------------------------------------------------------------------
