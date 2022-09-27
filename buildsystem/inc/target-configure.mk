@@ -166,7 +166,7 @@ pre-configure:
 				echo NOT MERGING : "$$f" ; \
 			fi ; \
 		done ; \
-	fi ; 
+	fi ; \
 	if [ "$(SW_NAME)" = "u-boot" ] ; then \
 		for f in "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS)" \
 			 "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS)" \
