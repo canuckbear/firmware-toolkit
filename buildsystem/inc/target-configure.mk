@@ -109,28 +109,35 @@ do-configure:
 					if [ ! -f "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" ] ; then \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config does not exist using default instead" ; \
 						cp "../config/$(BOARD_NAME)-kernel-default.config" "$(BUILD_DIR)/.config" ; \
+						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step1" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
+						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step2" ; \
 						cd - ; \
 						cp "$(BUILD_DIR)/.config" "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
-						git add "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
+						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step3" ; \
+						if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+							git add "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
+						fi ; \
 					else \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config exist using it" ; \
 						cp "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" "$(BUILD_DIR)/.config" ; \
+						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step4" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
+						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step5" ; \
 					fi ; \
 				fi ; \
 				if [ "$(SW_NAME)" = "u-boot" ] ; then \
 					echo "    DEBBBUUUUGGGGG : dans le configure du uboot" ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
-  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)"  "$(KERNEL_FRAGMENT_DIR)/" ; \
+  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)" "$(KERNEL_FRAGMENT_DIR)/" ; \
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
-		"./scripts/kconfig/merge_config.sh" -O "$(BUILD_DIR)" .config "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.after-merge" ; \
+		KCONFIG_CONFIG="$(BUILD_DIR)" "./scripts/kconfig/merge_config.sh" -m "$(BUILD_DIR)/config.before-merge" "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+		cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step6-after-first-merge" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
@@ -202,7 +209,7 @@ pre-configure:
 			echo "NOT MERGED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS)" ] ; then \
-			cat "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			cat "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAM ILY_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "NOT MERGED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS) file does not exists" ; \
 		fi ; \
@@ -212,11 +219,12 @@ pre-configure:
 			echo "NOT MERGED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) file does not exists" ; \
 		fi ; \
 	fi ; \
-	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/collected-defconfig-fragments.cleaned ; \
+	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/config.step7.collected.before.clean ; \
 	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
 			sed --in-place -e '/^$$/d' -e '/^#.*$$/d' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-	fi ;
-
+			cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/config.step8.cleaned" ; \
+	fi ; \
+	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
@@ -235,6 +243,7 @@ post-configure:
 	echo "Cleaning files generated when collecting configuration fragments" ; \
 	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
 		cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/.config" ; \
+		cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step9.postconfigure" ; \
 	fi ;
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
