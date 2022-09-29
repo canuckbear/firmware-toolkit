@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Projet de board Cécile Janin : Bourgeon
+board-images/single-board-computer/c6l-bourgeon/
+board-support/single-board-computer/c6l-bourgeon/
