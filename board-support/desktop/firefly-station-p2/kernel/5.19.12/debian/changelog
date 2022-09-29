@@ -1,0 +1,17 @@
+linux-kernel-firefly-station-p2 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:10 +0200
+
+linux-kernel-firefly-station-p2 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:10 +0200
+
+linux-headers-firefly-station-p2 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:10 +0200

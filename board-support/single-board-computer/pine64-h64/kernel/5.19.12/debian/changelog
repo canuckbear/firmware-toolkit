@@ -1,0 +1,17 @@
+linux-kernel-pine64-h64 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:04:56 +0200
+
+linux-kernel-pine64-h64 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:04:56 +0200
+
+linux-headers-pine64-h64 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:04:56 +0200

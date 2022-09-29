@@ -1,0 +1,17 @@
+linux-kernel-creator-ci20 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:03:39 +0200
+
+linux-kernel-creator-ci20 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:03:39 +0200
+
+linux-headers-creator-ci20 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:03:39 +0200
