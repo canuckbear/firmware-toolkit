@@ -93,7 +93,11 @@ sanity-check:
 		mkdir -p ${CURDIR}/files ; \
 		touch ${CURDIR}/files/.gitkeep ; \
 		ln -s ../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
-		echo "git add ${CURDIR}/files" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add ${CURDIR}/files ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add ${CURDIR}/files ; \
+		fi ; \
 		$(call dft_error ,2004-2706) ; \
 	fi ; \
 	if [ ! -L "files/install.$(SW_NAME)-$(BOARD_NAME).md" ] ; then \
@@ -102,7 +106,11 @@ sanity-check:
 		mkdir -p ${CURDIR}/files ; \
 		touch ${CURDIR}/files/.gitkeep ; \
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
-		echo "git add ${CURDIR}/files" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add ${CURDIR}/files ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add ${CURDIR}/files ; \
+		fi ; \
 		$(call dft_error ,2004-2705) ; \
 	fi ; \
 	s=`readlink files/install.$(SW_NAME)-$(BOARD_NAME).md` ; \
@@ -112,7 +120,11 @@ sanity-check:
 		echo "You can fix this with the following shell commands :" ; \
 		echo "git rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md || rm -f files/install.$(SW_NAME)-$(BOARD_NAME).md" ; \
 		ln -s ../../files/install.$(SW_NAME)-$(BOARD_NAME).md ${CURDIR}/files/ ; \
-		echo "git add ${CURDIR}/files" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add ${CURDIR}/files ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add ${CURDIR}/files ; \
+		fi ; \
 		echo "la je merde sur le sur CURDIR et lechemin courant de la boucle for et make recursif" ; \
 		$(call dft_warning ,2004-2705) ; \
 	fi ; \
@@ -121,7 +133,11 @@ sanity-check:
 		echo "You can fix this with the following commands : " ; \
 		mkdir -p ${CURDIR}/patches ; \
 		touch ${CURDIR}/patches/.gitkeep ; \
-		echo "git add ${CURDIR}/patches" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add ${CURDIR}/patches ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add ${CURDIR}/patches ; \
+		fi ; \
 		$(call dft_error ,2004-2703) ; \
 	fi ; \
 	if [ ! -d "${CURDIR}/debian" ] ; then \
@@ -135,7 +151,11 @@ sanity-check:
 		echo "You can fix this with the following shell commands :" ; \
 		echo "git rm -f Makefile || rm -f Makefile" ; \
 		echo "ln -s $(DFT_BUILDSYSTEM)/u-boot-version.makefile Makefile" ; \
-		echo "git add Makefile" ; \
+		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
+			git add ${CURDIR}/Makefile ; \
+		else \
+			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add ${CURDIR}/Makefile ; \
+		fi ; \
 		$(call dft_error ,2004-2704) ; \
 	fi ;
 

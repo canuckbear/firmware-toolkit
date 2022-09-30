@@ -199,7 +199,7 @@ add-linux-kernel-version:
 			find $(new-version)/debian -type f | xargs sed -i -e "s/__MAINTAINER_NAME__/${DEBFULLNAME}/g" ; \
 		fi ; \
 		if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
-			echo "DFT_ENABLE_GIT_CHANGE = 1 then I run git add $(new-version)" ; \
+			git add $(new-version)" ; \
 		else \
 			echo "DFT_ENABLE_GIT_CHANGE = $(DFT_ENABLE_GIT_CHANGE) then I do NOT run git add $(new-version)" ; \
 		fi ; \
