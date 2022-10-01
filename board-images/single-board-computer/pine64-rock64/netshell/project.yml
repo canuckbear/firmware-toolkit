@@ -127,7 +127,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: buster , board: pine64-rock64 }
+    - { version: bullseye , board: pine64-rock64 }
 
 # ----------------------------------------------------------------------------
 #
