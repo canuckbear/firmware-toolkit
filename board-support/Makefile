@@ -21,6 +21,12 @@
 DFT_BUILDSYSTEM := ../buildsystem
 include $(DFT_BUILDSYSTEM)/dft.mk
 
+# default behavior is to process only the latest version to prevent overhead
+only-latest      ?= 1
+only-native-arch ?= 0
+arch_warning     ?= 0
+verbosity        ?= "normal"
+
 # Do not recurse the following subdirs
 MAKE_FILTERS  = Makefile kernel-defconfig-fragments README.md .
 

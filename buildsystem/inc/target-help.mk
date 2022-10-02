@@ -158,9 +158,9 @@ help-bsp:
 	@echo "                           The following command line variables can be used to control make command behavior when"
 	@echo "                           dealing with arch dependant targets:"
 	@echo
-	@echo "                           arch-warning=0     (display warning when skipping a target because of arch"
+	@echo "                           arch_warning=0     (display warning when skipping a target because of arch"
 	@echo "                                               compatibility. default value=0)"
-	@echo "                           only-native-arch=1 (skip all targets, it means no dowload nor extract, if builder"
+	@echo "                           only_native_arch=1 (skip all targets, it means no dowload nor extract, if builder"
 	@echo "                                               arch is different from target board arch. You need a distinct"
 	@echo "                                               builder per hardware arch. default value=0)"
 	@echo

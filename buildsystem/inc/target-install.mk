@@ -66,8 +66,8 @@ do-install:
 		true ; \
 	else \
 		if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] ; then \
-			if [ ! "x$(arch-warning)" = "x1" ] ; then \
-				if [ ! "x$(only-native-arch)" = "x1" ] ; then \
+			if [ ! "x$(arch_warning)" = "x1" ] ; then \
+				if [ ! "x$(only_native_arch)" = "x1" ] ; then \
 					echo "Makefile processing had to be stopped during target $@ execution. Cross compilation is not supported. " ; \
 					echo "The target board is based on $(BOARD_ARCH) architecture and make is running on a $(HOST_ARCH) board." ; \
 				        echo "The generated binaries might be invalid or scripts could fail before reaching the end of target." ; \

@@ -154,16 +154,16 @@ sanity-check: sanity-check-subdirs
 	@make --directory=u-boot $*
 	@make --directory=kernel $*
 	@for version in $(find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n') ; do \
-		$(MAKE) --directory=$$version $* only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) verbority=$(verbosity) ; \
+		$(MAKE) --directory=$$version $* only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) verbority=$(verbosity) arch_warning ; \
         done
 
 u-boot-package:
-	$(MAKE) --directory=u-boot package arch=$(arch) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) verbosity=$(verbosity);
+	$(MAKE) --directory=u-boot package arch=$(arch) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) verbosity=$(verbosity) arch_warning;
 
 # Build only linux kernel an package target
 linux-kernel-package:
 kernel-package:
-	$(MAKE) --directory=kernel package arch=$(arch) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) verbosity=$(verbosity);
+	$(MAKE) --directory=kernel package arch=$(arch) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) verbosity=$(verbosity) arch_warning;
 
 # Catch all target. Call the same targets in each subfolder
 # cd $$i && $(MAKE) $* && cd .. ;
@@ -209,7 +209,7 @@ check-u-boot-defconfig:
 post-setup:
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning); \
+                	$(MAKE) --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning); \
 		fi ; \
 	done
 
@@ -218,7 +218,7 @@ show-u-boot-dft-version-for:
 	pwd ;
 	for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning); \
+                	$(MAKE) --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning); \
 		fi ; \
 	done
 
@@ -227,7 +227,7 @@ show-kernel-dft-version-for:
 	pwd ;
 	for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning); \
+                	$(MAKE) --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning); \
 		fi ; \
 	done
 

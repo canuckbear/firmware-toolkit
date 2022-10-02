@@ -42,12 +42,6 @@ UBOOT_SUPPORT   := $(subst ,,$(UBOOT_SUPPORT))
 UBOOT_DEFCONFIG := $(subst ,,$(UBOOT_DEFCONFIG))
 USE_CONFIG_FILE := $(subst ,,$(USE_CONFIG_FILE))
 
-# default behavior is to process only th latest version
-only-latest      ?= 1
-only-native-arch ?= 0
-arch-warning     ?= 0
-verbosity        ?= "normal"
-
 # Do not recurse the following subdirs
 MAKE_FILTERS  := files defconfig Makefile README.md patches .
 
@@ -297,13 +291,23 @@ configure build install package:
 		echo "Makefile will now continue and process only $(HOST_ARCH) based boards. You can get the missing binaries by running this target again on a $(BOARD_ARCH) based host and collect by yourself the generated items." ; \
 		echo "To generate binaries for all architectures you need several builders, one for each target architecture flavor." ; \
 	else \
-		for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version)) ; do \
-			$(MAKE) --no-print-directory --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) ; \
-		done \
-	fi ; \
+		if [ "x$(only_latest)" = "x1" ] ; then \
+				v=$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version | tail -n 1) ; \
+				$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest); \
+		else \
+				for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version)) ; do \
+					$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest); \
+				done \
+		fi ; \
+	fi ;
 
 # Simple forwarder
 check-u-boot-defconfig setup extract fetch mrproper:
-	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version)) ; do \
-		$(MAKE) --no-print-directory --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) ; \
-	done
+	if [ "x$(only_latest)" = "x1" ] ; then \
+			v=$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version | tail -n 1) ; \
+			$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest); \
+	else \
+		for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d  -name "2*" -printf '%P\n' | sort --sort=version)) ; do \
+			$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest); \
+		done \
+	fi ; 

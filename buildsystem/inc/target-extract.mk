@@ -58,9 +58,9 @@ endif
 endif
 
 extract: fetch pre-extract $(EXTRACT_TARGETS) post-extract
-	@if [ "$(only-latest)" = "1" ] ; then \
+	@if [ "$(only_latest)" = "1" ] ; then \
 		if [ ! "$(SW_LATEST)" = "" ] ; then \
-			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) && cd .. ;  \
+			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest) verbosity=$(verbosity) && cd .. ;  \
 		fi ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)

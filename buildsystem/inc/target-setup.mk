@@ -60,9 +60,9 @@ do-setup:
 		mkdir -p "$(FILE_DIR)" ; \
 		mkdir -p "$(PATCH_DIR)" ; \
 	fi ; \
-	if [ "$(only-latest)" = "1" ] ; then \
+	if [ "$(only_latest)" = "1" ] ; then \
 		if [ ! "$(SW_LATEST)" = "" ] ; then \
-	    $(MAKE) --directory=$(SW_LATEST) --no-print-directory $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) ; \
+	    $(MAKE) --directory=$(SW_LATEST) --no-print-directory $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest) verbosity=$(verbosity) ; \
 		else \
 			pwd ; \
 		fi ; \

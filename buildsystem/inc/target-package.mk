@@ -48,9 +48,9 @@ do-package:
 		skip_target=1 ; \
 		true ; \
 	fi; \
-	if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only-native-arch)" = "x1" ] ; then \
+	if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only_native_arch)" = "x1" ] ; then \
 		skip_target=1 ; \
-		if [ "x$(arch-warning)" = "x1" ] ; then \
+		if [ "x$(arch_warning)" = "x1" ] ; then \
 			echo "Makefile processing had to be stopped during target $@ execution. Cross compilation is not supported. " ; \
 			echo "The target board is based on $(BOARD_ARCH) architecture and make is running on a $(HOST_ARCH) board." ; \
 			echo "The generated binaries might be invalid or scripts could fail before reaching the end of target." ; \
@@ -117,7 +117,7 @@ do-repackage:
 
 package: install pre-package do-package post-package
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
-		$(MAKE) --no-print-directory --directory=$$v $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) ; \
+		$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest) verbosity=$(verbosity) ; \
 	done ;
 
 	$(DISPLAY_COMPLETED_TARGET_NAME)

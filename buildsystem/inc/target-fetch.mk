@@ -62,9 +62,9 @@ show-fetch-targets:
 	@echo $(FETCH_TARGETS)
 
 fetch : setup pre-fetch $(FETCH_TARGETS) post-fetch
-	@if [ "$(only-latest)" = "1" ] ; then \
+	@if [ "$(only_latest)" = "1" ] ; then \
 		if [ ! "$(SW_LATEST)" = "" ] ; then \
-			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) && cd .. ;  \
+			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest) verbosity=$(verbosity) && cd .. ;  \
 		fi ; \
 	else \
 		pwd ; \
@@ -78,7 +78,7 @@ fetch : setup pre-fetch $(FETCH_TARGETS) post-fetch
 fetch-archive-%:
 	@if [ ! "$(SW_VERSION)" = "" ] ; then \
 		if [ ! "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
-			if [ "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] || [ ! "x$(only-native-arch)" = "x1" ] ; then \
+			if [ "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] || [ ! "x$(only_native_arch)" = "x1" ] ; then \
 				if [ -f $(COOKIE_DIR)/$@ ] ; then \
 					true ; \
 				else \
@@ -99,7 +99,7 @@ fetch-archive-%:
 clone-git-%:
 	@if [ !"$(SW_VERSION)" = "" ] ; then \
 		if [ ! "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
-			if [ "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only-native-arch)" = "x1" ] ; then \
+			if [ "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only_native_arch)" = "x1" ] ; then \
 				if [ -f $(COOKIE_DIR)/$@ ] ; then \
 					true ; \
 				else \

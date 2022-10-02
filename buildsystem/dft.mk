@@ -261,10 +261,15 @@ show-config:
 	@echo "  BOARD_FUNC_SPECIFIC_FRAGMENTS     $(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)"
 	@echo
 	@echo "Internal variables"
+	@echo "  only_latest                       $(only_latest)"
+	@echo "  arch                              $(arch)"
+	@echo "  verbosity                         $(verbosity)"
+	@echo "  only_native_arch                  $(only_native_arch)"
+	@echo "  arch_warning                      $(arch_warning)"
 	@echo "  MAKE_FILTERS                      $(MAKE_FILTERS)"
 
 show-kernel-upstream-version:
-	@wget -O-  https://www.kernel.org/ 2>&1| grep "<td><strong>" | tr '<' ' ' | tr '>' ' ' | awk '{ print $$3 }' | head -n 2 | tail -n 1
+	@wget -O- https://www.kernel.org/ 2>&1| grep "<td><strong>" | tr '<' ' ' | tr '>' ' ' | awk '{ print $$3 }' | head -n 2 | tail -n 1
 
 show-u-boot-upstream-version:
 	@wget -O- https://github.com/u-boot/u-boot/tags 2>&1 | grep -v "rc" | grep "v20" | tr '<' ' ' | tr '>' ' ' | tr 'v' ' ' | head -n 2 | tail -n 1 | awk '{ print $$1 }'

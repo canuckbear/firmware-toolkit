@@ -108,7 +108,7 @@ u-boot-package:
 	@echo "DEBUG : $@ in category.makefile" ;
 	@for i in $(filter-out $(MAKE_FILTERS),$(shell find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f $$i/Makefile ] ; then \
-			$(MAKE) --no-print-directory u-boot-package --directory=$$i only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch); \
+			$(MAKE) --no-print-directory u-boot-package --directory=$$i only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch) only_latest=$(only_latest); \
 		fi ; \
         done
 
@@ -117,7 +117,7 @@ linux-kernel-package:
 	@echo "DEBUG : $@ in category.makefile" ;
 	for i in $(filter-out $(MAKE_FILTERS),$(shell find . -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f $$i/Makefile ] ; then \
-			$(MAKE) --no-print-directory kernel-package --directory=$$i only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch) ; \
+			$(MAKE) --no-print-directory kernel-package --directory=$$i only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch) only_latest=$(only_latest); \
 		fi ; \
         done
 
@@ -139,28 +139,28 @@ check-u-boot-defconfig:
 show-u-boot-available-upgrade:
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --no-print-directory --directory=$$v $@  only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch); \
+                	$(MAKE) --no-print-directory --directory=$$v $@  only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch); \
 		fi ; \
 	done
 
 show-kernel-available-upgrade:
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --no-print-directory --directory=$$v $@  only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch); \
+                	$(MAKE) --no-print-directory --directory=$$v $@  only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch); \
 		fi ; \
 	done
 
 extract:
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --no-print-directory --directory=$$v $@  only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch); \
+                	$(MAKE) --no-print-directory --directory=$$v $@  only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch) only_latest=$(only_latest); \
 		fi ; \
 	done
 
 fetch:
 	@for v in $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; do \
 		if [ -f ${CURDIR}/$$v/Makefile ] ; then \
-                	$(MAKE) --no-print-directory --directory=$$v $@  only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) arch=$(arch); \
+                	$(MAKE) --no-print-directory --directory=$$v $@  only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch=$(arch) only_latest=$(only_latest); \
 		fi ; \
 	done
 

@@ -57,9 +57,9 @@ build: configure pre-build $(BUILD_TARGETS) post-build
 		skip_target=1 ; \
 		true ; \
 	fi ; \
-	if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only-native-arch)" = "x1" ] ; then \
+	if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only_native_arch)" = "x1" ] ; then \
 		skip_target=1 ; \
-		if [ "x$(arch-warning)" = "x1" ] ; then \
+		if [ "x$(arch_warning)" = "x1" ] ; then \
 			echo "Makefile processing had to be stopped during target $@ execution. Cross compilation is not supported. " ; \
 			echo "The target board is based on $(BOARD_ARCH) architecture and make is running on a $(HOST_ARCH) board." ; \
 			echo "The generated binaries might be invalid or scripts could fail before reaching the end of target." ; \
@@ -72,10 +72,10 @@ build: configure pre-build $(BUILD_TARGETS) post-build
 		cd $(BUILD_DIR) ; \
 		if [ ! -f $(COOKIE_DIR)/$@ ] ; then \
 			if [ "$(SW_NAME)" = "u-boot" ] ; then \
-				$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(UBOOT_BUILD_FLAGS) $(UBOOT_BUILD_ARGS) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) ; \
+				$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(UBOOT_BUILD_FLAGS) $(UBOOT_BUILD_ARGS) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch_latest=$(only_latest) verbosity=$(verbosity) ; \
 			fi ; \
 			if [ "$(SW_NAME)" = "linux" ] ; then \
-				$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(LINUX_KERNEL_BUILD_FLAGS) $(LINUX_KERNEL_BUILD_ARGS) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) verbosity=$(verbosity) ; \
+				$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(LINUX_KERNEL_BUILD_FLAGS) $(LINUX_KERNEL_BUILD_ARGS) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch_latest=$(only_latest) verbosity=$(verbosity) ; \
 			fi ; \
 		fi ; \
 	fi ;
@@ -131,8 +131,8 @@ rebuild: configure pre-rebuild $(REBUILD_TARGETS) build post-rebuild
 build-%:
 	if [ ! "$(SW_VERSION)" = "" ] ; then \
 		if [ ! "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
-			if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only-native-arch)" = "x1" ] ; then \
-				if [ "x$(arch-warning)" = "x1" ] ; then \
+			if [ ! "x$(HOST_ARCH)" = "x$(BOARD_ARCH)" ] && [ "x$(only_native_arch)" = "x1" ] ; then \
+				if [ "x$(arch_warning)" = "x1" ] ; then \
 					echo "Makefile processing had to be stopped during target $@ execution. Cross compilation is not supported. " ; \
 					echo "The target board is based on $(BOARD_ARCH) architecture and make is running on a $(HOST_ARCH) board." ; \
 					echo "The generated binaries might be invalid or scripts could fail before reaching the end of target." ; \
@@ -144,7 +144,7 @@ build-%:
 				cd $(BUILD_DIR) ; \
 				if [ "$(SW_NAME)" = "linux" ] ; then \
 					if [ ! -f $(COOKIE_DIR)/build-$* ] ; then \
-						$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(LINUX_KERNEL_BUILD_FLAGS) $(LINUX_KERNEL_BUILD_ARGS) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) ; \
+						$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(LINUX_KERNEL_BUILD_FLAGS) $(LINUX_KERNEL_BUILD_ARGS) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch_latest=$(only_latest) ; \
 					fi ; \
 				fi ; \
 				if [ "$(SW_NAME)" = "u-boot" ] ; then \
@@ -153,7 +153,7 @@ build-%:
 						echo "LINUX_KERNEL_BUILD_FLAGS : $(LINUX_KERNEL_BUILD_FLAGS)" ; \
 				       		echo "UBOOT_BUILD_ARGS : $(UBOOT_BUILD_ARGS)"; \
 				       		echo "LINUX_KERNEL_BUILD_ARGS : $(LINUX_KERNEL_BUILD_ARGS)"; \
-						$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(UBOOT_BUILD_FLAGS) $(UBOOT_BUILD_ARGS) only-native-arch=$(only-native-arch) arch-warning=$(arch-warning) only-latest=$(only-latest) ; \
+						$(BUILD_ENV) $(MAKE) $(BUILD_PROCESS_COUNT) $(UBOOT_BUILD_FLAGS) $(UBOOT_BUILD_ARGS) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) arch_latest=$(only_latest) ; \
 					fi ; \
 				fi ; \
 			fi ; \
