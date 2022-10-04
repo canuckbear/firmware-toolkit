@@ -101,7 +101,11 @@ extract-archive-%.tar.gz:
 					echo "        extracting $(DOWNLOAD_DIR)/$*.tar.gz" ; \
 				fi ; \
 				tar $(TAR_ARGS) -xzf $(DOWNLOAD_DIR)/$*.tar.gz -C $(BUILD_DIR) ; \
-				mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 				rm -fr $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ; \
 			fi ; \
 		fi ; \
@@ -120,7 +124,11 @@ extract-archive-%.tgz:
 					echo "        extracting $(DOWNLOAD_DIR)/$*.tgz" ; \
 				fi ; \
 				tar $(TAR_ARGS) -xzf $(DOWNLOAD_DIR)/$*.tgz -C $(BUILD_DIR) ; \
-				mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 				rm -fr $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ; \
 			fi ; \
 		fi ; \
@@ -136,7 +144,11 @@ extract-archive-%.tar.bz2:
 					echo "        extracting $(DOWNLOAD_DIR)/$*.tar.bz2" ; \
 				fi ; \
 				tar $(TAR_ARGS) -xjf $(DOWNLOAD_DIR)/$*.tar.bz2 -C $(BUILD_DIR) ; \
-				mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 				rm -fr $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ; \
 			fi ; \
 		fi ; \
@@ -152,7 +164,11 @@ extract-archive-%.tar.xz:
 					echo "        extracting $(DOWNLOAD_DIR)/$*.tar.xz" ; \
 				fi ; \
 				tar $(TAR_ARGS) -xJf $(DOWNLOAD_DIR)/$*.tar.xz -C $(BUILD_DIR) ; \
-				mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 				rm -fr $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ; \
 			fi ; \
 		fi ; \
@@ -168,7 +184,11 @@ extract-archive-%.zip:
 					echo "        extracting $(DOWNLOAD_DIR)/$*.zip" ; \
 				fi ; \
 				unzip $(DOWNLOAD_DIR)/$*.zip -d $(BUILD_DIR) ; \
-				mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 				rm -fr $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ; \
 			fi ; \
 		fi ; \
@@ -183,7 +203,11 @@ extract-git-%:
 				if [ "$(verbosity)" == "1" ] ; then \
 		  			echo "        moving git data to $(EXTRACT)/$*" ; \
 				fi ; \
-			mv $(GIT_BUILD_DIR)/$(SRC_GIT_REPO)/* $(BUILD_DIR)/ ; \
+				if [ -d $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION) ] ; then \
+					mv $(BUILD_DIR)/$(SW_NAME)-$(SW_VERSION)/* $(BUILD_DIR) ; \
+				else \
+					mv $(BUILD_DIR)/$(SW_NAME)-*/* $(BUILD_DIR) ; \
+				fi ; \
 			fi ; \
 		fi ; \
 	fi ;
