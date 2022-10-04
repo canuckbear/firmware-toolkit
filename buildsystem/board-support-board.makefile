@@ -158,7 +158,7 @@ sanity-check: sanity-check-subdirs
         done
 
 u-boot-package:
-	$(MAKE) --directory=u-boot package arch=$(arch) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) verbosity=$(verbosity) arch_warning;
+	$(MAKE) --directory=u-boot package arch=$(arch) only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) verbosity=$(verbosity) ;
 
 # Build only linux kernel an package target
 linux-kernel-package:
