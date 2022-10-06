@@ -36,7 +36,7 @@ architecture: arm64
 #
 kernel:
   # Defines the upstream site used to provide kernel for this device
-  origin: armwizard
+  origin: firmwaretoolkit
 
   # Defines the public key of the repository if not using default value.
   # Default keys are :
@@ -53,7 +53,7 @@ kernel:
 # used to boot the board an run kernel. It is defined by XXX
 u-boot:
   # Defines the upstream site used to provide kernel for this device
-  origin: armwizard
+  origin: firmwaretoolkit
 
   # List of packages to install from the repository to add u-boot.
   packages:

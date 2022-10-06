@@ -36,7 +36,7 @@ architecture: mips
 #
 kernel:
   # Defines the upstream site used to provide kernel for this device
-  origin: armwizard
+  origin: firmwaretoolkit
 
   # Defines the public key of the repository if not using default value.
   # Default keys are :
