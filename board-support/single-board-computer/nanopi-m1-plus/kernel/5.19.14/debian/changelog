@@ -1,0 +1,17 @@
+linux-kernel-nanopi-m1-plus (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:35 +0200
+
+linux-kernel-nanopi-m1-plus (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:35 +0200
+
+linux-headers-nanopi-m1-plus (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:35 +0200
