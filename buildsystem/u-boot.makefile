@@ -42,6 +42,12 @@ UBOOT_SUPPORT   := $(subst ,,$(UBOOT_SUPPORT))
 UBOOT_DEFCONFIG := $(subst ,,$(UBOOT_DEFCONFIG))
 USE_CONFIG_FILE := $(subst ,,$(USE_CONFIG_FILE))
 
+# default behavior is to process only the latest version
+only_latest      ?= 1
+only_native_arch ?= 1
+arch_warning     ?= 0
+verbosity        ?= "normal"
+
 # Do not recurse the following subdirs
 MAKE_FILTERS  := files defconfig Makefile README.md patches .
 
@@ -311,3 +317,4 @@ check-u-boot-defconfig setup extract fetch mrproper:
 			$(MAKE) --no-print-directory --directory=$$v $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest); \
 		done \
 	fi ; 
+
