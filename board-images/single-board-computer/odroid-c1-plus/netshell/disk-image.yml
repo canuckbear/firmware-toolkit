@@ -50,7 +50,7 @@ devices:
 
   # Defines the filename used to store the device image. This file is created and allocated at
   # image creation.
-  filename": "dft-odroid-c1-plus-netshell"
+  filename: "dft-odroid-c1-plus-netshell"
 
   # Defines the kind of compression to apply on the image once its created. Valid values are :
   # . bzip2
