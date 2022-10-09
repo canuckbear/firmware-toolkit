@@ -31,7 +31,7 @@
 # ----------------------------------------------------------------------------
 devices:
   # Defines the size of the device to create. The size value is numerical
-  size: "2048"
+  size: "4096"
 
   # Defines the unit used for size. Valid values are :
   # "s" (sectors), "B" (bytes),  "kB",  "MB",  "MiB", "GB",  "GiB",  "TB",  "TiB"
@@ -72,7 +72,7 @@ devices:
   # . none
   #
   # Default value is none, which means no copression at all. The generated image is left unchanged
-  # compression: "none"
+  compression: "xz"
 
   # Defines the options to pass to the compressor. The options can be any options supported by the
   # tool used for compression (please check the dedicated man pages for a complete list of options)
@@ -107,7 +107,7 @@ devices:
         type: "primary" ,
 
         # Defines the size of the partition to create. The size value is numerical
-        size: "2044" ,
+        size: "4092" ,
 
         # Defines the unit used for size. Valid values are :
         # "s" (sectors), "B" (bytes),  "kB",  "MB",  "MiB", "GB",  "GiB",  "TB",  "TiB",
@@ -136,7 +136,7 @@ devices:
         # can be set. Please check the man for more informatons
         #
         # Default value (commented out or not defined) means no options and no call to tune2fs
-        ext_fs_tune: "-m 0" ,
+        # ext_fs_tune: "-m 0" ,
 
         # Missing type from fdisk list
 
@@ -175,7 +175,7 @@ filesystems:
       filesystem: "/dev/mmcblk0p1" ,
       mountpoint: "/" ,
       type: "ext4" ,
-      options: "discard,noatime,nodiratime,errors=remount-ro" ,
+      options: "noatime,nodiratime,errors=remount-ro" ,
       dump: "0" ,
       pass: "1"
     }
