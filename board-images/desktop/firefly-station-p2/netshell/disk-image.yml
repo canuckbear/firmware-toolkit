@@ -31,7 +31,7 @@
 # ----------------------------------------------------------------------------
 devices:
   # Defines the size of the device to create. The size value is numerical
-  size: "4096"
+  size: "2048"
 
   # Defines the unit used for size. Valid values are :
   # "s" (sectors), "B" (bytes),  "kB",  "MB",  "MiB", "GB",  "GiB",  "TB",  "TiB"
@@ -107,7 +107,7 @@ devices:
         type: "primary" ,
 
         # Defines the size of the partition to create. The size value is numerical
-        size: "4092" ,
+        size: "2044" ,
 
         # Defines the unit used for size. Valid values are :
         # "s" (sectors), "B" (bytes),  "kB",  "MB",  "MiB", "GB",  "GiB",  "TB",  "TiB",
