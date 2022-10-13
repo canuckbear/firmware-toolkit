@@ -1,0 +1,5 @@
+u-boot-wandboard-imx6 (2022.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 13 Oct 2022 20:40:37 +0200
