@@ -41,7 +41,8 @@ UBOOT_SUPPORT     = 1
 UBOOT_DEFCONFIG   = wandboard_defconfig
 
 # List of files to copy from build to install directory (path is relative to build dir)
-UBOOT_BINARY_FILE = u-boot-$(BOARD_NAME)
+UBOOT_BINARY_FILE = u-boot.img
+UBOOT_BINARY_EXTRA_FILES = SPL
 DEFAULT_DTB       = imx6q-wandboard-revd1.dtb
 
 #
