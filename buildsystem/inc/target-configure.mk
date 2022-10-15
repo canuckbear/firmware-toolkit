@@ -127,9 +127,6 @@ do-configure:
 						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step5" ; \
 					fi ; \
 				fi ; \
-				if [ "$(SW_NAME)" = "u-boot" ] ; then \
-					echo "    DEBBBUUUUGGGGG : dans le configure du uboot" ; \
-				fi ; \
 				cd "$(BUILD_DIR)" ; \
   			  	cp -fr "$(KERNEL_FRAGMENT_HOME)" "$(KERNEL_FRAGMENT_DIR)/" ; \
 			fi ; \
