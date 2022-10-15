@@ -97,11 +97,11 @@ project_definition:
 
   # Definition of the repositories to use
   repositories:
-    - repositories.yml
+    - repository-debian.yml
 
   # Definition of the rootfs content
   rootfs:
-    - rootfs.yml
+    - project-rootfs.yml
 
   # Definition of the firmware content and structure
   firmware:
