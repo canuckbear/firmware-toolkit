@@ -68,7 +68,7 @@ devices:
   # . bzip2
   # . gzip
   # . xz
-  # . lzma  (euivalent to xz --format=lzma)
+  # . lzma  (equivalent to xz --format=lzma)
   # . none
   #
   # Default value is none, which means no copression at all. The generated image is left unchanged
