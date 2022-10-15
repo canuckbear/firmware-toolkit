@@ -112,9 +112,10 @@ project_definition:
     - disk-image.yml
 
   # Definition of the variables to be passed to rootfs creation
+  # Definition of the variables to be passed to rootfs creation
   variables:
-    - variables.yml
-    - variables-nanopi-neo.yml
+    - project-variables.yml
+    - board-variables.yml
 
   # Definition of the list of targets, with architectures, versions and optionaly board.
   # Firmware will be generated for each of the architecture in this list
