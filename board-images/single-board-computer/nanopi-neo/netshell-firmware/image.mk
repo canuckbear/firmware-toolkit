@@ -18,5 +18,8 @@
 #
 
 # The image type (supported types are rootfs and firmware)
-IMAGE_NAME = rootfs
+IMAGE_TYPE = firmware
+
+# The image name (XXX)
+IMAGE_NAME ?= $(BOARD_NAME)-$(IMAGE_TYPE)-netshell
 
