@@ -545,7 +545,7 @@ class BuildImage(CliCommand):
         # Create the partition object in the loopback device
         new_partition = parted.Partition(disk=disk, type=parted_type, geometry=geometry, fs=filesys)
 
-        # Setting the name of the partitionis not yet supported / fixed in pyparted.
+        # Setting the name of the partition is not yet supported / fixed in pyparted.
         # It should be done here, but since it is not working an extra loop is added after
         # commiting changes to the disk. The loop will iterate once again the partition loop and
         # call the program in charge of setting the partition name, according to the filesystem
