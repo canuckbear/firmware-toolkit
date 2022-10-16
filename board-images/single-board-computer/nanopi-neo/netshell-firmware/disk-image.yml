@@ -129,7 +129,7 @@ devices:
         # "amufs1" "amufs2" "amufs3" "amufs4" "amufs5" "btrfs" "linux-swap(v1)" "swsusp" "hfs+"
         # "reiserfs" "freebsd-ufs" "xfs" "affs7" "ntfs" "zfs" "affs4" "hfs" "affs6" "affs1" "affs0"
         # "affs3" "hp-ufs" "fat16" "sun-ufs" "asfs" "jfs" "apfs2" "apfs1"
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
 
         # This variable defines if tune2fs should be called on ext 2/3/4 filesystems, and the
         # options to set. Typical use is setting reserved space to 0. Any options from "man tune2fs"
@@ -160,7 +160,7 @@ devices:
         unit: "MB" ,
         start_sector: "1050624" ,
         format: True ,
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
     - {
@@ -170,7 +170,7 @@ devices:
         unit: "MB" ,
         start_sector: "2099200" ,
         format: True ,
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
     - {
@@ -187,7 +187,7 @@ devices:
         unit: "MB" ,
         start_sector: "3149824" ,
         format: True ,
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
     - {
@@ -197,7 +197,7 @@ devices:
         unit: "MB" ,
         start_sector: "4200448" ,
         format: True ,
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
     - {
@@ -207,7 +207,7 @@ devices:
         unit: "MB" ,
         start_sector: "4726784" ,
         format: True ,
-        filesystem: "ext4" ,
+        filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
 
