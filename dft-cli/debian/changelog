@@ -1,9 +1,14 @@
+dft (0.7.16-1) unstable; urgency=low
+
+  * Fix deprecated loop option for squashfs useAdd missing / in clean boot flag path
+
+ -- William Bonnet <william@wbonnet.net>  Mon, 17 Oct 2022 20:37:00 +0100
+
 dft (0.7.15-1) unstable; urgency=low
 
   * Add missing / in clean boot flag path
 
  -- William Bonnet <william@wbonnet.net>  Sat, 15 Oct 2022 20:27:00 +0100
-
 
 dft (0.7.14-1) unstable; urgency=low
 

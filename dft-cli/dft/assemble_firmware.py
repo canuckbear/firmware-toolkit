@@ -592,12 +592,12 @@ class AssembleFirmware(CliCommand):
         working_file.write("losetup ${DEV} " + self.dft_root + "/")
         working_file.write(self.project.firmware[Key.LAYOUT.value][Key.PATH.value] + "/")
         working_file.write(item[Key.STACK_ITEM.value][Key.SQUASHFS_FILE.value] + "\n")
-        working_file.write("mount -t squashfs -o loop")
+        working_file.write("mount -r -t squashfs")
 
         # Is there some defined options ?
         if "mount-options" in item[Key.STACK_ITEM.value]:
           # Yes, then append the options to the command
-          working_file.write("," + item[Key.STACK_ITEM.value][Key.MOUNT_OPTIONS.value])
+          working_file.write(" -o " + item[Key.STACK_ITEM.value][Key.MOUNT_OPTIONS.value])
 
         # Otherwise mount it to its dedicated moint
         working_file.write(" ${DEV} " + self.stack_root + "\n")
