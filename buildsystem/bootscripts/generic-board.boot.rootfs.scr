@@ -6,10 +6,17 @@
 # Generation date : __GENERATION_DATE__
 # DFT version     : __DFT_VERSION__
 #
+# ----------------------------------------------------------------------------
 
+# ----------------------------------------------------------------------------
 #
-# Definition of environment variables
+# Environnement section
 #
+# Definition of environment variables. These should not be redefined unless
+# your really know what you are hacking.
+#
+# ----------------------------------------------------------------------------
+
 setenv fstype         __FILESYSTEM_TYPE__
 setenv fdtfile        'boot/default.dtb'
 setenv image          'boot/zImage'
