@@ -19,7 +19,7 @@
 # ----------------------------------------------------------------------------
 
 setenv initrd_file            boot/initrd.img
-setenv fdtfile                boot/${board}-${board_type}.dtb
+setenv fdtfile                boot/default.dtb
 setenv image                  boot/zImage
 setenv dft_bank0_bootflag     /dft_bank0_boot_was_dirty
 setenv dft_bank1_bootflag     /dft_bank1_boot_was_dirty
@@ -34,7 +34,7 @@ fi
 setenv fstype                   __FILESYSTEM_TYPE__
 
 # Defines the filesystem ype used to store the firmwares.
-setenv fstype                 __FILESYSTEM_TYPE__
+setenv fstype                   __FILESYSTEM_TYPE__
 
 # Defines bank0 storage parameters
 setenv dft_bank0_type           __DFT_BANK0_TYPE__
