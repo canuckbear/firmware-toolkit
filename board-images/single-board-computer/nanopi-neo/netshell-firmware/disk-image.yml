@@ -50,7 +50,7 @@ devices:
 
   # Defines the filename used to store the device image. This file is created and allocated at
   # image creation.
-  filename: "nanopi-zero-firmware-netshell"
+  filename: "dft-nanopi-zero-firmware-netshell"
 
   # Defines the suffix appended to the filename. Default value is img. The dot should not be
   # included in suffix, it zill be added automatically. If the string is emty, no suffix at all
@@ -210,7 +210,15 @@ devices:
         filesystem: "ext2" ,
         ext_fs_tune: "-m 0"
       }
-
+    - {
+        name: "failover" ,
+        type: "logical" ,
+        size: "16" ,
+        unit: "MB" ,
+        start_sector: "5253120" ,
+        format: True ,
+        filesystem: "fat16" 
+      }
 # ----------------------------------------------------------------------------
 #
 # Definition of the content ource to use. Source can be either firmware or
