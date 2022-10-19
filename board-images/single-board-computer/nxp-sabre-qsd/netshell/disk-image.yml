@@ -164,7 +164,7 @@ devices:
 # and may defines mount point from partition which are not included in the
 # image. For instance, the physical target can have a SSD disk attached to it.
 # The image itsef would only define the partitioning of the SD card used to
-# boot the target. Filesystems could also include infoormation about
+# boot the target. Filesystems could also include information about
 # partitions of the SSD disk.
 #
 # ----------------------------------------------------------------------------
