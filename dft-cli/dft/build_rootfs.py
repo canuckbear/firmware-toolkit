@@ -236,7 +236,7 @@ class BuildRootFS(CliCommand):
           vars_file = self.project.generate_def_file_path(vars_file)
 
           # Copy the variabes fies to the bootstrap directory
-          logging.debug("Copy the variables file : preparing to copy " + vars_file)
+          logging.debug("Copy the variables file : preparing to copy " + vars_file + "to " + dft_target_path)
           if os.path.isfile(vars_file):
             logging.debug("copying file " + vars_file + " => " + dft_target_path)
             file_util.copy_file(vars_file, dft_target_path)
