@@ -1,3 +1,15 @@
+dft (0.8.0-1) unstable; urgency=low
+
+  * Beginning of work towards first complete firmware mode support 
+
+ -- William Bonnet <william@wbonnet.net>  Sun, 30 Oct 2022 14:34:00 +0100
+
+dft (0.7.17-1) unstable; urgency=low
+
+  * Use multiple inventory switches to pass variables to ansible-plybook
+
+ -- William Bonnet <william@wbonnet.net>  Wed, 18 Oct 2022 16:51:00 +0100
+
 dft (0.7.16-1) unstable; urgency=low
 
   * Fix deprecated loop option for squashfs useAdd missing / in clean boot flag path
@@ -48,7 +60,7 @@ dft (0.7.9-1) unstable; urgency=low
 
 dft (0.7.8-1) unstable; urgency=low
 
-  * Fix a role include issue while addint sbit role
+  * Fix a role include issue while adding sbit role
 
  -- William Bonnet <william@wbonnet.net>  Sat, 03 Sep 2022 19:42:00 +0100
 

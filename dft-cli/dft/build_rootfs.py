@@ -47,7 +47,7 @@ class BuildRootFS(CliCommand):
 
   The methods implemented in this class provides what is needed to :
   . create the debootstrap (chrooted environment)
-  . handle filesystems like dev and proc in the chrooted environment
+  . handle filesystems like dev and proc in the chrooted enviro*/nment
   . copy DFT and project specific templates into /dft_bootstrap
   . run ansible in the chroot
   . cleanup things when installation is done
@@ -111,10 +111,15 @@ class BuildRootFS(CliCommand):
 
     # Create the bootstrap directory
     dft_target_path = self.project.get_rootfs_mountpoint() + "/dft_bootstrap/"
+
+    logging.debug("creating dft_bootstrap in path : " + dft_target_path)
     os.makedirs(dft_target_path, exist_ok=True)
 
     # Do the debootstrap call
     self.generate_debootstrap_rootfs()
+
+    # Inject variable files content to boostrap directory
+    self.inject_variables_in_rootfs()
 
     # Launch Ansible to install roles identified in configuration file
     self.install_packages()
@@ -216,36 +221,8 @@ class BuildRootFS(CliCommand):
       # Generate file header
       working_file.write("# Defines the role associated to the rootfs being generated\n")
       working_file.write("---\n")
-      working_file.write("- hosts: local\n")
+      working_file.write("- hosts: localhost\n")
       working_file.write("\n")
-
-      # Test if some variable files have to be included
-      if Key.VARIABLES.value in self.project.project[Key.PROJECT_DEFINITION.value]:
-        # Yes, then output the vars_files marker
-        working_file.write("  vars_files:\n")
-
-        # And iterate the list of files containing variables
-        for vars_file in self.project.project[Key.PROJECT_DEFINITION.value]\
-                                                 [Key.VARIABLES.value]:
-          # Append the file to the site.yml file
-          working_file.write("  - " + vars_file + "\n")
-          logging.info("Adding variables file " + vars_file)
-
-          # Complete the path to have a full path on disk (in case of path local
-          # to where is located the project file)
-          vars_file = self.project.generate_def_file_path(vars_file)
-
-          # Copy the variabes fies to the bootstrap directory
-          logging.debug("Copy the variables file : preparing to copy " + vars_file + "to " + dft_target_path)
-          if os.path.isfile(vars_file):
-            logging.debug("copying file " + vars_file + " => " + dft_target_path)
-            file_util.copy_file(vars_file, dft_target_path)
-          else:
-            logging.error("Variable files " + vars_file + " is not a file")
-            logging.error("Skipping this file")
-
-        # Just some spacing for pretty printing
-        working_file.write("\n")
 
       working_file.write("  roles:\n")
 
@@ -731,7 +708,7 @@ class BuildRootFS(CliCommand):
     # Delete the DFT files from the rootfs
     if not self.project.dft.keep_bootstrap_files:
       if os.path.isdir(self.project.get_rootfs_mountpoint() + "/dft_bootstrap"):
-        rmtree(self.project.get_rootfs_mountpoint() + "/dft_bootstrap")
+       self.project.logging.debug("DEBUG i don't rmtree(" + self.project.get_rootfs_mountpoint() + "/dft_bootstrap)")
     else:
       self.project.logging.debug("keep_bootstrap_files is activated, keeping DFT bootstrap " +
                                  "files in " + self.project.get_rootfs_mountpoint() +
@@ -766,3 +743,55 @@ class BuildRootFS(CliCommand):
 
     # Finally umount all the chrooted environment
     self.teardown_chrooted_environment()
+
+
+  # -------------------------------------------------------------------------
+  #
+  # inject_variables_in_rootfs
+  #
+  # -------------------------------------------------------------------------
+  def inject_variables_in_rootfs(self):
+    """This method is in charge of injecting into the inventory file in the
+    dft_bootstrap directory the content of the variable files defined in
+    the project configuration file
+    """
+    self.project.logging.info("injection into inventory.yml of the variable files content as defined in project.yml")
+
+
+
+    # Test if some variable files have to be included
+    if Key.VARIABLES.value in self.project.project[Key.PROJECT_DEFINITION.value]:
+
+    # And iterate the list of files containing variables
+        for vars_file in self.project.project[Key.PROJECT_DEFINITION.value]\
+                                             [Key.VARIABLES.value]:
+
+        # Complete the path to have a full path on disk (in case of path local
+        # to where is located the project file)
+          logging.debug("processing file " + vars_file)
+
+          src_var_file = self.project.generate_def_file_path(vars_file)
+          logging.debug("next variable file to process " + src_var_file)
+
+          dst_var_file = self.project.get_rootfs_mountpoint() + "/dft_bootstrap/inventory.yml"
+          logging.debug("witing to next variable file to process " + dst_var_file)
+
+          # Copy the variabes fies to the bootstrap directory
+          if os.path.isfile(vars_file):
+            logging.debug("copying content of file " + src_var_file + " into " + dst_var_file)
+            
+            # Open the source file only for reading and target for appending with creation if needed
+            with open(src_var_file, "r") as source_inventory, open(dst_var_file, "a+") as target_inventory:
+            
+              # Copy source content to destination
+              target_inventory.writelines(source_inventory.readlines())
+              target_inventory.close()
+
+              # We are done close both source and target
+              source_inventory.close()
+          else:
+            logging.error("Variable files " + vars_file + " is not a file")
+            logging.error("Skipping this file")
+
+            # Just some spacing for pretty printing
+            #working_file.write("\n")

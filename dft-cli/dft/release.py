@@ -26,6 +26,6 @@ This information is intented to be used in the setup.py file, and cli.py (displa
 program version), etc.
 """
 
-__version__ = '0.7.16'
+__version__ = '0.8.0'
 __author__ = 'William Bonnet'
 __author_email__ = 'william@wbonnet.net'
