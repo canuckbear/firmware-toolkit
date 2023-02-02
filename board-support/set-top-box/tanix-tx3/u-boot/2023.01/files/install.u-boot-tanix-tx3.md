@@ -1,0 +1,1 @@
+../../files/install.u-boot-tanix-tx3.md

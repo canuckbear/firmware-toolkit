@@ -1,0 +1,1 @@
+../../files/install.u-boot-meecool-m8s-prow.md
