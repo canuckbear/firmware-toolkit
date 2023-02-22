@@ -76,7 +76,7 @@ reconfigure: patch pre-reconfigure $(RECONFIGURE_TARGETS) configure post-reconfi
 
 configure: extract pre-configure do-configure post-configure
 do-configure:
-	@skip_target=0 ; \
+	skip_target=0 ; \
 	if [ "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
 		skip_target=1 ; \
 		true ; \
@@ -108,32 +108,34 @@ do-configure:
 					if [ ! -f "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" ] ; then \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config does not exist using default instead" ; \
 						cp "../config/$(BOARD_NAME)-kernel-default.config" "$(BUILD_DIR)/.config" ; \
-						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step1" ; \
+						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step1" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
-						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step2" ; \
+						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step2" ; \
 						cd - ; \
 						cp "$(BUILD_DIR)/.config" "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
-						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step3" ; \
+						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step3" ; \
 						if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
 							git add "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
 						fi ; \
 					else \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config exist using it" ; \
 						cp "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" "$(BUILD_DIR)/.config" ; \
-						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step4" ; \
+						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step4" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
-						cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step5" ; \
+						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step5" ; \
 					fi ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
-  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)" "$(KERNEL_FRAGMENT_DIR)/" ; \
+  			  	cp -fr "$(KERNEL_FRAGMENT_HOME)" "$(KERNEL_FRAGMENT_DIR)" ; \
 			fi ; \
 		fi ; \
-		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge" ; \
-		KCONFIG_CONFIG="$(BUILD_DIR)" "./scripts/kconfig/merge_config.sh" -m "$(BUILD_DIR)/config.before-merge" "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-		cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step6-after-first-merge" ; \
+		echo "PLOOOPPPPP before" ; \
+		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge_config" ; \
+		./scripts/kconfig/merge_config.sh -O "$(BUILD_DIR)" -m "$(BUILD_DIR)/config.before-merge_config" "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step6-after-merge_config" ; \
+		echo "PLOOOPPPPP after" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
@@ -150,7 +152,7 @@ do-configure:
 # TODO : DELTA DEFCONFIG
 
 pre-configure:
-	@echo "Creating collected defconfig file" ; \
+	echo "Creating collected defconfig file" ; \
 	if [ "$(SW_NAME)" = "linux" ] ; then \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" ] ; then \
 			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
@@ -222,10 +224,9 @@ pre-configure:
 		fi ; \
 	fi ; \
 	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/config.step7.collected.before.clean ; \
-	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
-			sed --in-place -e '/^$$/d' -e '/^#.*$$/d' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-			cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/config.step8.cleaned" ; \
-	fi ; \
+	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/collected-defconfig-fragments.cleaned ; \
+	sed --in-place -e '/^$$/d' -e '/^#.*$$/d' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+	cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/config.step8.cleaned" ; \
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
@@ -245,7 +246,7 @@ post-configure:
 	echo "Cleaning files generated when collecting configuration fragments" ; \
 	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
 		cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/.config" ; \
-		cp -v "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step9.postconfigure" ; \
+		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step9.postconfigure" ; \
 	fi ;
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
