@@ -201,7 +201,6 @@ show-config:
 	@echo "  DFT_HOME                          $(DFT_HOME)"
 	@echo "  DFT_FORGE                         $(DFT_FORGE)"
 	@echo "  WORK_DIR                          $(WORK_DIR)"
-	@echo "  WORK_DIR                          $(WORK_DIR)"
 	@echo "  KERNEL_FRAGMENT_HOME              $(KERNEL_FRAGMENT_HOME)"
 	@echo "  UBOOT_FRAGMENT_HOME               $(UBOOT_FRAGMENT_HOME)"
 	@echo "  KERNEL_FRAGMENT_DIR               $(KERNEL_FRAGMENT_DIR)"
