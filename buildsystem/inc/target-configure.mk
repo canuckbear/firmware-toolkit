@@ -133,7 +133,7 @@ do-configure:
 		fi ; \
 		echo "PLOOOPPPPP before" ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge_config" ; \
-		./scripts/kconfig/merge_config.sh -O "$(BUILD_DIR)" -m "$(BUILD_DIR)/config.before-merge_config" "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
+		./scripts/kconfig/merge_config.sh -O "$(BUILD_DIR)" -m "$(BUILD_DIR)/config.before-merge_config" "$(BUILD_DIR)/collected-defconfig-fragments" ; \
 		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step6-after-merge_config" ; \
 		echo "PLOOOPPPPP after" ; \
 	fi ;
@@ -223,31 +223,7 @@ pre-configure:
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) file does not exists" ; \
 		fi ; \
 	fi ; \
-	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/config.step7.collected.before.clean ; \
-	cp $(BUILD_DIR)/collected-defconfig-fragments $(BUILD_DIR)/collected-defconfig-fragments.cleaned ; \
-	sed --in-place -e '/^$$/d' -e '/^#.*$$/d' "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ; \
-	cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/config.step8.cleaned" ; \
-	
-	$(DISPLAY_COMPLETED_TARGET_NAME)
-	$(TARGET_DONE)
-
-# ------------------------------------------------------------------------------
-#
-# Kernel config file has been generated according to board mafiles, now clean
-# files which are no longer needed during compilation stagekernel configuration fragments and strip them from comments and emptry lines.
-# The generated .config-with-fragments file is ten used at configure step.
-# This pre- stage is meant to write simplier smaller parts of code, instead of
-# a big blurry chunk of code doing all the magic ^^
-#
-#
-# TODO : DELTA DEFCONFIG
-
-post-configure:
-	echo "Cleaning files generated when collecting configuration fragments" ; \
-	if [ -f "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" ] ; then \
-		cp "$(BUILD_DIR)/collected-defconfig-fragments.cleaned" "$(BUILD_DIR)/.config" ; \
-		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step9.postconfigure" ; \
-	fi ;
+	cp "$(BUILD_DIR)/collected-defconfig-fragments" "$(BUILD_DIR)/.config" ; \
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
