@@ -157,7 +157,7 @@ extract-archive-%.tar.bz2:
 
 extract-archive-v.tar.xz:
 extract-archive-%.tar.xz:
-	@if [ ! "$(SW_VERSION)" = "" ] ; then \
+	 @if [ ! "$(SW_VERSION)" = "" ] ; then \
 		if [ ! "$(SW_VERSION)" == "undefined-sw-version" ] ; then \
 			if [ ! -f $(COOKIE_DIR)/$@ ] ; then \
 				if [ "$(verbosity)" == "1" ] ; then \
