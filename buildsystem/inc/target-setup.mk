@@ -53,6 +53,8 @@ do-setup:
 		mkdir -p "$(PACKAGE_DIR)" ; \
 		mkdir -p "$(DOWNLOAD_DIR)" ; \
 		mkdir -p "$(BUILD_DIR)" ; \
+		mkdir -p "$(KERNEL_FRAGMENT_DIR)" ; \
+		mkdir -p "$(UBOOT_FRAGMENT_DIR)" ; \
 		mkdir -p "$(LOG_DIR)" ; \
 		if [ "$(DOWNLOAD_TOOL)" = "git" ] ; then \
 			mkdir -p "$(GIT_DIR)" ; \
