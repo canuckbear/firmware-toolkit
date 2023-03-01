@@ -108,38 +108,31 @@ do-configure:
 					if [ ! -f "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" ] ; then \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config does not exist using default instead" ; \
 						cp "../config/$(BOARD_NAME)-kernel-default.config" "$(BUILD_DIR)/.config" ; \
-						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step1" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
-						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step2" ; \
-						cd - ; \
 						cp "$(BUILD_DIR)/.config" "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
-						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step3" ; \
 						if [ "$(DFT_ENABLE_GIT_CHANGE)" = "1" ] ; then \
 							git add "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config"  ; \
 						fi ; \
 					else \
 						echo "config/$(BOARD_NAME)-kernel-$(SW_VERSION).config exist using it" ; \
 						cp "../config/$(BOARD_NAME)-kernel-$(SW_VERSION).config" "$(BUILD_DIR)/.config" ; \
-						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step4" ; \
 						cd "$(BUILD_DIR)" ; \
 						make olddefconfig ; \
-						cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step5" ; \
 					fi ; \
 				fi ; \
 				cd "$(BUILD_DIR)" ; \
   			  	cp -fr "$(KERNEL_FRAGMENT_HOME)" "$(KERNEL_FRAGMENT_DIR)" ; \
 			fi ; \
 		fi ; \
-		echo "PLOOOPPPPP before" ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge_config" ; \
-		./scripts/kconfig/merge_config.sh -O "$(BUILD_DIR)" -m "$(BUILD_DIR)/config.before-merge_config" "$(BUILD_DIR)/collected-defconfig-fragments" ; \
-		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.step6-after-merge_config" ; \
+		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.after-merge_config" ; \
 		echo "PLOOOPPPPP after" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
+#		./scripts/kconfig/merge_config.sh -m $(BUILD_DIR)/.config  "$(BUILD_DIR)/collected-defconfig-fragments" ; \
 # ------------------------------------------------------------------------------
 #
 # When compiling a Linux  kernel Pre-configure target is in charge of gathering 
@@ -155,37 +148,37 @@ pre-configure:
 	echo "Creating collected defconfig file" ; \
 	if [ "$(SW_NAME)" = "linux" ] ; then \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) file does not exists" ; \
 		fi ; \
 		if [ -f "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ] ; then \
-			echo "MERGING : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
+			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
 			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) file does not exists" ; \
@@ -223,7 +216,6 @@ pre-configure:
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) file does not exists" ; \
 		fi ; \
 	fi ; \
-	cp "$(BUILD_DIR)/collected-defconfig-fragments" "$(BUILD_DIR)/.config" ; \
 	
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
