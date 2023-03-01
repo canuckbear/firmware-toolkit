@@ -126,13 +126,13 @@ do-configure:
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge_config" ; \
+		./scripts/kconfig/merge_config.sh -m $(BUILD_DIR)/.config  "$(BUILD_DIR)/collected-defconfig-fragments" ; \
 		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.after-merge_config" ; \
 		echo "PLOOOPPPPP after" ; \
 	fi ;
 	$(DISPLAY_COMPLETED_TARGET_NAME)
 	$(TARGET_DONE)
 
-#		./scripts/kconfig/merge_config.sh -m $(BUILD_DIR)/.config  "$(BUILD_DIR)/collected-defconfig-fragments" ; \
 # ------------------------------------------------------------------------------
 #
 # When compiling a Linux  kernel Pre-configure target is in charge of gathering 
