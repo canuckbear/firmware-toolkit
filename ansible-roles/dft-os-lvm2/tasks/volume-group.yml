@@ -24,10 +24,10 @@
 - name: Create LVM2 Volume Group(s)
   lvg:
     force: "{{ item.force }}"
-    pesize: "{{ item.pesize | default(4) }}"
+    pesize: "{{ item.pesize | default('4') }}"
     pv_options: "{{ item.pv_options }}"
     pvs: "{{ item.pvs }}"
-    state: "{{ item.state }}"
+    state: "{{ item.state | default('present')}}"
     vg: "{{ item.vg }}"
     vg_options: "{{ item.vg_options }}"
   with_items: "{{ dft_os_lvm2.volume_groups }}"
