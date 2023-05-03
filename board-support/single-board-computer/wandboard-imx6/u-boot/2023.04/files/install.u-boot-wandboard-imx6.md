@@ -1,0 +1,1 @@
+../../files/install.u-boot-wandboard-imx6.md
