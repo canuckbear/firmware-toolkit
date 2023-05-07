@@ -66,8 +66,6 @@ fetch : setup pre-fetch $(FETCH_TARGETS) post-fetch
 		if [ ! "$(SW_LATEST)" = "" ] ; then \
 			cd $(SW_LATEST) && $(MAKE) --no-print-directory $@ only_native_arch=$(only_native_arch) arch_warning=$(arch_warning) only_latest=$(only_latest) verbosity=$(verbosity) && cd .. ;  \
 		fi ; \
-	else \
-		pwd ; \
 	fi ;
 #		for v in fetch_debug $(filter-out $(MAKE_FILTERS),$(shell find .  -mindepth 1 -maxdepth 1 -type d -printf '%P\n')) ; \
 #			do echo "target-fetch iterateur fetch_debug : $$v" ; \
