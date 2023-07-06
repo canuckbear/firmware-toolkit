@@ -1,0 +1,17 @@
+linux-kernel-nanopi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 19:15:37 +0200
+
+linux-kernel-nanopi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 19:15:37 +0200
+
+linux-headers-nanopi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 19:15:37 +0200
