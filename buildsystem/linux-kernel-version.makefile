@@ -56,14 +56,14 @@ MAKE_FILTERS  := Makefile README.md debian patches
 #
 
 # Board hardware support fragments for any board, family and model specific
-LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS     ?= hardware/common/any-board.defconfig
-LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS   ?= hardware/board-blueprints/$(BOARD_NAME).defconfig
-LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/board-blueprints/$(BOARD_FAMILY).defconfig
+LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS     ?= hardware/common/
+LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS   ?= hardware/board-blueprints/$(BOARD_NAME)
+LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS     ?= hardware/board-blueprints/$(BOARD_FAMILY)
 
 # Board functioninal support fragments for any board, family and model specific
-LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS   ?= functional/common/any-board.defconfig
-LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS ?= functional/board-blueprints/$(BOARD_NAME).defconfig
-LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS   ?= functional/board-blueprints/$(BOARD_FAMILY).defconfig
+LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS   ?= functional/common/
+LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS ?= functional/board-blueprints/$(BOARD_NAME)
+LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS   ?= functional/board-blueprints/$(BOARD_FAMILY)
 
 # ------------------------------------------------------------------------------
 #
