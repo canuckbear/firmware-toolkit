@@ -126,7 +126,7 @@ do-configure:
 			fi ; \
 		fi ; \
 		cp "$(BUILD_DIR)/.config" "$(BUILD_DIR)/config.before-merge_config" ; \
-		./scripts/kconfig/merge_config.sh -m $(BUILD_DIR)/.config  "$(BUILD_DIR)/collected-defconfig-fragments" ; \
+		echo "DEBUG :" ./scripts/kconfig/merge_config.sh -m $(BUILD_DIR)/.config  "$(BUILD_DIR)/collected-defconfig-fragments" ; \
 		cp "$(BUILD_DIR)/.config"  "$(BUILD_DIR)/config.after-merge_config" ; \
 		echo "PLOOOPPPPP after" ; \
 	fi ;
@@ -149,69 +149,69 @@ pre-configure:
 	if [ "$(SW_NAME)" = "linux" ] ; then \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) direcotory does not exists" ; \
 		fi ; \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_FAMILY_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			cat "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS)" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_SPECIFIC_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_COMMON_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_HW_COMMON_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_FAMILY_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ] ; then \
 			echo "COLLECT : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) to $(BUILD_DIR)/collected-defconfig-fragments" ; \
-			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(KERNEL_FRAGMENT_HOME)/$(LINUX_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 	fi ; \
 	if [ "$(SW_NAME)" = "u-boot" ] ; then \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_COMMON_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_FAMILY_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_SPECIFIC_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_SPECIFIC_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_SPECIFIC_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_HW_SPECIFIC_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_COMMON_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_COMMON_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_COMMON_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_COMMON_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_FAMILY_FRAGMENTS) directory does not exists" ; \
 		fi ; \
 		if [ -d "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_SPECIFIC_FRAGMENTS)" ] ; then \
-			find "$(KERNEL_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_SPECIFIC_FRAGMENTS) -name *.defconfig -exec cat {} \;" >> $(BUILD_DIR)/collected-defconfig-fragments ; \
+			find "$(UBOOT_FRAGMENT_HOME)/$(UBOOT_BOARD_FUNC_SPECIFIC_FRAGMENTS)" -name *.defconfig -exec cat {} \; >> $(BUILD_DIR)/collected-defconfig-fragments ; \
 		else \
 			echo "SKIPPED : $(UBOOT_FRAGMENT_HOME)/$(UBOOT_KERNEL_BOARD_FUNC_SPECIFIC_FRAGMENTS) directory does not exists" ; \
 		fi ; \
