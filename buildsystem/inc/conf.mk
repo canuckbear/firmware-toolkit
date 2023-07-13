@@ -217,7 +217,7 @@ UBOOT_DEFCONFIG       	?= undefined_config_in_board_mk
 CONFIG_OVERRIDES    	?=
 
 # Defines build flags to use all available cpus when running make
-BUILD_PROCESS_COUNT 	?= -j$(shell grep -c ^processor /proc/cpuinfo)
+BUILD_PROCESS_COUNT 	?= -j $(shell grep -c ^processor /proc/cpuinfo)
 
 # Defines common build arguments and flags, independantly of boards architecture
 LINUX_KERNEL_COMMON_BUILD_ARGS   	?= modules dtbs
