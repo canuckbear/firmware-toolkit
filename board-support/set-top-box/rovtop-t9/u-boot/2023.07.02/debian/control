@@ -1,0 +1,12 @@
+Source: u-boot-rovtop-t9
+Section: misc
+Priority: optional
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: u-boot-rovtop-t9
+Architecture: any
+Depends: ${misc:Depends}
+Description: u-boot, version 2023.07.02 for rovtop-t9
+ This packages contains u-boot version 2023.07.02 compiled for rovtop-t9 board.
