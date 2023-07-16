@@ -1,3 +1,9 @@
+dft (0.8.1-1) unstable; urgency=low
+
+  * Update depencies to take in accout exfatprogs instad of extfat-utils
+
+ -- William Bonnet <william@wbonnet.net>  Sun, 16 Jul 2023 21:44:00 +0100
+
 dft (0.8.0-1) unstable; urgency=low
 
   * Beginning of work towards first complete firmware mode support 
