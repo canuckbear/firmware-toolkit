@@ -128,7 +128,7 @@ class Configuration(object):
       if os.path.isfile(self.filename):
         # Yes then, load it
         with open(self.filename, 'r') as working_file:
-          self.configuration = yaml.load(working_file, Loader=SafeLoader
+          self.configuration = yaml.load(working_file, Loader=SafeLoader)
 
           # Now we may have to expand a few paths...
           # First check if the configuration is really defined
@@ -424,7 +424,7 @@ class Project(object):
       # Load all the sub configuration files from disk
       #
       with open(self.project_name, 'r') as working_file:
-        self.project = yaml.load(working_file, Loader=SafeLoader
+        self.project = yaml.load(working_file, Loader=SafeLoader)
 
         # Check if there is a configuration and working file defined, otherwise copy
         # it from the general configuration
@@ -492,21 +492,21 @@ class Project(object):
         filename = self.generate_def_file_path(self.project[Key.PROJECT_DEFINITION.value]\
                                                            [Key.ROOTFS.value][0])
         with open(filename, 'r') as working_file:
-          self.rootfs = yaml.load(working_file, Loader=SafeLoader
+          self.rootfs = yaml.load(working_file, Loader=SafeLoader)
 
       # Load the firmware sub configuration files
       if Key.FIRMWARE.value in self.project[Key.PROJECT_DEFINITION.value]:
         filename = self.generate_def_file_path(self.project[Key.PROJECT_DEFINITION.value]\
                                                            [Key.FIRMWARE.value][0])
         with open(filename, 'r') as working_file:
-          self.firmware = yaml.load(working_file, Loader=SafeLoader
+          self.firmware = yaml.load(working_file, Loader=SafeLoader)
 
       # Load the image sub configuration files
       if Key.IMAGE.value in self.project[Key.PROJECT_DEFINITION.value]:
         filename = self.generate_def_file_path(self.project[Key.PROJECT_DEFINITION.value]\
                                                            [Key.IMAGE.value][0])
         with open(filename, 'r') as working_file:
-          self.image = yaml.load(working_file, Loader=SafeLoader
+          self.image = yaml.load(working_file, Loader=SafeLoader)
 
       # Load the check sub configuration files
       if Key.CHECK.value in self.project[Key.PROJECT_DEFINITION.value]:
@@ -548,14 +548,14 @@ class Project(object):
         filename = self.generate_def_file_path(self.project[Key.PROJECT_DEFINITION.value]\
                                                                [Key.CONTENT_INFORMATION.value][0])
         with open(filename, 'r') as working_file:
-          self.content_information = yaml.load(working_file, Loader=SafeLoader
+          self.content_information = yaml.load(working_file, Loader=SafeLoader)
 
       # Load the list of variables files
       if Key.VARIABLES.value in self.project[Key.PROJECT_DEFINITION.value]:
         filename = self.generate_def_file_path(self.project[Key.PROJECT_DEFINITION.value]\
                                                                [Key.VARIABLES.value][0])
         with open(filename, 'r') as working_file:
-          self.variables = yaml.load(working_file, Loader=SafeLoader
+          self.variables = yaml.load(working_file, Loader=SafeLoader)
 
       #
       # Once configuration have been loaded, compute the values of some
@@ -616,7 +616,7 @@ class Project(object):
           else:
             self.logging.debug("loading BSP file " + bsp_file)
             with open(bsp_file, 'r') as working_file:
-              target[Key.BSP.value] = yaml.load(working_file, Loader=SafeLoader
+              target[Key.BSP.value] = yaml.load(working_file, Loader=SafeLoader)
 
       # Defines the full path and filename to the firmware
       self.firmware_filename = self.get_firmware_content_directory() + "/"
