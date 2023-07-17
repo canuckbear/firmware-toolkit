@@ -1,3 +1,9 @@
+dft (0.8.1-1) unstable; urgency=low
+
+  * YAML files are now loaded using Loader=SafeLoader
+
+ -- William Bonnet <william@wbonnet.net>  Sun, 30 Oct 2022 14:34:00 +0100
+
 dft (0.8.0-1) unstable; urgency=low
 
   * Beginning of work towards first complete firmware mode support 
