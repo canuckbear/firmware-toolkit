@@ -1,3 +1,9 @@
+dft (0.8.2-1) unstable; urgency=low
+
+  * Fix typo in YAML files loading code
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 18 Jul 2023 16:54:00 +0100
+
 dft (0.8.1-1) unstable; urgency=low
 
   * YAML files are now loaded using Loader=SafeLoader

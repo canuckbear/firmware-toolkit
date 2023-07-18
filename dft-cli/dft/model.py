@@ -523,7 +523,7 @@ class Project(object):
             # Open and read the file
             with open(filename, 'r') as working_file:
               # YAML structure is stored at index 'counter'
-              self.check.append(yaml.load(working_file, Loader=SafeLoader)
+              self.check.append(yaml.load(working_file, Loader=SafeLoader))
 
       # Load the stripping sub configuration files
       if Key.STRIPPING.value in self.project[Key.PROJECT_DEFINITION.value]:
@@ -540,7 +540,7 @@ class Project(object):
             # Open and read the file
             with open(filename, 'r') as working_file:
               # YAML structure is stored at index 'counter'
-              self.stripping.append(yaml.load(working_file, Loader=SafeLoader)
+              self.stripping.append(yaml.load(working_file, Loader=SafeLoader))
 
 
       # Load the check sub configuration files
