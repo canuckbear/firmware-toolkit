@@ -1,3 +1,33 @@
+dft (0.8.7-1) unstable; urgency=low
+
+  * Add non-free-firmare section to APT sources
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 27 Jul 2023 19:55:00 +0100
+
+dft (0.8.5-1) unstable; urgency=low
+
+  * Add both non-free and non-free-firmare section to APT sources
+
+ -- William Bonnet <william@wbonnet.net>  Fri, 28 Jul 2023 17:38:00 +0100
+
+dft (0.8.5-1) unstable; urgency=low
+
+  * Force ansible locales LC_ALLL etc to be UTF8 when called in CLI mode
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 27 Jul 2023 19:55:00 +0100
+
+dft (0.8.4-1) unstable; urgency=low
+
+  * Hack to use hardcoded repo. For internal only do not distribute
+
+ -- William Bonnet <william@wbonnet.net>  Wed, 26 Jul 2023 20:12:00 +0100
+
+dft (0.8.3-1) unstable; urgency=low
+
+  * Firmwaretoolkit repo is accessed using http  no longer https which should be redirected by web server
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 18 Jul 2023 16:54:00 +0100
+
 dft (0.8.2-1) unstable; urgency=low
 
   * Fix typo in YAML files loading code
