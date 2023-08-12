@@ -29,7 +29,7 @@ distributions:
       repositories:
         - url: 'http://ftp.de.debian.org/debian/'
           suite: 'bullseye'
-          sections: [ 'main' , 'contrib' , 'non-free' ]
+          sections: [ 'main' , 'contrib' , 'non-free', 'non-free-firmware' ]
         - url: 'http://ftp.de.debian.org/debian/'
           suite: 'bullseye-updates'
           sections: [ 'main', 'contrib', 'non-free' ]
