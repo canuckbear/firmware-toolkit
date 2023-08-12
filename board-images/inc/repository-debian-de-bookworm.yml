@@ -29,10 +29,10 @@ distributions:
       repositories:
         - url: 'http://ftp.de.debian.org/debian/'
           suite: 'bookworm'
-          sections: [ 'main' , 'contrib' , 'non-free', 'firmware-nonfree' ]
+          sections: [ 'main' , 'contrib' , 'non-free', 'non-free-firmware' ]
         - url: 'http://ftp.de.debian.org/debian/'
           suite: 'bookworm-updates'
-          sections: [ 'main', 'contrib', 'non-free', 'firmware-nonfree' ]
+          sections: [ 'main', 'contrib', 'non-free', 'non-free-firmware' ]
     #        - url: 'http://ftp.de.debian.org/debian-security/'
     #      suite: 'bookworm/updates'
     #      sections: [ 'main', 'contrib', 'non-free' ]
