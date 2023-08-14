@@ -1,0 +1,1 @@
+../../files/install.u-boot-roc-pc-rk3399.md
