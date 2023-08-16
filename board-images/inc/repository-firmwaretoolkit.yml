@@ -30,3 +30,10 @@ distributions:
         - url: 'https://apt.firmwaretoolkit.org'
           suite: 'bullseye'
           sections: [ 'stable' , 'longterm', 'mainline' ]
+    
+    # Debian 12 Bookworm
+    - name: 'bookworm'
+      architectures: [ 'amd64' , 'mips' , 'armel' , 'armhf' , 'arm64' , 'i386', 'riscv64' ]
+      repositories:
+        - url: 'https://192.168.11.232'
+          suite: 'bookworm'
