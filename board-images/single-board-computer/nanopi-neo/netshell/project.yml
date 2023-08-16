@@ -124,7 +124,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: bullseye , board: nanopi-neo }
+    - { version: bookworm , board: nanopi-neo }
 
 # ----------------------------------------------------------------------------
 #

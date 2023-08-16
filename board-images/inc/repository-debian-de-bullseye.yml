@@ -23,6 +23,21 @@
 # Definition of the distributions used to build rootfs
 #
 distributions:
+
+    # Debian 12.0 Bullseye
+    - name: 'bookworm'
+      architectures: [ 'amd64' , 'mips' , 'armel' , 'armhf' , 'arm64' , 'i386' ]
+      repositories:
+        - url: 'http://ftp.de.debian.org/debian/'
+          suite: 'bookworm'
+          sections: [ 'main' , 'contrib' , 'non-free' ]
+        - url: 'http://ftp.de.debian.org/debian/'
+          suite: 'bookworm-updates'
+          sections: [ 'main', 'contrib', 'non-free' ]
+    #        - url: 'http://ftp.de.debian.org/debian-security/'
+    #      suite: 'bookworm/updates'
+    #      sections: [ 'main', 'contrib', 'non-free' ]
+    
     # Debian 11.0 Bullseye
     - name: 'bullseye'
       architectures: [ 'amd64' , 'mips' , 'armel' , 'armhf' , 'arm64' , 'i386' ]
@@ -35,6 +50,20 @@ distributions:
           sections: [ 'main', 'contrib', 'non-free' ]
     #        - url: 'http://ftp.de.debian.org/debian-security/'
     #      suite: 'bullseye/updates'
+    #      sections: [ 'main', 'contrib', 'non-free' ]
+
+    # Debian 12.0 Bookworm
+    - name: 'bookworm'
+      architectures: [ 'amd64' , 'mips' , 'armel' , 'armhf' , 'arm64' , 'i386' ]
+      repositories:
+        - url: 'http://ftp.de.debian.org/debian/'
+          suite: 'bookworm'
+          sections: [ 'main' , 'contrib' , 'non-free', 'non-free-firmware' ]
+        - url: 'http://ftp.de.debian.org/debian/'
+          suite: 'bookworm-updates'
+          sections: [ 'main', 'contrib', 'non-free' ]
+    #        - url: 'http://ftp.de.debian.org/debian-security/'
+    #      suite: 'bookworm/updates'
     #      sections: [ 'main', 'contrib', 'non-free' ]
 
 # ----------------------------------------------------------------------------

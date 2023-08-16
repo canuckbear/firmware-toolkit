@@ -1,6 +1,3 @@
-# Set the hostname according to the project name
-dft_hostname: "netshell"
-
 # Create a group named localadmin
 dft_groups:
   - { name: "localadmin" }

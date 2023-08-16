@@ -1,0 +1,1 @@
+../../files/install.u-boot-m96x-2-mini.md
