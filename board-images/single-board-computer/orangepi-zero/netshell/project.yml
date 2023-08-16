@@ -128,7 +128,7 @@ project_definition:
   # DFT installation
   #
   targets:
-    - { version: bullseye , board: orangepi-zero }
+    - { version: bookworm , board: orangepi-zero }
 
 # ----------------------------------------------------------------------------
 #
