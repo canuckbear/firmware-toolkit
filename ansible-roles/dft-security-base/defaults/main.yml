@@ -34,7 +34,10 @@ dft_openssh:
     max_auth_tries: 2
     max_sessions: 2
     permit_root_login: "no"
-    port: 30463
+# DFT used to modify default port for compliance with ANSSI rules
+# it is set back to default to match 'working out of the box' principle
+#    port: 30463
+    port: 22
     tcp_keep_alive: "no"
     x11_forwarding: "no"
     allow_agent_forwarding: "no"
