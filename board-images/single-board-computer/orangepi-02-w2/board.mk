@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/orangepi-02-w2/board.mk
