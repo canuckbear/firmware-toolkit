@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/raspberry-pi0w-2/board.mk
