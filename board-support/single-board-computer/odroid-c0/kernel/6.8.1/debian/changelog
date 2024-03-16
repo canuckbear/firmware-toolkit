@@ -1,0 +1,17 @@
+linux-kernel-odroid-c0 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:07 +0100
+
+linux-kernel-odroid-c0 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:07 +0100
+
+linux-headers-odroid-c0 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:07 +0100

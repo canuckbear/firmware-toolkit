@@ -1,0 +1,21 @@
+Source: linux-kernel-nvidia-jetson-nano
+Section: kernel
+Priority: optional
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: linux-kernel-nvidia-jetson-nano
+Architecture: any
+Depends: ${misc:Depends},
+         kmod, 
+         linux-base (>= 4.3~), 
+         initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool
+Description: Linux kernel, version 6.8.1 for nvidia-jetson-nano
+ This packages contains the Linux kernel version 6.8.1 compiled for nvidia-jetson-nano board.
+
+# Package: linux-headers-nvidia-jetson-nano-6.8.1
+# Architecture: any
+# Depends: ${misc:Depends}
+# Description: Linux kernel headers, version 6.8.1 for nvidia-jetson-nano
+#  This packages contains the Linux kernel headers version 6.8.1 for nvidia-jetson-nano board.

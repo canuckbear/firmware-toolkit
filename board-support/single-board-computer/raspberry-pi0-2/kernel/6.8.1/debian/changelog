@@ -1,0 +1,17 @@
+linux-kernel-raspberry-pi0-2 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:25 +0100
+
+linux-kernel-raspberry-pi0-2 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:25 +0100
+
+linux-headers-raspberry-pi0-2 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:53:25 +0100
