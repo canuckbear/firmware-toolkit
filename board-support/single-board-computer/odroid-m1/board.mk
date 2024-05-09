@@ -24,7 +24,7 @@
 #
 
 # The board name fragment will be used in package naming, path and files content generation
-BOARD_NAME = odroid-m1
+BOARD_NAME = odroid-m1-rk3568_defconfig
 
 # Board architecture as defined by uname -m (armv7l, mips, aarch64, x86_64, etc.)
 BOARD_ARCH = aarch64
