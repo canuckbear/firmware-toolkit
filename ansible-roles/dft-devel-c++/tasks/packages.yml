@@ -19,11 +19,12 @@
 #
 
 ---
-#- name: DFT - Install XXX
-#  apt:
-#       name={{item}}
-#       state=latest
-#       install_recommends=no
-#  with_items:
-#       - rsync
-#       - openssh-client
+- name: DFT - Install GCC Compiler
+  apt:
+       name={{item}}
+       state=latest
+       install_recommends=no
+  with_items:
+       - gcc14
+       - gcc-14-locales
+       - gdb
