@@ -19,11 +19,13 @@
 #
 
 ---
-#- name: DFT - Install XXX
-#  apt:
-#       name={{item}}
-#       state=latest
-#       install_recommends=no
-#  with_items:
-#       - rsync
-#       - openssh-client
+- name: DFT - Install Java development basic environment
+  apt:
+       name={{item}}
+       state=latest
+       install_recommends=no
+  with_items:
+       - ant
+       - openjdk-23-doc
+       - openjdk-23-jdk-headless
+       - openjdk-23-jre-headless
