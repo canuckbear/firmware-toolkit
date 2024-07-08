@@ -69,5 +69,5 @@ help:
 	@echo "   new-role                role-name=new_role_name"
 	@echo "                           Initialize a new role entry (not added to git) with content of"
 	@echo "                           $(DFT_BUILDSYSTEM)/templates/ansible-role.template"
-	@echo "                           You will have to edit the generated files according to you role needs"
+	@echo "                           You will have to edit the generated files according to the role needs"
 	@echo "   help                    Display this help"
