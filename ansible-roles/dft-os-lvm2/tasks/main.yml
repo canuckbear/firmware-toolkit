@@ -24,9 +24,9 @@
 #
 
 ---
-- include: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include-tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include: packages.yml
-- include: configuration.yml
-- include: volume-group.yml
-- include: logical-volume.yml
+- include-tasks: packages.yml
+- include-tasks: configuration.yml
+- include-tasks: volume-group.yml
+- include-tasks: logical-volume.yml

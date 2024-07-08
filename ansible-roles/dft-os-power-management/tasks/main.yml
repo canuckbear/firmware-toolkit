@@ -24,8 +24,8 @@
 #
 
 ---
-- include: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include-tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include: acpid.yml
-- include: upower.yml
-- include: cpufrequtils.yml
+- include-tasks: acpid.yml
+- include-tasks: upower.yml
+- include-tasks: cpufrequtils.yml
