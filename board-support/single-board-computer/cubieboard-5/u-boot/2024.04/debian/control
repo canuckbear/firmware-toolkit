@@ -8,5 +8,5 @@ Build-Depends: debhelper (>= 9)
 Package: u-boot-cubieboard-5
 Architecture: any
 Depends: ${misc:Depends}
-Description: u-boot, version 2024.01 for cubieboard-5
- This packages contains u-boot version 2024.01 compiled for cubieboard-5 board.
+Description: u-boot, version 2024.04 for cubieboard-5
+ This packages contains u-boot version 2024.04 compiled for cubieboard-5 board.
