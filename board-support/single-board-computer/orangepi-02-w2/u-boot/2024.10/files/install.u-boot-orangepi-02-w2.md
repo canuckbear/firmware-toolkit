@@ -1,0 +1,1 @@
+../../files/install.u-boot-orangepi-02-w2.md
