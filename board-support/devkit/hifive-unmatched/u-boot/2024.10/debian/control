@@ -1,0 +1,12 @@
+Source: u-boot-hifive-unmatched
+Section: misc
+Priority: optional
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: u-boot-hifive-unmatched
+Architecture: any
+Depends: ${misc:Depends}
+Description: u-boot, version 2024.10 for hifive-unmatched
+ This packages contains u-boot version 2024.10 compiled for hifive-unmatched board.
