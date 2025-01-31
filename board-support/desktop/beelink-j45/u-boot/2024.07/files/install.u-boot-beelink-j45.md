@@ -1,0 +1,1 @@
+../../files/install.u-boot-beelink-j45.md

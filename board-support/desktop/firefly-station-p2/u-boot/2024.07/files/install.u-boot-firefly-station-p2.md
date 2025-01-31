@@ -1,0 +1,1 @@
+../../files/install.u-boot-firefly-station-p2.md

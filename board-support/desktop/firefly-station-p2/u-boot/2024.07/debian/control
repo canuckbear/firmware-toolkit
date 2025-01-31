@@ -1,0 +1,12 @@
+Source: u-boot-firefly-station-p2
+Section: misc
+Priority: optional
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: u-boot-firefly-station-p2
+Architecture: any
+Depends: ${misc:Depends}
+Description: u-boot, version 2024.07 for firefly-station-p2
+ This packages contains u-boot version 2024.07 compiled for firefly-station-p2 board.

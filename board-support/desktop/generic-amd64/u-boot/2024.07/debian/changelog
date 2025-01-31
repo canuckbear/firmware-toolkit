@@ -1,0 +1,5 @@
+u-boot-generic-amd64 (2024.07-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 18 Oct 2024 19:57:13 +0200
