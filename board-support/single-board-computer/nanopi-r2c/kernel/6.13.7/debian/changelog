@@ -1,0 +1,17 @@
+linux-kernel-nanopi-r2c (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:58 +0100
+
+linux-kernel-nanopi-r2c (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:58 +0100
+
+linux-headers-nanopi-r2c (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:58 +0100
