@@ -1,4 +1,4 @@
-# u-boot installation for MILK-V
+# u-boot installation for MILK-V-Duo
 
 ## Disclaimer
 
@@ -12,17 +12,17 @@ You have been warned :)
 ## u-boot installation
 
 The u-boot binary to install has been copied by this package to :
-/boot/u-boot/u-boot-MILK-V
+/boot/u-boot/u-boot-MILK-V-Duo
 
 This is a symlink to the current u-boot file stored at the same location in a
-file named u-boot-MILK-V.VERSION
+file named u-boot-MILK-V-Duo.VERSION
 
 u-boot binary has to be installed on the first sectors of the device used by
 the board to boot. This can be done by the following commands, assuming that :
 
 . The commands are run as root or using sudo ( that's the example)
 
-. The commands are run on the target board (MILK-V)
+. The commands are run on the target board (MILK-V-Duo)
 
 # XXX check this depending on board
 # . Which means the /dev/mmcblk0 is the internal CF card used to boot
@@ -40,4 +40,4 @@ u-boot itself.
 sudo dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer conv=nocreat,notrunc
 
 # Copy binary to MMC and update u-boot (environnment variables stored on MMC are not modified)
-sudo dd if=/boot/u-boot/u-boot-MILK-V of=/dev/mmcblk0 bs=1024 seek=8 status=noxfer conv=nocreat,notrunc
+sudo dd if=/boot/u-boot/u-boot-MILK-V-Duo of=/dev/mmcblk0 bs=1024 seek=8 status=noxfer conv=nocreat,notrunc
