@@ -1,0 +1,17 @@
+linux-kernel-nezha-d1 (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:51 +0100
+
+linux-kernel-nezha-d1 (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:51 +0100
+
+linux-headers-nezha-d1 (6.13.7-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 19 Mar 2025 14:09:51 +0100
