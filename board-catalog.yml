@@ -8,7 +8,7 @@
 # License.
 #
 #
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2025 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
@@ -22,7 +22,7 @@
 
 #
 # This file describes the level of support and status of the different boards
-# DFT is aware of. For each board board i defines :
+# DFT is aware of. For each board board it defines :
 #  . the level of support (stable, testing, experimental, planning)
 #  . the u-boot current version
 #  . the kernel current version
@@ -103,6 +103,8 @@ board-catalog:
                   support-level: planning
          - marsboard-imx6:
                   support-level: planning
+         - MILKV:
+                  support-level: planning
          - nanopi-k2:
                   support-level: planning
          - nanopi-m1:
@@ -145,17 +147,27 @@ board-catalog:
                   support-level: planning
          - odroid-hc1:
                   support-level: planning
+         - odroid-hc2:
+                  support-level: planning
+         - odroid-m1s:
+                  support-level: planning
          - odroid-n2:
                   support-level: planning
          - odroid-xu4:
                   support-level: planning
          - orangepi-3:
                   support-level: planning
+         - orangepi-3b:
+                  support-level: planning
          - orangepi-4:
+                  support-level: planning
+         - orangepi-5bpluss:
                   support-level: planning
          - orangepi-one-plus:
                   support-level: planning
          - orangepi-plus-2e:
+                  support-level: planning
+         - orangepi-rv2:
                   support-level: planning
          - orangepi-r1:
                   support-level: stable
@@ -168,7 +180,6 @@ board-catalog:
                   images:
                     - name: netshell
                       status : unknown
-
          - orangepi-zero:
                   support-level: stable
                   uboot_provider: armwizard
@@ -194,7 +205,13 @@ board-catalog:
                   support-level: planning
          - pine64-rock64:
                   support-level: planning
+         - radxa-rockpi-s:
+                  support-level: planning
          - raspberry-pi0:
+                  support-level: planning
+         - raspberry-pi0-2:
+                  support-level: planning
+         - raspberry-pi0w-2:
                   support-level: planning
          - raspberry-pi0w:
                   support-level: planning
@@ -204,9 +221,17 @@ board-catalog:
                   support-level: planning
          - raspberry-pi3:
                   support-level: planning
-         - raspberry-pi4b:
+         - raspberry-pi4:
                   support-level: planning
- devkit:
+         - raspberry-pi5L:
+                  support-level: planning
+         - rock-rk3399:
+                  support-level: planning
+          - wandboard:
+                  support-level: planning
+         - visionfive-1:
+                  support-level: planning
+devkit:
          - nvidia-jetson-nano:
                   support-level: planning
          - nvidia-jetson-tk1:
@@ -218,4 +243,6 @@ board-catalog:
          - nxp-sabre-qsd:
                   support-level: planning
          - nxp-sabre-qsd-plus:
+                  support-level: planning
+         - hifive-unmatched:
                   support-level: planning
