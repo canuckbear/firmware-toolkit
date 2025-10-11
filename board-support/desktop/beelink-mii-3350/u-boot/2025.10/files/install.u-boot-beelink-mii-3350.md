@@ -1,0 +1,1 @@
+../../files/install.u-boot-beelink-mii-3350.md
