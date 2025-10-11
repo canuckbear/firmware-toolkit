@@ -27,3 +27,5 @@
   with_items:
        - dia
        - dia-shapes
+       - dia-rib-network
+       - dia2code
