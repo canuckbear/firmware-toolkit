@@ -19,9 +19,9 @@
 #
 
 ---
-- include: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include: kernel-hardening.yml
-- include: sudo.yml
-- include: openssh-server.yml
-- include: openssh-client.yml
+- include_tasks: kernel-hardening.yml
+- include_tasks: sudo.yml
+- include_tasks: openssh-server.yml
+- include_tasks: openssh-client.yml

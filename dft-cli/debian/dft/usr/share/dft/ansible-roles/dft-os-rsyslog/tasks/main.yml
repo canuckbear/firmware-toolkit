@@ -24,6 +24,6 @@
 #
 
 ---
-- include: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include: rsyslog.yml
+- include_tasks: rsyslog.yml
