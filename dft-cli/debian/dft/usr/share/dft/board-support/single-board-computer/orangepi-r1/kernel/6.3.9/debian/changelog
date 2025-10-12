@@ -1,0 +1,17 @@
+linux-kernel-orangepi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 20:34:54 +0200
+
+linux-kernel-orangepi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 20:34:54 +0200
+
+linux-headers-orangepi-r1 (6.3.9-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 22 Jun 2023 20:34:54 +0200

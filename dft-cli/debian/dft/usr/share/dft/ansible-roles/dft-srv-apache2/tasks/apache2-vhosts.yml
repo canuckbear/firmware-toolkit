@@ -1,0 +1,53 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+---
+
+#
+# Create the virtual hosts configuration files into sites-available from template
+#
+- name: Install apache2 HTTP(s) virtual hosts
+  template:  src=apache2-virtual-host.j2
+             dest=/etc/apache2/sites-available/{{ item.server_name }}.conf
+             owner=root
+             group=root
+             mode="0644"
+  with_items: "{{ dft_srv_apache2.sites_available }}"
+  when: dft_srv_apache2.sites_available is defined
+
+#
+# Activate the virtual hosts if needed, according to inventory
+#
+- name: Enable apache2 virtual hosts according to inventory
+  command: a2ensite {{ item.server_name }}
+  with_items: "{{ dft_srv_apache2.sites_available }}"
+  when: dft_srv_apache2.sites_available is defined
+  notify:
+    Reload Apache2
+
+#
+# Deactivate the virtual hosts if needed, according to inventory
+#
+- name: Disable apache2 virtual hosts according to inventory
+  command: a2dissite {{ item.server_name }}
+  with_items: "{{ dft_srv_apache2.sites_disabled }}"
+  when: dft_srv_apache2.sites_disabled is defined
+  notify:
+    Reload Apache2

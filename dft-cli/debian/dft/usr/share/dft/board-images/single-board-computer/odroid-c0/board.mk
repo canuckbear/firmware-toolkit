@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/odroid-c0/board.mk

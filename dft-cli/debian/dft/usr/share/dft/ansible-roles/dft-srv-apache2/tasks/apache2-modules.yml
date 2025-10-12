@@ -1,0 +1,41 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+---
+
+#
+# Activate the virtual hosts configuration files
+#
+- name: Activate apache2 enabled modules
+  command: a2ensite {{ item.name }}
+  with_items: "{{ dft_apache2.sites_enabled}}"
+  when: dft_apache2.modules_enabled is defined
+#-  notify:
+#    - restart apache
+
+#
+# Deactivate the virtual hosts configuration files
+#
+- name: Deactivate apache2 disabled modules
+  command: a2dissite {{ item.name }}
+  with_items: "{{ dft_apache2.sites_disabled}}"
+  when: dft_apache2.modules_disabled is defined
+#-  notify:
+#    - restart apache

@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/orangepi-one-plus/board.mk

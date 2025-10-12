@@ -25,19 +25,19 @@
 
 ---
 # Incudes tasks related to ANSSI NT-28 (Linux configuration) recommendations
-- include-tasks: anssi-linux-configuration.yml
+- include_tasks: anssi-linux-configuration.yml
   when: ( dft_security_hardening_os is defined and
           dft_security_hardening_os.anssi_linux_configuration is defined and
           dft_security_hardening_os.anssi_linux_configuration == True )
 
 # Incudes tasks related to ANSSI NT-002 (Linux security) recommendations
-- include-tasks: anssi-linux-security.yml
+- include_tasks: anssi-linux-security.yml
   when: ( dft_security_hardening_os is defined and
           dft_security_hardening_os.anssi_linux_security is defined and
           dft_security_hardening_os.anssi_linux_security == True )
 
 # Incudes tasks related to ANSSI NT-007 (OpenSSH) recommendations
-- include-tasks: anssi-openssh.yml
+- include_tasks: anssi-openssh.yml
   when: ( dft_security_hardening_os is defined and
           dft_security_hardening_os.anssi_openssh is defined and
           dft_security_hardening_os.anssi_openssh == True )

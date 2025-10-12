@@ -1,0 +1,21 @@
+Source: linux-kernel-sunvell-t95max
+Section: kernel
+Priority: optional
+Maintainer: William Bonnet <william@wbonnet.net>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: linux-kernel-sunvell-t95max
+Architecture: any
+Depends: ${misc:Depends},
+         kmod, 
+         linux-base (>= 4.3~), 
+         initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool
+Description: Linux kernel, version 5.19.14 for sunvell-t95max
+ This packages contains the Linux kernel version 5.19.14 compiled for sunvell-t95max board.
+
+# Package: linux-headers-sunvell-t95max-5.19.14
+# Architecture: any
+# Depends: ${misc:Depends}
+# Description: Linux kernel headers, version 5.19.14 for sunvell-t95max
+#  This packages contains the Linux kernel headers version 5.19.14 for sunvell-t95max board.

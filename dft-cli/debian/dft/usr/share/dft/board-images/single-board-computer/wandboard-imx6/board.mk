@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/wandboard-imx6/board.mk

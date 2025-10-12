@@ -1,0 +1,17 @@
+linux-kernel-nvidia-jetson-tx1 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:44 +0200
+
+linux-kernel-nvidia-jetson-tx1 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:44 +0200
+
+linux-headers-nvidia-jetson-tx1 (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:44 +0200

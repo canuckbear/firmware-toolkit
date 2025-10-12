@@ -1,0 +1,17 @@
+linux-kernel-odroid-c2 (5.17.6-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 09 May 2022 15:02:04 +0200
+
+linux-kernel-odroid-c2 (5.17.6-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 09 May 2022 15:02:04 +0200
+
+linux-headers-odroid-c2 (5.17.6-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 09 May 2022 15:02:04 +0200

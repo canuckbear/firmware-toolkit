@@ -1,0 +1,11 @@
+Package: dft-test-bsp
+Source: dft
+Version: 0.8.6-1
+Architecture: all
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Installed-Size: 111
+Depends: sbit
+Section: admin
+Priority: optional
+Homepage: https://www.github.com/wbonnet/dft
+Description: Debian Framework Toolkit scripts for BSP testing

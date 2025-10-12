@@ -24,11 +24,11 @@
 #
 
 ---
-- include-tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
 
-- include-tasks: chromium.yml
+- include_tasks: chromium.yml
   when: (dft_browser is defined and dft_browser == "chromium")
 
-- include-tasks: firefox.yml
+- include_tasks: firefox.yml
   when: (dft_browser is defined and dft_browser == "firefox")

@@ -24,7 +24,7 @@
 #
 
 ---
-- include-tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
 
-- include-tasks: gstreamer.yml
+- include_tasks: gstreamer.yml

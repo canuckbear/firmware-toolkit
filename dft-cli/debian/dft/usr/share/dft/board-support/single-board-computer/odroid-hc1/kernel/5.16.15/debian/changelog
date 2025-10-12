@@ -1,0 +1,17 @@
+linux-kernel-odroid-hc1 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:35 +0100
+
+linux-kernel-odroid-hc1 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:35 +0100
+
+linux-headers-odroid-hc1 (5.16.15-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Thu, 17 Mar 2022 20:57:35 +0100

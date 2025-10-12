@@ -1,0 +1,10 @@
+Package: dft
+Version: 0.8.6-1
+Architecture: all
+Maintainer: William Bonnet <wbonnet@theitmakers.com>
+Installed-Size: 109779
+Depends: python3-parted, python3-yaml, python3:any, python3-distutils, debootstrap, ansible, swig, u-boot-tools, bison, flex, python3-dev, bc, devscripts, libssl-dev, qemu-user-static, dosfstools, util-linux, e2fsprogs, btrfs-progs, exfatprogs, hfsprogs, ntfs-3g, reiser4progs, lsb-release, reiserfsprogs, repo, squashfs-tools
+Section: admin
+Priority: optional
+Homepage: https://www.github.com/wbonnet/dft
+Description: Debian Framework Toolkit

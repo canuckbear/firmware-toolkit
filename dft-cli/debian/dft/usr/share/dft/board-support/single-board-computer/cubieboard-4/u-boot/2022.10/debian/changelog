@@ -1,0 +1,5 @@
+u-boot-cubieboard-4 (2022.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 04 Oct 2022 18:26:15 +0200

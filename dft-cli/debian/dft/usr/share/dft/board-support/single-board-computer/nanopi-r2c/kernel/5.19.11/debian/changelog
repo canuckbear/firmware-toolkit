@@ -1,0 +1,17 @@
+linux-kernel-nanopi-r2c (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:43 +0200
+
+linux-kernel-nanopi-r2c (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:43 +0200
+
+linux-headers-nanopi-r2c (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:43 +0200

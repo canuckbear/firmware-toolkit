@@ -1,0 +1,17 @@
+linux-kernel-wandboard-imx6 (5.15.73-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 13 Oct 2022 20:58:27 +0200
+
+linux-kernel-wandboard-imx6 (5.15.73-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 13 Oct 2022 20:58:27 +0200
+
+linux-headers-wandboard-imx6 (5.15.73-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 13 Oct 2022 20:58:27 +0200

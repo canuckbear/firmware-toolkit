@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/nanopi-r4s/board.mk
