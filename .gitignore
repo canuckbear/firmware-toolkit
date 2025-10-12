@@ -53,19 +53,14 @@ dkms.conf
 
 # Projet de board Cécile Janin : Bourgeon
 board-images/single-board-computer/c6l-bourgeon/
-board-support/single-board-computer/c6l-bourgeon/A
-
-	dft-cli/.pybuild/
-	dft-cli/debian/dft-ci.substvars
-	dft-cli/debian/dft-ci/
-	dft-cli/debian/dft-doc.substvars
-	dft-cli/debian/dft-doc/
-	dft-cli/debian/dft-examples.substvars
-	dft-cli/debian/dft-examples/
-	dft-cli/debian/dft-test-bsp.substvars
-	dft-cli/debian/dft-test-bsp/
-	dft-cli/debian/dft.postinst.debhelper
-	dft-cli/debian/dft.prerm.debhelper
-	dft-cli/debian/dft.substvars
-	dft-cli/debian/dft/
-	dft-cli/debian/files
+board-support/single-board-computer/c6l-bourgeon/
+ansible-roles/dft-os-syslog-ng/tasks/main.yml-
+dft-cli/.pybuild/
+dft-cli/debian/.debhelper/
+dft-cli/debian/debhelper-build-stamp
+dft-cli/debian/dft.postinst.debhelper
+dft-cli/debian/dft.prerm.debhelper
+dft-cli/debian/tmp/
+dft-cli/dft.egg-info/
+dft-cli/dft/__pycache__/
+>>>>>>> 7a279e959 ( -a ignore temporart build object)
