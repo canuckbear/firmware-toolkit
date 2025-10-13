@@ -29,7 +29,7 @@
       state: latest
       install_recommends: no
       pkg:
-        - ntp
+        - ntpsec
 
 # Generate the NTP client and server configuration file
 - name: Configure NTP client

@@ -32,4 +32,4 @@
       - udev
       - kmod
       - whois
-      - initscripts
+      #- initscripts
