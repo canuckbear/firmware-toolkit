@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/cubieboard-2/board.mk

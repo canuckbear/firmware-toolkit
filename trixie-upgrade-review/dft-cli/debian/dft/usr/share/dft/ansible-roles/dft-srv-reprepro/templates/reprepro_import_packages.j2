@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+{% if item.base_directory is defined %}
+{% for distribution in item.distributions %}
+# Import packages to {{ item.origin }} repository for Debian distribution : {{ distribution.codename }}
+reprepro -b {{ item.base_directory }}/{{ item.name }} processincoming {{ distribution.codename }} >> /var/log/reprepro/{{ item.name }}-{{ distribution.codename }}.log
+reprepro -b {{ item.base_directory }}/{{ item.name }} export >> /var/log/reprepro/{{ item.name }}-{{ distribution.codename }}.log
+
+{% endfor %}
+{% endif %}

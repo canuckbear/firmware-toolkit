@@ -1,1 +1,0 @@
-../../files/install.u-boot-odroid-hc2.md

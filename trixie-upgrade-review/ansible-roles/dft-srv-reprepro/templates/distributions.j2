@@ -1,0 +1,53 @@
+{% for distribution in item.distributions %}
+{% if distribution.origin is defined %}
+Origin: {{ distribution.origin }}
+{% endif %}
+{% if distribution.label is defined %}
+Label: {{ distribution.label }}
+{% endif %}
+{% if distribution.codename is defined %}
+Codename: {{ distribution.codename }}
+{% endif %}
+{% if distribution.suite is defined %}
+Suite: {{ distribution.suite }}
+{% endif %}
+{% if distribution.architectures is defined %}
+Architectures: {{ distribution.architectures }}
+{% endif %}
+{% if distribution.components is defined %}
+Components: {{ distribution.components }}
+{% endif %}
+{% if distribution.udeb_components is defined %}
+UDebComponents: {{ distribution.udeb_components }}
+{% endif %}
+{% if distribution.description is defined %}
+Description: {{ distribution.description }}
+{% endif %}
+{% if distribution.log is defined %}
+Log: {{ distribution.log }}
+{% endif %}
+{% if distribution.sign_with is defined %}
+SignWith: {{ distribution.sign_with }}
+{% endif %}
+{% if distribution.deb_override is defined %}
+DebOverride: {{ distribution.deb_override }}
+{% endif %}
+{% if distribution.udeb_override is defined %}
+UDebOverride: {{ distribution.udeb_override }}
+{% endif %}
+{% if distribution.dsc_override is defined %}
+DscOverride: {{ distribution.dsc_override }}
+{% endif %}
+{% if distribution.deb_indices is defined %}
+DebIndices: {{ distribution.deb_indices }}
+{% endif %}
+{% if distribution.udeb_indices is defined %}
+UDebIndices: {{ distribution.udeb_indices }}
+{% endif %}
+{% if distribution.dsc_indices is defined %}
+DscIndices: {{ distribution.dsc_indices }}
+{% endif %}
+{% if distribution.contents is defined %}
+Contents: {{ distribution.contents }}
+{% endif %}
+{% endfor %}

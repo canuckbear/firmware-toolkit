@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/beagleboard-beaglebone-black/board.mk

@@ -1,0 +1,5 @@
+u-boot-raspberry-pi2 (2022.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 04 Oct 2022 18:26:08 +0200

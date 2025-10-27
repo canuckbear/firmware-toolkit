@@ -1,0 +1,174 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+# Documentation is available from : https://manpages.debian.org/bullseye/reprepro/reprepro.1.en.
+
+---
+# -------------------------------------------------------------------------------------------------
+# Create the reprepro group
+- name: Create the reprepro group
+  group: name={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
+         state=present
+
+# Add the user 'reprepro' with a bash shell, appending the group reprepro and
+# {{ dft_srv_reprepro.webserver_definition.group }} to the user's groups
+- name: Create the reprepro user
+  user: name={{ dft_srv_reprepro.user_definition.username | default('reprepro') }}
+        shell={{ dft_srv_reprepro.user_definition.shell | default('/bin/bash') }}
+        home={{ dft_srv_reprepro.user_definition.home_dir | default('/home/reprepro') }}
+        group={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
+        groups={{ dft_srv_reprepro.user_definition.groups | default('www-data') }}
+        append=yes
+
+- name: Create reprepro script directory
+  file: path={{ dft_srv_reprepro.user_definition.home_dir }}/bin
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_reprepro.user_definition.username | default('/home/reprepro')}}
+        group={{ dft_srv_reprepro.user_definition.group | default('reprepro')}}
+        mode="0755"
+
+# Create the reprepro log directory
+- name: Create reprepro log directory
+  file: path=/var/log/reprepro
+        state=directory
+        owner={{ dft_srv_reprepro.user_definition.username | default('reprepro') }}
+        group={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
+        mode="0750"
+
+# Instanciate the options template file
+- name: Instantiate reprepro_import_packages script template
+  template: src=reprepro_import_packages.j2
+            dest={{ dft_srv_reprepro.user_definition.home_dir }}/bin/reprepro_import_{{ item.name }}_packages
+            owner={{ dft_srv_reprepro.user_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.user_definition.group | default('reprepro') }}
+            mode="0755"
+  with_items:
+      - "{{ dft_srv_reprepro.repositories }}"
+
+# -------------------------------------------------------------------------------------------------
+# Create the repositories subdirectories
+- name: Create repository directories
+  file: path={{ item[0].base_directory }}/{{ item[0].name }}/{{ item[1] }}
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
+        mode="0775"
+  with_nested:
+    - "{{ dft_srv_reprepro.repositories }}"
+    - [ 'conf', 'db', 'dists', 'logs', 'indices', 'override', 'pool', 'project', 'tmp', 'incoming' ]
+
+# Create the deb override files
+- name: Create deb override files
+  file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.deb_override }}
+        state=touch
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
+        mode="0775"
+  when: "item.deb_override is defined"
+  with_items:
+      - "{{ dft_srv_reprepro.repositories }}"
+
+# Create the dsc override files
+- name: Create dsc override files
+  file: path={{ item.base_directory }}/{{ item.name }}/conf/{{ item.dsc_override }}
+        state=touch
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group={{ dft_srv_reprepro.webserver_definition.group | default('www-data') }}
+        mode="0775"
+  when: "item.dsc_override is defined"
+  with_items:
+      - "{{ dft_srv_reprepro.repositories }}"
+
+# Incoming is created alone because of the group forced to reprepro mode
+- name: Create repository incoming directory
+  file: path="{{ item[0].base_directory }}/{{ item[0].name }}/incoming/{{ item[1].codename }}"
+        state=directory
+        recurse=yes
+        owner={{ dft_srv_reprepro.webserver_definition.username | default('www-data') }}
+        group=reprepro
+        mode="0775"
+  with_subelements:
+    - "{{ dft_srv_reprepro.repositories }}"
+    - distributions
+
+# Instanciate the distributions template file
+- name: Instantiate distributions template
+  template: src=distributions.j2
+            dest={{ item.base_directory }}/{{ item.name }}/conf/distributions
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
+
+# Instanciate the options template file
+- name: Instantiate options template
+  template: src=options.j2
+            dest={{ item.base_directory }}/{{ item.name }}/conf/options
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
+    
+# Instanciate the incoming template file
+- name: Instantiate incoming template
+  template: src=incoming.j2
+            dest={{ item.base_directory }}/{{ item.name }}/conf/incoming
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.group | default('reprepro') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
+
+# Instanciate the uploaders template file
+- name: Instantiate uploaders template
+  template: src=uploaders.j2
+            dest={{ item.base_directory }}/{{ item.name }}/conf/uploaders
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('reprepro') }}
+            group={{ dft_srv_reprepro.webserver_definition.user | default('reprepro') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
+
+# Instanciate the apache2 virtual host configuration file
+- name: Instantiate apache2 virtual host template
+  template: src=repositories-vhost.j2
+            dest=/etc/apache2/sites-available/reprepro-vhost.conf
+            owner={{ dft_srv_reprepro.webserver_definition.username | default('root') }}
+            group={{ dft_srv_reprepro.webserver_definition.user | default('root') }}
+            mode="0644"
+  with_items:
+    - "{{ dft_srv_reprepro.repositories }}"
+  
+# -------------------------------------------------------------------------------------------------
+# Add processincoming script cron table for user reprepro. Scheduled every hour by default
+- cron: name="Repository update"
+        month={{ dft_srv_reprepro.crontab_entry.month }}
+        weekday={{ dft_srv_reprepro.crontab_entry.weekday }}
+        day={{ dft_srv_reprepro.crontab_entry.day }}
+        hour={{ dft_srv_reprepro.crontab_entry.hour }}
+        minute={{ dft_srv_reprepro.crontab_entry.minute }}
+        user="{{ dft_srv_reprepro.user_definition.username }}"
+        job="cd {{ dft_srv_reprepro.user_definition.home_dir }} && {{ dft_srv_reprepro.user_definition.home_dir }}/bin/reprepro_import_{{ item.name }}_packages"
+  with_items:
+      - "{{ dft_srv_reprepro.repositories }}"

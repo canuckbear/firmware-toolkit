@@ -1,0 +1,17 @@
+linux-kernel-nanopi-neo (6.1.42-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 Jul 2023 16:18:54 +0200
+
+linux-kernel-nanopi-neo (6.1.42-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 Jul 2023 16:18:54 +0200
+
+linux-headers-nanopi-neo (6.1.42-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sun, 30 Jul 2023 16:18:54 +0200

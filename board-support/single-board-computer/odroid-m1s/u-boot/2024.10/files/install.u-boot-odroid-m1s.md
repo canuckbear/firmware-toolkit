@@ -1,1 +1,0 @@
-../../files/install.u-boot-odroid-m1s.md

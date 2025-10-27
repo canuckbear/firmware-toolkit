@@ -1,0 +1,17 @@
+linux-kernel-pine64-pinebookpro (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:26 +0200
+
+linux-kernel-pine64-pinebookpro (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:26 +0200
+
+linux-headers-pine64-pinebookpro (5.19.12-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 29 Sep 2022 20:07:26 +0200

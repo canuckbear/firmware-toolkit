@@ -1,0 +1,17 @@
+linux-kernel-firefly-rk3399 (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:39 +0200
+
+linux-kernel-firefly-rk3399 (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:39 +0200
+
+linux-headers-firefly-rk3399 (5.19.11-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Tue, 27 Sep 2022 14:52:39 +0200

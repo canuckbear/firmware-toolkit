@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/imagination-creator-ci20/board.mk

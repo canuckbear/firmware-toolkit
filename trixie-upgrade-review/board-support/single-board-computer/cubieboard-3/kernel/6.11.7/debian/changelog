@@ -1,0 +1,17 @@
+linux-kernel-cubieboard-3 (6.11.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 11 Nov 2024 18:30:46 +0100
+
+linux-kernel-cubieboard-3 (6.11.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 11 Nov 2024 18:30:46 +0100
+
+linux-headers-cubieboard-3 (6.11.7-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 11 Nov 2024 18:30:46 +0100

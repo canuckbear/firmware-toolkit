@@ -1,1 +1,0 @@
-../../files/install.u-boot-hk1-mini.md

@@ -1,0 +1,17 @@
+linux-kernel-asus-tinkerboard (6.6.6-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 13 Dec 2023 21:51:48 +0100
+
+linux-kernel-asus-tinkerboard (6.6.6-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 13 Dec 2023 21:51:48 +0100
+
+linux-headers-asus-tinkerboard (6.6.6-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 13 Dec 2023 21:51:48 +0100

@@ -1,0 +1,17 @@
+linux-kernel-pine64-rock64 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 04 Oct 2022 02:18:20 +0200
+
+linux-kernel-pine64-rock64 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Tue, 04 Oct 2022 02:18:20 +0200
+
+linux-headers-pine64-rock64 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Tue, 04 Oct 2022 02:18:20 +0200

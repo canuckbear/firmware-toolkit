@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/pine64-a64/board.mk

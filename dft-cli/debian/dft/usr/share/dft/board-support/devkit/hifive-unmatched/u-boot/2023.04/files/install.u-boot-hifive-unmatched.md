@@ -1,1 +1,0 @@
-../../files/install.u-boot-hifive-unmatched.md

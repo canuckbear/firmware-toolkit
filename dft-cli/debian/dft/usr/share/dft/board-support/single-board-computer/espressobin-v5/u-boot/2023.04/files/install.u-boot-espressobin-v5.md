@@ -1,1 +1,0 @@
-../../files/install.u-boot-espressobin-v5.md

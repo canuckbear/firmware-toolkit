@@ -1,0 +1,1 @@
+../../files/install.u-boot-x96-mini.md

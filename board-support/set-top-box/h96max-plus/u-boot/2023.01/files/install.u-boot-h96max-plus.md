@@ -1,1 +1,0 @@
-../../files/install.u-boot-h96max-plus.md

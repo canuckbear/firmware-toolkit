@@ -1,0 +1,17 @@
+linux-kernel-beelink-j45 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 21:52:55 +0100
+
+linux-kernel-beelink-j45 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 21:52:55 +0100
+
+linux-headers-beelink-j45 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 21:52:55 +0100

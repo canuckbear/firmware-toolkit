@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/milk-v-duo/board.mk

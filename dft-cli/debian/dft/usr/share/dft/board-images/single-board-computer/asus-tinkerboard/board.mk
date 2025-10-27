@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/asus-tinkerboard/board.mk

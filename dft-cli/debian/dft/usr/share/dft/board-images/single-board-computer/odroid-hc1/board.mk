@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/odroid-hc1/board.mk

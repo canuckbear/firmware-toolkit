@@ -1,0 +1,5 @@
+u-boot-orangepi-zero (2022.04-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Tue, 05 Apr 2022 18:05:32 +0200

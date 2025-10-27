@@ -1,0 +1,17 @@
+linux-kernel-raspberry-pi4 (6.3.8-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 14 Jun 2023 15:26:19 +0200
+
+linux-kernel-raspberry-pi4 (6.3.8-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 14 Jun 2023 15:26:19 +0200
+
+linux-headers-raspberry-pi4 (6.3.8-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Wed, 14 Jun 2023 15:26:19 +0200

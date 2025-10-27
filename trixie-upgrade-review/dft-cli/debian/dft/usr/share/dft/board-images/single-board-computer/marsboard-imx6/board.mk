@@ -1,0 +1,1 @@
+../../../board-support/single-board-computer/marsboard-imx6/board.mk

@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: dft
+Version: 0.8.6
+Summary: Debian Firmware Toolkit
+Home-page: https://github.com/wbonnet/dft/
+Download-URL: https://github.com/wbonnet/dft/
+Author: William Bonnet
+Author-email: william@wbonnet.net
+License-File: LICENSE
+
+DFT is a firmware used to produce firmware from a standard Debian repositories

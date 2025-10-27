@@ -1,0 +1,17 @@
+linux-kernel-generic-amd64 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:57:03 +0100
+
+linux-kernel-generic-amd64 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:57:03 +0100
+
+linux-headers-generic-amd64 (6.8.1-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 16 Mar 2024 20:57:03 +0100

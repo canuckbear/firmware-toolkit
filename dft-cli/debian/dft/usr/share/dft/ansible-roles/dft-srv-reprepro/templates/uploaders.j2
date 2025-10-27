@@ -1,7 +1,0 @@
-{% if item[0].uploaders is defined %}
-{% for uploader in item[0].uploaders %}
-allow {{ uploader.rule }} by key {{ uploader.key }}
-{% endfor %}
-{% else %}
-allow * by unsigned
-{% endif %}

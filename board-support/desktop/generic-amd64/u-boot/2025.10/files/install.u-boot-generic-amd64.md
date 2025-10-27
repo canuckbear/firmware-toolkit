@@ -1,1 +1,0 @@
-../../files/install.u-boot-generic-amd64.md

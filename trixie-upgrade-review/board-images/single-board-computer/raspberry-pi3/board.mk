@@ -1,0 +1,1 @@
+./../../../board-support/single-board-computer/raspberry-pi3/board.mk

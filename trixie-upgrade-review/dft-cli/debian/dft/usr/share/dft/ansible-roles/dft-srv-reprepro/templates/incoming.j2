@@ -1,0 +1,19 @@
+{% for distribution in item.distributions %}
+Name: {{ distribution.codename }}
+{% if item.log_dir is defined %}
+LogDir: {{ item.base_directory }}/{{ item.name }}/{{ item.log_dir }}
+{% else %}
+LogDir: {{ item.base_directory }}/{{ item.name }}/logs
+{% endif %}
+{% if item.tmp_dir is defined %}
+TempDir: {{ item.base_directory }}/{{ item.name }}/{{ item.tmp_dir }}
+{% else %}
+TempDir: {{ item.base_directory }}/{{ item.name }}/tmp
+{% endif %}
+{% if distribution.incoming_dir is defined %}
+IncomingDir: {{ distribution.incoming_dir }}
+{% else %}
+IncomingDir: {{ item.base_directory }}/incoming/{{ distribution.codename }}
+{% endif %}
+Allow: {{ distribution.allow[0] }}
+{% endfor %}

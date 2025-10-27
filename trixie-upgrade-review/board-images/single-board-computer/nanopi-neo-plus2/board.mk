@@ -1,0 +1,1 @@
+./../../../board-support/single-board-computer/nanopi-neo-plus2/board.mk

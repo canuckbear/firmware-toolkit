@@ -1,1 +1,0 @@
-../../files/install.u-boot-orangepi-r1-plus.md

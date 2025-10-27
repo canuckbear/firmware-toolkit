@@ -1,0 +1,1 @@
+../../files/install.u-boot-beelink-gt1-ultimate.md

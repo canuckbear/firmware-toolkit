@@ -1,1 +1,0 @@
-../../files/install.u-boot-scishion-v88-plus.md

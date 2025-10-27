@@ -1,0 +1,17 @@
+linux-kernel-nanopi-r4s (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:11 +0200
+
+linux-kernel-nanopi-r4s (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:11 +0200
+
+linux-headers-nanopi-r4s (5.19.14-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Thu, 06 Oct 2022 19:07:11 +0200

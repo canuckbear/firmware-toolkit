@@ -1,0 +1,5 @@
+u-boot-nvidia-jetson-nano (2021.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 04 Dec 2021 20:42:42 +0100

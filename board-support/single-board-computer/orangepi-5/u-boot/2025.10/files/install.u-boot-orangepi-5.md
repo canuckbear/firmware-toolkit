@@ -1,1 +1,0 @@
-../../files/install.u-boot-orangepi-5.md

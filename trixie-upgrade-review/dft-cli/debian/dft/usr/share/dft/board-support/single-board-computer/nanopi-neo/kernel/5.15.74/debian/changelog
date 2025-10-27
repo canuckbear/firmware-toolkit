@@ -1,0 +1,17 @@
+linux-kernel-nanopi-neo (5.15.74-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 15 Oct 2022 16:15:55 +0200
+
+linux-kernel-nanopi-neo (5.15.74-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 15 Oct 2022 16:15:55 +0200
+
+linux-headers-nanopi-neo (5.15.74-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Sat, 15 Oct 2022 16:15:55 +0200

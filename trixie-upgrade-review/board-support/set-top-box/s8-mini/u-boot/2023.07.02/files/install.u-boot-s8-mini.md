@@ -1,0 +1,1 @@
+../../files/install.u-boot-s8-mini.md

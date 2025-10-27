@@ -1,1 +1,0 @@
-../../files/install.u-boot-beelink-gt1.md

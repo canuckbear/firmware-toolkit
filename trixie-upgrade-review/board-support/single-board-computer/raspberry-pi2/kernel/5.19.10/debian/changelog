@@ -1,0 +1,17 @@
+linux-kernel-raspberry-pi2 (5.19.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Wed, 21 Sep 2022 00:17:22 +0200
+
+linux-kernel-raspberry-pi2 (5.19.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Wed, 21 Sep 2022 00:17:22 +0200
+
+linux-headers-raspberry-pi2 (5.19.10-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Wed, 21 Sep 2022 00:17:22 +0200

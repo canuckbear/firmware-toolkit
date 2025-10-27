@@ -1,5 +1,0 @@
-40f216d1df6ef36068313e59cec42493  usr/share/dft/ci/build-firmware-arm.sh
-ca7b492cda23fce344247a4ff551a164  usr/share/dft/ci/build-firmware-mips.sh
-130607e771df55e65294b80f5785c56c  usr/share/dft/ci/build-firmware.sh
-e70ade8d87ea1264d8e70be7d4019acf  usr/share/doc/dft-ci/changelog.Debian.gz
-0a3552a6a561a0d91d80f18e7479d803  usr/share/doc/dft-ci/copyright

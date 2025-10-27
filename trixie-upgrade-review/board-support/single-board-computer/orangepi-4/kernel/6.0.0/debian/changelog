@@ -1,0 +1,17 @@
+linux-kernel-orangepi-4 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 08 Oct 2022 02:38:02 +0200
+
+linux-kernel-orangepi-4 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <william@wbonnet.net>  Sat, 08 Oct 2022 02:38:02 +0200
+
+linux-headers-orangepi-4 (6.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <william@wbonnet.net>  Sat, 08 Oct 2022 02:38:02 +0200

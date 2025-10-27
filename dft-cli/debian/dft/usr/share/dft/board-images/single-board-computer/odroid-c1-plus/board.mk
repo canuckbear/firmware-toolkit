@@ -1,1 +1,0 @@
-../../../board-support/single-board-computer/odroid-c1-plus/board.mk

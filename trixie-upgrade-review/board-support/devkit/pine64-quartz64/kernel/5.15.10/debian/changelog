@@ -1,0 +1,17 @@
+linux-kernel-pine64-quartz64 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 22:09:15 +0100
+
+linux-kernel-pine64-quartz64 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 22:09:15 +0100
+
+linux-headers-pine64-quartz64 (5.15.10-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Fri, 17 Dec 2021 22:09:15 +0100
