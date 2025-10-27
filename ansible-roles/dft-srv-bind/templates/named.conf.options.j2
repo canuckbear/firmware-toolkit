@@ -1,4 +1,4 @@
-acl internals { 127.0.0.0/8; 192.168.71.0/24; };
+acl internals { 127.0.0.0/8; 192.168.11.0/24; };
 
 options {
 	directory "/var/cache/bind";
@@ -16,8 +16,8 @@ options {
         forwarders {
                  80.10.246.2;
                  80.10.246.129;
-//               8.8.8.8;
-//               4.4.4.4;
+                 8.8.8.8;
+                 4.4.4.4;
         };
 
         // Desactive les notifications
@@ -47,7 +47,7 @@ options {
 
         // Ecouter sur les interfaces locales uniquement (IPV4)
         listen-on-v6 { none; };
-        listen-on { 127.0.0.1; 192.168.71.1; };
+        listen-on { 127.0.0.1; 192.168.11.1; };
 };
 
 server ::/0 {

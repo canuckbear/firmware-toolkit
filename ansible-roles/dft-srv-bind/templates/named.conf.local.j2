@@ -2,16 +2,16 @@
 // Do any local configuration here
 //
 
-zone "puteaux.wbonnet.net" {
+zone "/roudiers.wbonnet.net" {
        type master;
-       file "/etc/bind/db.puteaux.wbonnet.net";
+       file "/etc/bind/db.roudiers.wbonnet.net";
        allow-query { internals; };
 //       forwarders {};
 };
 
-zone "71.168.192.in-addr.arpa" {
+zone "11.168.192.in-addr.arpa" {
        type master;
-       file "/etc/bind/71.168.192.in-addr.arpa";
+       file "/etc/bind/11.168.192.in-addr.arpa";
        allow-query { internals; };
 //       forwarders {};
 };
