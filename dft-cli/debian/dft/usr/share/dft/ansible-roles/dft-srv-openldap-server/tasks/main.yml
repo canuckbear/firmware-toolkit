@@ -24,8 +24,8 @@
 #
 
 ---
-- include: "{{ dft_playbook_logger }}/tasks/logging.yml"
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
 
-- include: slapd.yml
-- include: configuration.yml
+- include_tasks: slapd.yml
+- include_tasks: configuration.yml
