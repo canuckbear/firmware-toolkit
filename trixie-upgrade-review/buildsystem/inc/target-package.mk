@@ -20,7 +20,7 @@
 # Copyright 2006 Cory Omand: Scripts and add-on make modules, except where otherwise noted.
 # Copyright 2008 Dagobert Michelsen (OpenCSW): Enhancements to the CSW GAR system
 # Copyright 2008-2013 Open Community Software Association: Packaging content
-#
+# Copyright 2021-2025 William Bonnet (The IT Makers): Debian port
 #
 # Contributors list :
 #
