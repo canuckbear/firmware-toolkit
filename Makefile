@@ -1,4 +1,4 @@
-# vim: ft=make ts=4 sw=4 noet
+l # vim: ft=make ts=4 sw=4 noet
 #
 # The contents of this file are subject to the Apache 2.0 license you may not
 # use this file except in compliance with the License.
@@ -9,7 +9,7 @@
 # License.
 #
 #
-# Copyright 2019 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2025 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
