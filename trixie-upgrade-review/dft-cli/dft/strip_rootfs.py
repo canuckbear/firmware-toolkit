@@ -8,7 +8,7 @@
 # License.
 #
 #
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2025 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
@@ -109,8 +109,7 @@ class StripRootFS(CliCommand):
     if self.use_qemu_static:
       self.cleanup_qemu()
 
-# Then strip the symlinks ??? check it is in unit test
-
+  # Then strip the symlinks ??? check it is in unit test
 
 
   # -------------------------------------------------------------------------
@@ -241,7 +240,7 @@ class StripRootFS(CliCommand):
 
     self.project.logging.debug("Remove file : " + target)
 
-    # Deleting file is done from host rootf. There is no need to trigger a chroot to rm rm
+    # Deleting file is done from host rootfs. There is no need to trigger a chroot to rm
     # Moreover, some files may be missing from the chroot to be target to run chroot
     target = self.project.get_rootfs_mountpoint() + "/" + target
     try:
@@ -268,7 +267,7 @@ class StripRootFS(CliCommand):
 
     self.project.logging.debug("Empty file : " + target)
 
-    # Deleting file is done from host rootf. There is no need to trigger a chroot to rm rm
+    # Deleting file is done from host rootfs. There is no need to trigger a chroot to rm
     # Moreover, some files may be missing from the chroot to be target to run chroot
     target = self.project.get_rootfs_mountpoint() + "/" + target
 

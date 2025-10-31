@@ -1,3 +1,9 @@
+dft (0.8.8-1) unstable; urgency=low
+
+  * Fix minor typo. Test on trixiehostAdd non-free-firmare section to APT sources
+
+ -- William Bonnet <william@wbonnet.net>  Fri, 31 Oct 2025 13:00:00 +0100
+
 dft (0.8.7-1) unstable; urgency=low
 
   * Add non-free-firmare section to APT sources

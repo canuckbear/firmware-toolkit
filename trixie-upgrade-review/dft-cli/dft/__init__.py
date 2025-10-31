@@ -8,7 +8,7 @@
 # License.
 #
 #
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2025 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #

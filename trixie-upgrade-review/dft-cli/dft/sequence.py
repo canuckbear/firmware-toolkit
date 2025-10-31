@@ -8,7 +8,7 @@
 # License.
 #
 #
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2025 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
@@ -106,7 +106,7 @@ class Sequence(CliCommand):
     if len(sequence) == 0:
       logging.info("Sequence " + self.dft.sequence_name + " is empty. Nothing to do.")
     else:
-      # Some steps are defined in the list. Iterate it and call run_tep method on eah step
+      # Some steps are defined in the list. Iterate it and call run_tep method on each step
       for step in sequence[Key.STEPS.value]:
         if not self.execute_step(step):
           logging.error("Execution of step " + step[Key.ACTION.value] + " failed. Aborting")

@@ -204,7 +204,7 @@ class AssembleFirmware(CliCommand):
         if self.project.firmware[Key.INITRAMFS.value][Key.MKIMAGE_ARCH.value] not in \
            "alpha" "arc" "arm" "arm64" "avr32" "blackfin" "ia64" "invalid" "m68k" "microblaze" \
            "mips" "mips64" "nds32" "nios2" "or1k" "powerpc" "s390" "sandbox" "sh" "sparc" \
-           "sparc64" "x86" "x86_64" "riscxv64" "xtensa":
+           "sparc64" "x86" "x86_64" "riscv64" "xtensa":
           self.project.logging.error("Unknown mkimage architecture : " + \
                    self.project.firmware[Key.INITRAMFS.value][Key.MKIMAGE_ARCH.value])
           self.project.logging.error("Using invalid instead")
