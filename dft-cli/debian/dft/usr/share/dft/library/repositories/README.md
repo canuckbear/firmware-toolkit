@@ -11,13 +11,14 @@ These repositories can be included in your project file (as long as you let libr
 your configuration or project file).
 
 Multiple repositories can be included in a project. Each repository configuration fille be parsed
-and its content added to the generated /etc/fstab.
+and its content added to the generated /etc/apt/sources.list
 
 Content
 -------
 
 The following repositories configuration file are provided :
 
-*
-*
-*
+* Buster for retro compatibility with ol projects
+* Stretch for the same reseon
+* Jessie idem
+* trixie current stable   at th time of update
