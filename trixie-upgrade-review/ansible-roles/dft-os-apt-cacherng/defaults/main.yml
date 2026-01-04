@@ -69,7 +69,7 @@ dft_os_apt:
     # Base URL of the repository. No default value
     - url: 'http://ftp.fr.debian.org/debian/'
       # Suite version. No default value
-      suite: 'stretch'
+      suite: 'trixie'
       # List of sections to use ( comma separated ). No default value
       sections: 'main'
       # Are packages URL generated (stating with deb). Default is True
@@ -79,7 +79,7 @@ dft_os_apt:
     # Base URL of the repository. No default value
     - url: 'http://ftp.fr.debian.org/debian-security/'
       # Suite version. No default value
-      suite: 'stretch/updates'
+      suite: 'trixie/updates'
       # List of sections to use ( space separated ). No default value
       sections: 'main'
       # Are packages URL generated (stating with deb). Default is True
@@ -89,7 +89,7 @@ dft_os_apt:
       # Base URL of the repository. No default value
     - url: 'http://ftp.fr.debian.org/debian/'
       # Suite version. No default value
-      suite: 'stretch-updates'
+      suite: 'trixie-updates'
       # List of sections to use ( comma separated ). No default value
       sections: 'main'
       # Are packages URL generated (stating with deb). Default is True

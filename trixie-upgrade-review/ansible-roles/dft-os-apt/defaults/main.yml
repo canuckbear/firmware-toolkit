@@ -69,9 +69,9 @@ dft_os_apt:
     # Base URL of the repository. No default value
     - url: 'http://ftp.de.debian.org/debian/'
       # Suite version. No default value
-      suite: 'buster'
+      suite: 'trixie'
       # List of sections to use ( comma separated ). No default value
-      sections: 'main'
+      sections: 'main non-free-firmware'
       # Are packages URL generated (stating with deb). Default is True
       deb: True
       # Are sources URL generated (stating with deb-src). Default is False
@@ -79,9 +79,9 @@ dft_os_apt:
     # Base URL of the repository. No default value
     - url: 'http://ftp.de.debian.org/debian-security/'
       # Suite version. No default value
-      suite: 'buster/updates'
+      suite: 'trixie/updates'
       # List of sections to use ( space separated ). No default value
-      sections: 'main'
+      sections: 'maini non-free-firmware'
       # Are packages URL generated (stating with deb). Default is True
       deb: True
       # Are sources URL generated (stating with deb-src). Default is False
@@ -89,9 +89,9 @@ dft_os_apt:
       # Base URL of the repository. No default value
     - url: 'http://ftp.de.debian.org/debian/'
       # Suite version. No default value
-      suite: 'buster-updates'
+      suite: 'trixie-updates'
       # List of sections to use ( comma separated ). No default value
-      sections: 'main'
+      sections: 'main non-free-firmware'
       # Are packages URL generated (stating with deb). Default is True
       deb: True
       # Are sources URL generated (stating with deb-src). Default is False
