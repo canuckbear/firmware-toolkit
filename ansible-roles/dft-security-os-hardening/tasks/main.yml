@@ -21,9 +21,14 @@
 #
 # Include the list of specific tasks. Tasks are separated into different
 # files, one file per functionnality.
+#i
 #
+--
+- include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
+  when: dft_playbook_logger is defined
 
----
+- include_tasks: configuration.yml
+-
 # Incudes tasks related to ANSSI NT-28 (Linux configuration) recommendations
 - include_tasks: anssi-linux-configuration.yml
   when: ( dft_security_hardening_os is defined and

@@ -1,4 +1,4 @@
-#
+
 # The contents of this file are subject to the Apache 2.0 license you may not
 # use this file except in compliance with the License.
 #
@@ -23,3 +23,5 @@
 - include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
 - include_tasks: packages.yml
+- include_tasks: configuration.yml
+

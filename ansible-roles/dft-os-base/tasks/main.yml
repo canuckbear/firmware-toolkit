@@ -32,3 +32,5 @@
 - include_tasks: timezone.yml
 - include_tasks: groups.yml
 - include_tasks: users.yml
+- include_tasks: configuration.yml
+

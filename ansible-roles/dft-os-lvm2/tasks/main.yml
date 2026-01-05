@@ -8,7 +8,7 @@
 # License.
 #
 #
-# Copyright 2016 DFT project (http://www.firmwaretoolkit.org).
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
 # All rights reserved. Use is subject to license terms.
 #
 #
@@ -26,6 +26,7 @@
 ---
 - include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include_tasks: fail2ban.yml
+- include_tasks: packages.yml
 - include_tasks: configuration.yml
-
+- include_tasks: volume-group.yml
+- include_tasks: logical-volume.yml

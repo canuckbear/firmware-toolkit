@@ -26,4 +26,6 @@
 ---
 - include_tasks: "{{ dft_playbook_logger }}/tasks/logging.yml"
   when: dft_playbook_logger is defined
-- include_tasks: rkhunter.yml
+- include_tasks: rkhunter.ymli
+- include_tasks: configuration.yml
+

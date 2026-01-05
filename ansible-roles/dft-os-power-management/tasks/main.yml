@@ -29,3 +29,5 @@
 - include_tasks: acpid.yml
 - include_tasks: upower.yml
 - include_tasks: linux-cpupower.yml
+- include_tasks: configuration.yml
+

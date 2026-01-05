@@ -29,3 +29,5 @@
 - include_tasks: x11.yml
 - include_tasks: xfce.yml
 - include_tasks: lightdm.yml
+- include_tasks: configuration.yml
+
