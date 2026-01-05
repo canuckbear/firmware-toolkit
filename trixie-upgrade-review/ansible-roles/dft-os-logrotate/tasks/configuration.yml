@@ -19,7 +19,9 @@
 #
 
 # ---
-- name: Deploy logrotate main configuration file
+#TODO
+# est-ce qu le template est encore utile ? vauudrait il pas mieux faire comme dans la trixie ?
+#- name: Deploy logrotate main configuration file
   template: src=logrotate.conf.j2
             dest=/etc/logrotate.conf
             owner=root

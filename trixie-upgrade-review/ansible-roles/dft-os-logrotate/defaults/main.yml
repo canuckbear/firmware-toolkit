@@ -58,7 +58,6 @@ dft_logrotate:
 
   # Extension of the compressed log files
   # compress_extension: "compressed"
-
   # Command used to uncompress log files
   # uncompress_command: "bzip2 -d"
 
@@ -189,6 +188,7 @@ dft_logrotate:
   # size: 100k
 
   # Delete  log  files  using  shred  -u  instead of unlink().  This should ensure that logs are
+  :n
   # not readable after their scheduled deletion; this is off by default. See also noshred.
   # shred: True
 
