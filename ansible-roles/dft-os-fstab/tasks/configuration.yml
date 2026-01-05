@@ -1,0 +1,60 @@
+#
+# The contents of this file are subject to the Apache 2.0 license you may not
+# use this file except in compliance with the License.
+#
+# Software distributed under the License is distributed on an "AS IS" basis,
+# WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+# for the specific language governing rights and limitations under the
+# License.
+#
+#
+# Copyright 2020 DFT project (http://www.firmwaretoolkit.org).
+# All rights reserved. Use is subject to license terms.
+#
+#
+# Contributors list :
+#
+#    William Bonnet     wllmbnnt@gmail.com, wbonnet@theitmakers.com
+#
+#
+
+---
+# Execute this task only if filesystems variable is defined in inventory
+
+# Generate /etc/fstab file
+- name: Generate /etc/fstab
+  template:
+    src: fstab.j2
+    dest: "/etc/fstab"
+    owner: root
+    group: root
+    mode: "0660"
+
+  # Excute this task only if a fstab variable is defined
+  when: dft_os_fstab is defined and dft_os_fstab.filesystems is defined
+
+# Create mount point target directories
+- name: Create mount point target directories
+  file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "{{ item.mode | default(0775) }}"
+  loop: "{{ dft_os_fstab.filesystems }}"
+  when: dft_os_fstab is defined and dft_os_fstab.filesystems is defined
+
+# Set the filesystem mount status according to inventory
+- name: Mount filesystems
+  mount:
+    backup: "{{ item.backup | default(False) }}"
+    boot: "{{ item.boot | default(True) }}"
+    dump: "{{ item.dump | default(0) }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.opts }}"
+    passno: "{{ item.passno | default (2) }}"
+    path:  "{{ item.path }}"
+    src: "{{ item.src }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ dft_os_fstab.filesystems }}"
+  when: dft_os_fstab is defined and dft_os_fstab.filesystems is defined
