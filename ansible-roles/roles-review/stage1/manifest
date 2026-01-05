@@ -1,0 +1,4 @@
+deployer le role sur un machine ett constater qu'il fonctionne
+améliorer les fichiers de conf
+faire un jeu de données de test pour ldap ou les bdd par exemple
+initialiser les tests automatiques du role avec sbit
