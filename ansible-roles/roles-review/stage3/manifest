@@ -1,1 +1,10 @@
 se focalise sur les cas extremes de resilience et test de securité et de charge
+The role has to be deployed on one or several  test machines
+  . These test focuses on advanced use case
+  . Test restart after crash without data loss
+  . Test High Avalability
+  . Test data replication ( RDBMS or Application server)
+  . Test security (Pen testing)
+  . Test ACL
+  
+. Move the symlink to the passed-test folder once done

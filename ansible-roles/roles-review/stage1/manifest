@@ -1,4 +1,7 @@
-deployer le role sur un machine ett constater qu'il fonctionne
-améliorer les fichiers de conf
-faire un jeu de données de test pour ldap ou les bdd par exemple
-initialiser les tests automatiques du role avec sbit
+The role has to be deployed on a test machine
+  . control th software from this role runs an are functional in most cases
+  . start to improve configuration files
+  . create a test data set (as en example data to load in a ldap server or DB)
+  . Initialize automatic testing with SBIT (needing dedicated SBIT test file)
+
+  . Move the symlink to the passed-test folder once done
