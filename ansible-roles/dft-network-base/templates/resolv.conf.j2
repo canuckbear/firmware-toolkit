@@ -10,7 +10,9 @@
 # You can access documentation on the content of this file by running man resolv.conf
 
 {% if dft_dns_resolver is defined and dft_dns_resolver.search is defined %}
-search {{ dft_dns_resolver.search }}
+{% for resolver in dft_dns_resolver.search %}
+search {{ resolver }}
+{% endfor %}
 {% endif %}
 {% if dft_dns_resolver is defined and dft_dns_resolver.domain is defined %}
 domain {{ dft_dns_resolver.domain }}
