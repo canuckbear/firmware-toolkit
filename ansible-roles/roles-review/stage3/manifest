@@ -6,4 +6,4 @@ The role has to be deployed on one or several  test machines
   . Test security (Pen testing)
   . Test ACL
   
-. Move the symlink to the passed-test folder once done
+. Move the symlink to the passed-test folder once done 
