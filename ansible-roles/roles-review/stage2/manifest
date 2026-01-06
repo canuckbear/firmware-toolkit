@@ -1,9 +1,0 @@
-The role has to be deployed on a test machine
-  . Verify th failed tests from stage 1 are fixed and now functional
-  . Impro test data set especialy for DBRMS or security softwares datasets must more complex
-  . SBIT test files must cover as much as possible from the functional perimeter
-  . Add all test data sets to VCS
-  . Test data backup and restoration
-  . Control logging capabilities
-
-  . Move the symlink to the passed-test folder once done
