@@ -1,0 +1,7 @@
+The role has to be deployed on a test machine
+  . control that the software from this role runs and is functional in most cases
+  . start to improve configuration files
+  . create a test data set (as en example data to load in a ldap server or DB)
+  . Initialize automatic testing with SBIT (needing dedicated SBIT test file)
+
+  . Move the symlink to the passed-test folder once done
