@@ -35,13 +35,12 @@ CHECK_FOR_SANITY    = ansible-roles board-support board-images
 
 # ------------------------------------------------------------------------------
 #
-# Run git status
+# Run git pull
 #
 status:
-	@echo "running git status in dft"
+	@echo "running git status in topdir"
 	@echo
 	@git status
-
 
 # Simple forwarder
 sanity-check:
