@@ -27,3 +27,4 @@
     - lxc
     - bridge-utils
     - lxc-templates
+    - debootstrap
