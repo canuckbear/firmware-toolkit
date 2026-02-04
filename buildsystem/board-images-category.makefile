@@ -148,7 +148,7 @@ add-board:
 	fi ; \
 	if [ "$(arch)" == "" ] ; then \
 		echo "DEBUG : from category.makefile argument arch is missing or has no value. Doing nothing..." ; \
-		$(call dft_error ,2009-2901) ; \
+		$(call dft_error ,2009-2902) ; \
 	fi ; \
 	if [ -d "./$(board-name)" ] ; then \
 		echo ". Board $(board-name) already exist. Doing nothing..." ; \
