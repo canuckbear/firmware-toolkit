@@ -1,0 +1,12 @@
+Source: u-boot-star64
+Section: misc
+Priority: optional
+Maintainer: unknown <unknown>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: u-boot-star64
+Architecture: any
+Depends: ${misc:Depends}
+Description: u-boot, version 2026.07 for star64
+ This packages contains u-boot version 2026.07 compiled for star64 board.

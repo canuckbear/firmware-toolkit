@@ -1,0 +1,12 @@
+Source: u-boot-pine64-avoata-a1
+Section: misc
+Priority: optional
+Maintainer: unknown <unknown>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+
+Package: u-boot-pine64-avoata-a1
+Architecture: any
+Depends: ${misc:Depends}
+Description: u-boot, version 2026.07 for pine64-avoata-a1
+ This packages contains u-boot version 2026.07 compiled for pine64-avoata-a1 board.
