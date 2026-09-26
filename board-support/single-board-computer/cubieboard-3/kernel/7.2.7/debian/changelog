@@ -1,0 +1,17 @@
+linux-kernel-cubieboard-3 (7.2.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 26 Sep 2026 13:46:47 +0200
+
+linux-kernel-cubieboard-3 (7.2.7-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 26 Sep 2026 13:46:47 +0200
+
+linux-headers-cubieboard-3 (7.2.7-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Sat, 26 Sep 2026 13:46:47 +0200
