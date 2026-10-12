@@ -1,0 +1,17 @@
+linux-kernel-asus-tinkerboard (7.2.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 12 Oct 2026 18:36:13 +0200
+
+linux-kernel-asus-tinkerboard (7.2.10-1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 12 Oct 2026 18:36:13 +0200
+
+linux-headers-asus-tinkerboard (7.2.10-1) unstable; urgency=medium
+
+  * Initial release.
+ 
+ -- William Bonnet <wbonnet@theitmakers.com>  Mon, 12 Oct 2026 18:36:13 +0200
